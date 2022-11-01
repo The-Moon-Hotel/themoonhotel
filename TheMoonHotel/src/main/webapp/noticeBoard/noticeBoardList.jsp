@@ -81,7 +81,7 @@
 					<option>작성일</option>
 				</select>
 				<input type="email" class="form-control" id="search"
-					placeholder="검색하고자 하는 내용 입력">
+					placeholder="검색하고자 하는 내용 입력"> 
 			</div>
 		<button type="button" class="btn btn-success" style="float: right">글쓰기</button>
 		<br> <br> <br>

@@ -40,7 +40,7 @@
 			<div class="form-group">
 				<label for="exampleInputEmail1" class="form-label mt-4"></label>
 				<input type="email" class="form-control" id="title1"
-					placeholder="제목을 입력하세요" >
+					placeholder="제목을 입력하세요" > 
 			</div>
 			<div class="form-group">
 				<label for="exampleTextarea" class="form-label mt-4"></label>
