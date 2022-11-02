@@ -1,9 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="../inc/top.jsp"></jsp:include>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="../css/adminPage.css" />
 
-<div class="guestDetail">
+<p style="font-size: 120%; 
+	text-align: center; margin-top:20px;" >회원 상세 정보</p>
+
+<table class="table" style="width: 800px; margin:auto;">
+  <thead>
+    <tr>
+      <th scope="col">회원번호</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+  </tbody>
+</table>
+<!-- <div class="guestDetail">
 	<p style="font-size: 120%; text-align: center; margin-top:20px;" >회원 상세 정보</p>
 	<div class="divForm">
 		<div class="firstDiv">
@@ -29,5 +58,5 @@
 	        <a href='guestList.jsp'>회원 목록</a>
 		</div>
 	</div>
-</div>
+</div> -->
 <jsp:include page="../inc/footer.jsp"></jsp:include>
