@@ -29,8 +29,13 @@
 	float: left;
 }
 </style>
+<script type="text/javascript"src="../js/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
-	
+	$(function(){
+		$('#btn1').click(function(){
+			location.href="noticeWrite.jsp";
+		});	
+	});
 </script>
 <body>
 	<br>
@@ -46,33 +51,25 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th scope="col">#</th>
-					<th scope="col">First</th>
-					<th scope="col">Last</th>
-					<th scope="col">Handle</th>
+					<th scope="col">no</th>
+					<th scope="col">제목</th>
+					<th scope="col">작성자</th>
+					<th scope="col">날짜</th>
+					<th scope="col">조회수</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<th scope="row">1</th>
-					<td>Mark</td>
-					<td>Otto</td>
-					<td>@mdo</td>
-				</tr>
-				<tr>
-					<th scope="row">2</th>
-					<td>Jacob</td>
-					<td>Thornton</td>
-					<td>@fat</td>
-				</tr>
-				<tr>
-					<th scope="row">2</th>
-					<td>Jacob</td>
-					<td>Thornton</td>
-					<td>@fat</td>
+					<td><a href="detail.jsp" >뭘까영</a></td>
+					<td>홍길동</td>
+					<td>2022-11-02</td>
+					<td>111</td>
 				</tr>
 			</tbody>
 		</table>
+		
+		
 			<div class="form-group">
 				<label for="exampleSelect1" class="form-label mt-4"></label>
 				<select	class="form-select" id="select1">
@@ -80,10 +77,9 @@
 					<option>작성자</option>
 					<option>작성일</option>
 				</select>
-				<input type="email" class="form-control" id="search"
-					placeholder="검색하고자 하는 내용 입력"> 
+				<input type="email" class="form-control" id="search" placeholder="검색하고자 하는 내용 입력"> 
 			</div>
-		<button type="button" class="btn btn-success" style="float: right">글쓰기</button>
+		<button id="btn1" type="button" class="btn btn-success" style="float: right">글쓰기</button>
 		<br> <br> <br>
 	</div>
 	<script
