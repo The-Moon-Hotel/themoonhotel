@@ -11,6 +11,10 @@
 	width: 1920px;
 }
 
+#CarouselImg{
+	height: 900px;
+	width: 1920px;
+}
 .CarouselLocation{
 	z-index: -1;
 }
