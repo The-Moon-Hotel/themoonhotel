@@ -1,12 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>greetings.jsp</title>
-</head>
-<body>
-
-</body>
-</html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<jsp:include page="../inc/top.jsp"></jsp:include>
+<link rel="stylesheet" type="text/css" href="../css/greetings.css">
+<section>
+	<article>
+		<img alt="" src="../images/greetings_banner.png" class="img-fluid">
+	</article>
+</section>
+<section>
+	<p>about us</p>
+	<h2>full moon hotel</h2>
+	<p>현대적인 라이프스타일 데스티네이션</p>
+	<p>한국의 전통미와 현대적 감각을 겸비하고 있는 세계 속의 명문호텔 서울신라호텔은 세계 최고의 리서리 어번 Urba기)
+		라이프스타일 호텔로 고객들에게 최고급 Hospitality 서비스를 제공합니다. 한국을 대표하는 럭셔리 호텔로서 밀상이 최고의
+		순간이 되는 관 이라는 컨셉을 새롭게 선보이며 휴식은 물론 고급 식문화, 예술, 부티, 쇼핑, 웨딩, 엔터테인먼트 등 고객의
+		고품격 라이프스타일을 제안하는 공간으로 거듭냐고 있습니다. </p>
+	<p>글로벌 럭셔리 호텔 </p>
+	<p>LHW의 멤버로 세계 럭셔리 호텔들과 어깨를
+		나란히 하고 있는 서울신라후텔은 고객 한 분 한 분을 배려하는 기품있는 서비스로 세계 각국의 수반들과 외고, 경제, 문화 등의
+		분야의 명사로부터 찬사를 받고 있으며, Conde Nast Traveler, Travel & Leisure, Zagat,
+		Euromoney등 권위 있는 해외 매체로부터 매년 한국 최고의 호텔로 선정되고 있습니다.</p>
+	img
+</section>
+<jsp:include page="../inc/footer.jsp"></jsp:include>
