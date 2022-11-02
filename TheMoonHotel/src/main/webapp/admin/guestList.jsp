@@ -8,6 +8,7 @@
 	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
 	crossorigin="anonymous">
 
+<div style="height: 800px;">
 <p style="font-size: 120%; text-align: center; margin-top:20px;" >회원 정보 조회</p>
 
 <table class="table" style="width: 800px; margin:auto;">
@@ -51,5 +52,6 @@
         	value="">   
 		<input type="submit" value="검색">
     </form>
+</div>
 </div>
 <jsp:include page="../inc/footer.jsp"></jsp:include>
