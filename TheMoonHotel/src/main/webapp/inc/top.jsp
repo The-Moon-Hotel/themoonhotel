@@ -8,8 +8,9 @@
     <title>index</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/top.css">
-  <script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/top.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/footer.css">  
+  <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-3.6.1.min.js"></script>
   <script type="text/javascript">
   	 var navBar = document.getElementById('navBlack');
   	 

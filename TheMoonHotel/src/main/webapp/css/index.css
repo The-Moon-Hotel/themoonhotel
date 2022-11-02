@@ -1,0 +1,16 @@
+@charset "UTF-8";
+.CarouselSize{
+	height: 900px;
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.CarouselImage{
+	height: 900px;
+	width: 1920px;
+}
+
+.CarouselLocation{
+	z-index: -1;
+}
