@@ -1,69 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top.jsp" %>
-<link rel="stylesheet" href="../css/top.css">
-<style>
-	.top-nav{
-		position: absolute;
-		top: 650px;
-		display: inline-block;
-		font-size: 25px;
-		padding: 30px;
-	}
-
-	.rooms{
-		position:relative;
-		font-size: 30px;
-		margin: 300px;
-		margin-top: 200px;
-	}
-	
-	.carousel-inner{
-		position: relative;
-		/* text-align: center; */
-		width: 1500px;
-		height: 600px;
-	}
-	
-	.explain{
-		color: #7B725E;
-	}
-	
-	.right_box{
-		position: absolute;
-		right: 0px;
-		top: 700px;
-		font-size: 20px;
-	}
-</style>
+<link rel="stylesheet" href="../css/roomDetail.css">
 
 
-<section style="width: 2000px; align: center;">
+<section style="width: 1900px; align: center;">
 	<article>
-
 		<div class="carousel-item active ">
-			<img src="images/hotel1.png" class="d-block  CarouselImage  "
-				alt="..." style="width: 100%; height: 600px">
-
-			<div class="top-nav">
-				<p>
-					<a class="nav-link active" aria-current="page" href="#">superior</a>
-				</p>
-				<p>
-					<a class="nav-link" href="#">deluxe</a>
-				</p>
-				<p>	
-					<a class="nav-link" href="#">suite</a>
-				</p>	
-				<p>
-					<a class="nav-link disabled">monogram suit</a>
-				</p>
-			</div> 
-			
+			<img src="../images/hotel1.png" class="d-block  CarouselImage  "
+				alt="..." style="width: 1900px; height: 600px">
 			
 			
 			<div class="rooms">
 				<p><b>스위트</b></p>
+				<br>
 					
 					<img src="../images/suit_big.png" style="width: 1200px;">
 
@@ -154,5 +104,5 @@
 </section>
 
 
-<link rel="stylesheet" href="../css/footer.css"> 
+<div style="height: 2800px"></div>
 <%@ include file="../inc/footer.jsp" %>

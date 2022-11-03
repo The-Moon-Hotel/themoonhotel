@@ -1,74 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top.jsp" %>
-<link rel="stylesheet" href="../css/top.css">
-<style>
-	.top-nav{
-		position: absolute;
-		top: 650px;
-		display: inline-block;
-		font-size: 25px;
-		padding: 30px;
-	}
+<link rel="stylesheet" href="../css/roomDetail.css">
 
-	.rooms{
-		position:relative;
-		font-size: 30px;
-		margin: 300px;
-		margin-top: 200px;
-	}
-	
-	.carousel-inner{
-		position: relative;
-		/* text-align: center; */
-		width: 1500px;
-		height: 600px;
-	}
-	
-	.explain{
-		color: #7B725E;
-	}
-	
-	.right_box{
-		position: absolute;
-		right: 0px;
-		top: 700px;
-		font-size: 20px;
-	}
-	
-	.bottom{
-		position: absolute;
-		bottom: 0;
-	}
-</style>
-
-
-<section style="width: 2000px; align: center;">
+<section style="width: 1900px; align: center;">
 	<article>
 
 		<div class="carousel-item active ">
-			<img src="images/hotel1.png" class="d-block  CarouselImage  "
-				alt="..." style="width: 100%; height: 600px">
+			<img src="../images/hotel1.png" class="d-block  CarouselImage  "
+				alt="..." style="width: 1900px; height: 600px">
 
-			<div class="top-nav">
-				<p>
-					<a class="nav-link active" aria-current="page" href="#">superior</a>
-				</p>
-				<p>
-					<a class="nav-link" href="#">deluxe</a>
-				</p>
-				<p>	
-					<a class="nav-link" href="#">suite</a>
-				</p>	
-				<p>
-					<a class="nav-link disabled">monogram suit</a>
-				</p>
-			</div> 
-			
-			
-			
 			<div class="rooms">
 				<p><b>수페리어</b></p>
+				<br>	
 					
 					<img src="../images/spr_big.png" style="width: 1200px;">
 
@@ -82,7 +26,7 @@
 					<문의전화>
 					<span style="color: black"> 02-3333-6666</span>
 					<br><br>
-					<p>파스텔 톤 인테리어의 객실에 휴식을 취할 수 있는 테이블과 체어가 있는 더문호텔의 기본 룸입니다.</p>
+					<p>파스텔 톤 인테리어의 객실에 휴식을 취할 수 있는 테이블과 체어가 있는<br>더문호텔의 기본 룸입니다.</p>
 				
 				<br>
 				
@@ -156,10 +100,8 @@
 		</div>
 	</article>
 </section>
-<div class = bottom>
-	<link rel="stylesheet" href="../css/footer.css"> 
-	<%@ include file="../inc/footer.jsp" %>
-</div>
 
 
 
+<div style="height: 2800px"></div>
+<%@ include file="../inc/footer.jsp" %>
