@@ -32,7 +32,7 @@
 	.right_box{
 		position: absolute;
 		right: 0px;
-		top: 450px;
+		top: 700px;
 		font-size: 20px;
 	}
 </style>
@@ -65,7 +65,7 @@
 			<div class="rooms">
 				<p><b>스위트</b></p>
 					
-					<img src="../images/suit_big.png">
+					<img src="../images/suit_big.png" style="width: 1200px;">
 
 				<br><br><br>
 				

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top.jsp" %>
-<link rel="stylesheet" href="../css/top.css">
 <style>
 	.top-nav{
 		position: absolute;
@@ -32,7 +31,7 @@
 	.right_box{
 		position: absolute;
 		right: 0px;
-		top: 450px;
+		top: 700px;
 		font-size: 20px;
 	}
 </style>
@@ -65,7 +64,7 @@
 			<div class="rooms">
 				<p><b>디럭스</b></p>
 					
-					<img src="../images/del_big.png">
+					<img src="../images/del_big.png" style="width: 1200px;">
 
 				<br><br><br>
 				
