@@ -26,3 +26,16 @@ h1{
 	height: 40px;
 	vertical-align: bottom;
 }
+.spin{
+	display: inline-block;
+	width: 50px;
+}
+ui-spinner{
+	color: gray;
+	
+}
+.ui-datepicker {
+   
+   border: 1px solid #555;
+   color: gray;
+}
