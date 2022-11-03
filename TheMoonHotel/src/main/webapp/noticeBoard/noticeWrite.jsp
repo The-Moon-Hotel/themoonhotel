@@ -18,7 +18,7 @@ String ctx = request.getContextPath();
 }
 </style>
 <script type="text/javascript"
-	src="../smartEdit/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+	src="../js/smartEdit/service/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
 var oEditors=[];
