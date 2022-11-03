@@ -35,10 +35,15 @@
 		top: 700px;
 		font-size: 20px;
 	}
+	
+	.bottom{
+		position: absolute;
+		bottom: 0;
+	}
 </style>
 
 
-<section style="width: 100%; align: center;">
+<section style="width: 2000px; align: center;">
 	<article>
 
 		<div class="carousel-item active ">
@@ -151,7 +156,10 @@
 		</div>
 	</article>
 </section>
+<div class = bottom>
+	<link rel="stylesheet" href="../css/footer.css"> 
+	<%@ include file="../inc/footer.jsp" %>
+</div>
 
 
-<link rel="stylesheet" href="../css/footer.css"> 
-<%@ include file="../inc/footer.jsp" %>
+

@@ -37,7 +37,7 @@
 </style>
 
 
-<section style="width: 100%; align: center;">
+<section style="width: 2000px; align: center;">
 	<article>
 
 		<div class="carousel-item active ">
