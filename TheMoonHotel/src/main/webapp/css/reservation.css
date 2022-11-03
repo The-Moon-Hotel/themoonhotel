@@ -27,15 +27,13 @@ h1{
 	vertical-align: bottom;
 }
 .spin{
+	display: inline;
+	width: 60px;
+}
+.spinLabel{
 	display: inline-block;
-	width: 50px;
-}
-ui-spinner{
-	color: gray;
-	
-}
-.ui-datepicker {
-   
-   border: 1px solid #555;
-   color: gray;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 1px;
+	padding-bottom: 1px;
 }

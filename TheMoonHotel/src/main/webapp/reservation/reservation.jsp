@@ -109,13 +109,13 @@
 							</select>
 					    </div>
 					    <div class="col  col-md-4 col-sm-12 col-xs-12">
-					    <p class="spin">수영장</p>
+					    <p class="&nbsp;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;어른&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;어린이</p>
 					    <p class="spin">
-						  <label for="adultSwimSpin" class="spin">어른</label>
-						  <input id="adultSwimSpin" name="0"></p>
-						   <p class="spin"><label for="childSwinSpin">어린이</label>
-						  <input id="childSwinSpin" name="0">
-						</p>
+						  <label for="adultSwimSpin" >수영장 : </label>
+						  <input id="adultSwimSpin" name="0" class="spin">
+						  <input id="childSwinSpin" name="0" class="spin">
+						 </p>
+						
 					    </div>
 					    <div class="col  col-md-4 col-sm-12 col-xs-12">
 					    </div>
