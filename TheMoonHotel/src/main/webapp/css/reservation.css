@@ -1,14 +1,13 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
-.greetBanner {
+.reservBanner {
 	position: absolute;
 	left: 0;
 	top: 0;
 	z-index: -1;
 }
-
-.greetTitle {
-	margin-top: 270px;
+.reservTitle {
+	margin-top: 300px;
 	margin-bottom: 100px;
 	z-index: 2;
 	font-size: 4.5rem;
@@ -18,12 +17,12 @@
 h1{
 	font-size: 4.5rem;
 }
-.content {
+.reservSize{
 	margin-top: 200px;
 	margin-bottom: 100px;
 }
-
-.contentImg {
-	border: 0px;
-	vertical-align: middle;
+.reservBtn{
+	padding-top:20px;
+	height: 40px;
+	vertical-align: bottom;
 }
