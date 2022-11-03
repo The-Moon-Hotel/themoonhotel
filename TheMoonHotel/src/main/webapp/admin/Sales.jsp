@@ -49,20 +49,21 @@
 	<section>
 		<fieldset>
 			<legend>매출조회</legend>
-			<div class="ck">
-				<label>지점</label>
-				<select>
-					<option value="1">Full Moon</option>
-					<option value="2">Half Moon</option>
-					<option value="3">Crescent Moon</option>
-					<option value="4">전체조회</option>
-				</select>
-				<br><br>
-				<label>조회기간</label>
-				<input type="date">&nbsp;&nbsp; 
-				<input type="date"> 
-				<input type="button" value="조회">
-			</div>
+			<form name="SalseCk" method="post" action="sales_ok.jsp"> 
+				<div class="ck">
+					<label>지점</label> 
+					<select>
+						<option value="1">Full Moon</option>
+						<option value="2">Half Moon</option>
+						<option value="3">Crescent Moon</option>
+						<option value="4">전체조회</option>
+					</select> <br><br> 
+					<label>조회기간</label> 
+					<input type="date">&nbsp;&nbsp;
+					<input type="date"> 
+					<input type="button" value="조회">
+				</div>
+			</form>
 			<br>
 			<br>
 
