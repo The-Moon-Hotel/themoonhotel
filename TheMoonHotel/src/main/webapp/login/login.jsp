@@ -9,9 +9,9 @@ pageEncoding="UTF-8"%>
 		</div>
 	</article>
 </section>
-<div class="container text-center loginTitle">
+<!-- <div class="container text-center loginTitle">
 		<h1>Login</h1>
-</div>
+</div> -->
 <style>
 	.btn-group{
 		display: table;
@@ -25,7 +25,7 @@ pageEncoding="UTF-8"%>
 	}
 </style>	
 <div style="height: 800px;">
-<p style="font-size: 120%; text-align: center; margin-top: 20px;">로그인</p>
+<p style="font-size: 3rem; text-align: center; margin-top: 20px;">Login</p>
 
 <article class="singleForm">
 	<form name="frmLogin" method="post" action="login_ok.jsp">

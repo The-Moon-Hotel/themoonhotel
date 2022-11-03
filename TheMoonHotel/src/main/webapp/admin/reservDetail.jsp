@@ -17,12 +17,14 @@
 	}
 	
 	#reservList{
-		margin: 20px 0 0 400px;
+		margin-top: 20px;
+		display: inline-block;
 	}
 </style>
 
 <div style="height: 800px;">
 	<p>예약 세부 내역</p>
+	<div>
 	<div style="width: 800px; margin: auto;">
 		<ul class="list-group" style="float:left; width: 35%; text-align: right;">
 		  <li class="list-group-item">예약번호</li>
@@ -50,6 +52,7 @@
 		  <li class="list-group-item">성인2</li>
 		  <li class="list-group-item">240,000</li>
 		</ul>
+	</div>
 	</div>
 	<div>
 		<a class="btn btn-secondary" role="button" id="reservList"
