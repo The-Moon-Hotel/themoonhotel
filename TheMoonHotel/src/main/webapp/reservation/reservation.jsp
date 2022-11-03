@@ -45,8 +45,7 @@
 		</div>
 <section class="reservSize">
 	<article>
-		<div class="container text-left ">
-			
+		<div class="container text-left ">		
 			<form action="">
 				<fieldset>
 					<div class="row">
