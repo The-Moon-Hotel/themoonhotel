@@ -51,7 +51,7 @@
 			</div>
 			<div class="col col-lg-6 col-md-12 card card-body" style=" border:0px">
 				<p class="card-text">2nd</p>
-				<h2 class="card-title text-center">half Moon Hotel</h2>
+				<h2 class="card-title text-center">Half Moon Hotel</h2>
 				<br>
 				<h5 class="card-subtitle mb-2 text-muted">글로벌 럭셔리 호텔</h5>
 				<br>

@@ -26,3 +26,14 @@ h1{
 	height: 40px;
 	vertical-align: bottom;
 }
+.spin{
+	display: inline;
+	width: 60px;
+}
+.spinLabel{
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 1px;
+	padding-bottom: 1px;
+}

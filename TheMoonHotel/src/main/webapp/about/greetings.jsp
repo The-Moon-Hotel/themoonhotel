@@ -11,11 +11,9 @@
 </section>
 <div class="container text-center greetTitle">
 		<h1>The Moon Hotel</h1>
-		<h1>인사말</h1>
 </div>
 <section class="content">
 <article>
-	
 	<div class="container text-left">
 		<div class="row">
 			<div class="col col-lg-6 col-md-12 card card-body" style=" border:0px">

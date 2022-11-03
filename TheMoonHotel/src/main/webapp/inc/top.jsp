@@ -47,7 +47,7 @@
 <nav class="navbar navbar-expand-md navWhite" style="background: rgba(0, 0, 0, 0.1) ; height:70px;">
 	
   <div class="container-fluid" >
-        <a class="navbar-brand navColor" href="#" >THE MOON HOTEL</a>
+        <a class="navbar-brand navColor" href="<%=request.getContextPath() %>/index.jsp" >THE MOON HOTEL</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -100,6 +100,7 @@
           	<li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/myReservList.jsp">예약정보 확인</a></li>
             <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/signEdit.jsp">회원정보수정</a></li>
             <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/signEdit.jsp">문의내역</a></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/guestOut.jsp">회원탈퇴</a></li>
           </ul>
         </li>
       	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor"   href="#"  style="display: none;">로그아웃</a>
@@ -168,6 +169,7 @@
           	<li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/myReservList.jsp">예약정보 확인</a></li>
             <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/signEdit.jsp">회원정보수정</a></li>
             <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/signEdit.jsp">문의내역</a></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/guestOut.jsp">회원탈퇴</a></li>
           </ul>
         </li>
       	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor"   href="#"  style="display:;">로그아웃</a>      
