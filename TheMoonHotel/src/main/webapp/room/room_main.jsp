@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="../inc/top.jsp"></jsp:include>
-<link rel="stylesheet" href="../css/top.css">
-
+<link rel="stylesheet" href="css/top.css">
+<link rel="stylesheet" href="css/room_main.css">
 
 
 <section style="width: 2150px; align:center;">
