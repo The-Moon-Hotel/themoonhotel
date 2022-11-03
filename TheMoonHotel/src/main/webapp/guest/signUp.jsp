@@ -8,69 +8,64 @@
 	crossorigin="anonymous">
 
 <style type="text/css">
-#sub1{
+#sub1 {
 	float: right;
 	width: 300px;
 }
 </style>
-
-	<div class="container" style="width: 800px;">
-		<div class="input-form-backgroud row">
-			<div class="input-form col-md-12 mx-auto">
-			<br><br><br>
-				<h4 class="mb-3">회원가입을 환영합니다.</h4>
-				<form class="validation-form" novalidate>
-					<div class="row">
-						<div class="col-md-6 mb-3">
-							<label for="name">이름</label>
-							<input type="text" class="form-control" id="name" placeholder="이름을 입력하세요." required>
-							<div class="invalid-feedback">이름을 입력해주세요.</div>
-						</div>
-						<div class="col-md-6 mb-3">
-							<label for="nickname">닉네임</label>
-							<input type="text" class="form-control" id="nickname" placeholder="닉네임을 입력하세요." required>
-							<div class="invalid-feedback">닉네임을 입력해주세요.</div>
-						</div>
-					</div>
-					<div class="mb-3">
-						<label for="email">이메일</label>
-						<input type="email" class="form-control" id="email" placeholder="TheMoonHotel@naver.com" required>
-						<div class="invalid-feedback">이메일을 입력해주세요.</div>
-					</div>
-					<div class="mb-3">
-						<label for="address">주소</label>
-						<input type="text" class="form-control" id="address" placeholder="ex)서울특별시 강남구" required>
-						<div class="invalid-feedback">주소를 입력해주세요.</div>
-					</div>
-					<div class="mb-3">
-						<label for="address2">상세주소<span class="text-muted"></span></label>
-						<input type="text" class="form-control" id="address2" placeholder="상세주소를 호수까지 입력하세요.">
-					</div>
-					<div class="row">
-						<div class="col-md-8 mb-3">
-							<label for="root">가입 경로</label>
-							<select	class="custom-select d-block w-100" id="root">
-								<option>가입경로 선택!</option>
-								<option>포털검색</option>
-								<option>블로그</option>
-								<option>지인</option>
-							</select>
-						</div>
-					</div>
-					<hr class="mb-4">
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="aggrement" required>
-						<label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
-					</div>
-					<div class="mb-4">
-					<button id="sub1" class="btn btn-dark btn-lg btn-block" type="submit">가입완료</button>
-					</div>
-				</form>
-			</div>
+<div class="container" style="width: 800px;">
+	<div class="input-form-backgroud row">
+		<div class="input-form col-md-12 mx-auto">
+			<br> <br> <br>
+			<h4 class="mb-3">회원가입을 환영합니다.</h4>
+			<form class="validation-form" novalidate>
+				<div class="col-md-6 mb-3">
+					<label for="name">이름</label> <input type="text"
+						class="form-control" id="name" placeholder="이름을 입력하세요." required>
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="id">ID</label> <input type="text" class="form-control"
+						id="id" placeholder="아이디를 입력하세요." required>
+				</div>
+				<button type="button" class="btn btn-secondary">ID중복확인</button>
+				<div class="col-md-6 mb-3">
+					<label for="pwd">비밀번호</label> <input type="text"
+						class="form-control" id="pwd" placeholder="비밀번호를 입력하세요." required>
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="pwd2">비밀번호 확인</label> <input type="text"
+						class="form-control" id="pwd2" placeholder="비밀번호를 확인하세요." required>
+					<div class="invalid-feedback"></div>
+				</div>
+				<div class="mb-3">
+					<label for="email">이메일</label> <input type="email"
+						class="form-control" id="email"
+						placeholder="ex)TheMoonHotel@naver.com" required>
+					<div class="invalid-feedback">이메일을 입력해주세요.</div>
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="tel">전화번호</label> <input type="text"
+						class="form-control" id="tel"
+						placeholder="ex)010-0000-0000 '-' 포함해서 작성" required>
+					<div class="invalid-feedback"></div>
+				</div>
+				<hr class="mb-4">
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" id="aggrement"
+						required> <label class="custom-control-label"
+						for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
+				</div>
+				<div class="mb-4">
+					<button id="sub1" class="btn btn-dark btn-lg btn-block"
+						type="submit">가입완료</button>
+				</div>
+			</form>
 		</div>
-		<br><br><br>
-			<p class="mb-1 text-center" style="font-weight: bold">WECOME! THE MOON HOTEL</p>
 	</div>
+	<br> <br> <br>
+	<p class="mb-1 text-center" style="font-weight: bold">WECOME! THE
+		MOON HOTEL</p>
+</div>
 <!-- 	<script>
     window.addEventListener('load', () => {
       const forms = document.getElementsByClassName('validation-form');
