@@ -1,65 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top.jsp" %>
-<link rel="stylesheet" href="../css/top.css">
-<style>
-/* 	.top-nav{
-		position: absolute;
-		top: 650px;
-		display: inline-block;
-		font-size: 25px;
-		padding: 30px;
-	} */
+<link rel="stylesheet" href="../css/roomDetail.css">
 
-	.rooms{
-		position:relative;
-		font-size: 30px;
-		margin: 300px;
-		margin-top: 180px;
-	}
-	
-	.carousel-inner{
-		position: relative;
-		/* text-align: center; */
-		width: 1500px;
-		height: 600px;
-	}
-	
-	.explain{
-		color: #7B725E;
-	}
-	
-	.right_box{
-		position: absolute;
-		left: 1000px;
-		top: 760px;
-		font-size: 20px;
-	}
-</style>
-
-
-<section style="width: 2000px; align: center;">
+<section style="width: 1900px; align: center;">
 	<article>
 
 		<div class="carousel-item active ">
 			<img src="../images/hotel1.png" class="d-block  CarouselImage  "
-				alt="..." style="width: 2120px; height: 600px">
+				alt="..." style="width: 1900px; height: 600px">
 
-<!-- 			<div class="top-nav">
-				<p>
-					<a class="nav-link active" aria-current="page" href="#">superior</a>
-				</p>
-				<p>
-					<a class="nav-link" href="#">deluxe</a>
-				</p>
-				<p>	
-					<a class="nav-link" href="#">suite</a>
-				</p>	
-				<p>
-					<a class="nav-link disabled">monogram suit</a>
-				</p>
-			</div>  -->
-			
 
 			<div class="rooms">
 				<p><b>모노그램 스위트</b></p>
@@ -78,13 +28,14 @@
 					<문의전화>
 					<span style="color: black"> 02-3333-6666</span>
 					<br><br>
-					<p>호텔 본관 건물의 정중앙부에 위치하여 해변의 경치를 그림처럼 즐기실 수 이는 스위트 객실입니다.</p>
+					<p>호텔 본관 건물의 정중앙부에 위치하여 해변의 경치를 그림처럼<br>
+					즐기실 수 있는 스위트 객실입니다.</p>
 
 				
 				<br>
 				
-					<pre style="color: black">위치  본관 7~10층  |  전망  바다  |  침대  더블,트윈  |  크기  72m<sub>2</sub>
-룸구성  침실1, 욕실1, 거실1</pre>
+					<pre style="color: black">위치  본관 7~10층  |  전망  바다  |  침대  더블,트윈  |  
+크기  72m<sub>2</sub>  |  룸구성  침실1, 욕실1, 거실1</pre>
 				<br>
 				<input type="button" value="객실 어메니티 보기" style="background:#7B725E;color:white">
 				</div>
@@ -151,9 +102,9 @@
 				</div>
 			</div>
 		</div>
-<link rel="stylesheet" href="../css/footer.css"> 
-<%@ include file="../inc/footer.jsp" %>
+
 	</article>
 </section>
+ <div style="height: 2800px"></div>
 
-
+<%@ include file="../inc/footer.jsp" %>

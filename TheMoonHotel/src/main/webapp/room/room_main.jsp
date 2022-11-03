@@ -1,16 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="../inc/top.jsp"></jsp:include>
-<link rel="stylesheet" href="../css/top.css">
 <link rel="stylesheet" href="../css/room_main.css">
 
 
-<section style="width: 2150px; align:center;">
+<section style="width: 1900px; align:center;">
 <article>
 
 	<div class="carousel-item active ">
       <img src="../images/room_t.png" class="d-block  CarouselImage  " alt="..."
-      	style="width: 2150px;height: 600px">
+      	style="width: 1900px;height: 600px">
   
       	<!-- 객실안내 -->
 		<div class="rooms">
@@ -20,7 +19,7 @@
     			<p class="roomtype"><b>수페리어</b></p>
     			<a href="supeDetail.jsp">
     				<input type="button" class="look" value="상세보기"
-    					style="left: 600px;top: 480px;">
+    					style="left: 520px;top: 420px;">
     			</a>
     			<pre>   편안하고 아늑한 가장 기본적인 객실
     			
@@ -33,7 +32,7 @@
     			<p class="roomtype"><b>디럭스</b></p>
     			<a href="deluxeDetail.jsp">
     				<input type="button" class="look" value="상세보기"
-    					style="right: 8px;top: 370px;">
+    					style="right: 8px; top:310px;">
     			</a>
     			<pre>   이국적인 느낌의 안락한 객실
     			
@@ -48,7 +47,7 @@
     			<p class="roomtype"><b>스위트룸</b></p>
     			<a href="suitDetail.jsp">
     				<input type="button" class="look" value="상세보기"
-    					style="left: 600px;bottom: 130px;">
+    					style="left: 520px;bottom: 150px;">
     			</a>
     			<pre>   여유로운 공간감이 느껴지는 객실	
     			
@@ -73,15 +72,11 @@
     		
     			
     	</div>
-   
+  
    	</div>
  
 	
 </article>
 </section>
-
-
-
-
-<link rel="stylesheet" href="../css/footer.css"> 
+ <div style="height: 2000px"></div>
 <jsp:include page="../inc/footer.jsp" ></jsp:include>

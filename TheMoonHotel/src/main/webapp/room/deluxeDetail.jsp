@@ -1,68 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top.jsp" %>
-<style>
-	.top-nav{
-		position: absolute;
-		top: 650px;
-		display: inline-block;
-		font-size: 25px;
-		padding: 30px;
-	}
-
-	.rooms{
-		position:relative;
-		font-size: 30px;
-		margin: 300px;
-		margin-top: 200px;
-	}
-	
-	.carousel-inner{
-		position: relative;
-		/* text-align: center; */
-		width: 1500px;
-		height: 600px;
-	}
-	
-	.explain{
-		color: #7B725E;
-	}
-	
-	.right_box{
-		position: absolute;
-		right: 0px;
-		top: 700px;
-		font-size: 20px;
-	}
-</style>
+<link rel="stylesheet" href="../css/roomDetail.css">
 
 
-<section style="width: 2000px; align: center;">
+<section style="width: 1900px; align: center;">
 	<article>
 
 		<div class="carousel-item active ">
-			<img src="images/hotel1.png" class="d-block  CarouselImage  "
-				alt="..." style="width: 100%; height: 600px">
+			<img src="../images/hotel1.png" class="d-block  CarouselImage  "
+				alt="..." style="width: 1900px; height: 600px">
 
-			<div class="top-nav">
-				<p>
-					<a class="nav-link active" aria-current="page" href="#">superior</a>
-				</p>
-				<p>
-					<a class="nav-link" href="#">deluxe</a>
-				</p>
-				<p>	
-					<a class="nav-link" href="#">suite</a>
-				</p>	
-				<p>
-					<a class="nav-link disabled">monogram suit</a>
-				</p>
-			</div> 
-			
-			
-			
+							
 			<div class="rooms">
 				<p><b>디럭스</b></p>
+				<br>
 					
 					<img src="../images/del_big.png" style="width: 1200px;">
 
@@ -81,8 +33,8 @@
 				
 				<br>
 				
-					<pre style="color: black">위치  본관 2~10층  |  전망  바다(전면,측면)  |  침대  더블,트윈,패밀리 트윈  |  크기  36m<sub>2</sub>
-룸구성  침실1, 욕실1</pre>
+					<pre style="color: black">위치  본관 2~10층  |  전망  바다(전면,측면)  |  침대  더블,트윈,패밀리 트윈  |  
+크기  36m<sub>2</sub>  |  룸구성  침실1, 욕실1</pre>
 				<br>
 				<input type="button" value="객실 어메니티 보기" style="background:#7B725E;color:white">
 				</div>
@@ -152,6 +104,6 @@
 	</article>
 </section>
 
-
+ <div style="height: 2800px"></div>
 <link rel="stylesheet" href="../css/footer.css"> 
 <%@ include file="../inc/footer.jsp" %>
