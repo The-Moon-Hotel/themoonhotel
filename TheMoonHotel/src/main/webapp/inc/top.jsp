@@ -124,8 +124,8 @@
             소개
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="#">인사말</a></li>
-            <li><a class="dropdown-item" href="#">지점별 정보</a></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/about/greetings.jsp">인사말</a></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/about/aboutBranch.jsp">지점별 정보</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -170,12 +170,12 @@
           <ul class="dropdown-menu dropdown-menu-dark">
           	<li><a class="dropdown-item" href="#">예약정보 확인</a></li>
             <li><a class="dropdown-item" href="#">회원정보수정</a></li>
-            <li><a class="dropdown-item" href="#">문의내역</a></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/signEdit.jsp">문의내역</a></li>
           </ul>
         </li>
       	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor"   href="#"  style="display: none;">로그아웃</a>      
-      	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor"   href="#" >로그인</a>
-      	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor" href="#">회원가입</a>
+      	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor"   href="<%=request.getContextPath() %>/login/login.jsp" >로그인</a>
+      	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor" href="<%=request.getContextPath() %>/guest/signUp.jsp">회원가입</a>
       <form class="d-flex navColor" role="search" >
         <button class="btn btn-outline-primary" type="submit" >book a room</button>
       </form>
