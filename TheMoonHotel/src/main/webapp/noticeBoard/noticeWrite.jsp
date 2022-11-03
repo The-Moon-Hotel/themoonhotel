@@ -4,18 +4,6 @@
 String ctx = request.getContextPath();
 %>
 <jsp:include page="../inc/top.jsp"></jsp:include>
-<link rel="stylesheet" href="css/top.css">
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-	crossorigin="anonymous">
-</head>
 <style type="text/css">
 #div1 {
 	width: 900px;
@@ -59,7 +47,7 @@ var oEditors=[];
 		});
 	});
 </script>
-<body>
+
 	<br>
 	<br>
 	<br>
@@ -92,10 +80,8 @@ var oEditors=[];
 			</fieldset>
 		</form>
 	</div>
-</body>
+
 <br>
 <br>
 <br>
 <jsp:include page="../inc/footer.jsp"></jsp:include>
-<link rel="stylesheet" href="css/footer.css">
-</html>
