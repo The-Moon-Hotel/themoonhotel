@@ -11,14 +11,23 @@
 
 <style>
 	p{
-		font-size: 120%; 
+		font-size: 200%; 
 		text-align: center; 
 		margin-top:20px;
+		font-weight: bold;	
 	}
+	th{
+		font-size: 1.2em;
+	}
+	
+/* 	#title{
+		font-size: 250%;
+		font-weight: bold;	
+	} */
 </style>
 
 <div style="height: 800px;">
-	<p>예약 내역</p>
+	<p id="title">예약 내역</p>
 	
 	<table class="table" style="width: 800px; margin:auto; text-align: center">
 		<thead>
@@ -33,15 +42,14 @@
 		</tr>
 		<tr>
 			<th>연락처</th>
-			<th>010-1234-1234</th>
+			<th>이메일</th>
 		</tr>
 		</thead>
 		<tr>
-			<td>이메일</td>
+			<td>010-1234-1234</td>
 			<td>hong@naver.com</td>
 		</tr>
-	</table><br>
-	<p>객실 정보</p>
+	</table><br><br>
 	<div style="width: 950px; margin:auto">
 		<div id="reservHotelImg" style="float:left;">
 			<img src="../images/sm_hotel1.jpg" style="width: 500px; float:left;">

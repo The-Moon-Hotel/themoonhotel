@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 
 <jsp:include page="../inc/top.jsp"></jsp:include>
-<link rel="stylesheet" href="../index.css">
 <style>
 	.faci{
 		align-content: center;

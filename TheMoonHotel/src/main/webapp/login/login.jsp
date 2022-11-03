@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <jsp:include page="../inc/top.jsp"></jsp:include>
-<link rel="stylesheet" type="text/css" href="../css/login.css">
-<section class="loginBanner">
+
+<!-- <section class="loginBanner">
 	<article>
 		<div>
 			<img alt="" src="../images/greetings_banner.png" >
 		</div>
 	</article>
-</section>
+</section> -->
 <!-- <div class="container text-center loginTitle">
 		<h1>Login</h1>
 </div> -->
@@ -24,11 +24,20 @@ pageEncoding="UTF-8"%>
 		text-align: center;
 	}
 </style>	
-<div style="height: 800px;">
-<p style="font-size: 3rem; text-align: center; margin-top: 20px;">Login</p>
-
+<div style="height: 800px; margin-top: 150px; text-align: center;">
+<section>
+	<article>
+			<div>
+				<img style="width: 350px" alt="logo" src="../images/logotext.png" >
+			</div>
+	</article>
+</section>
+<!-- <p style="font-size: 1.5rem; text-align: center; margin-top: 20px;">Welcome to The Moon Hotel</p> -->
+<br>
 <article class="singleForm">
 	<form name="frmLogin" method="post" action="login_ok.jsp">
+	<fieldset>
+	
 		<div style="display:table; width: 400px; margin: auto;">
 			<div class="input-group mb-3">
 				<span class="input-group-text">ID</span>
@@ -54,10 +63,10 @@ pageEncoding="UTF-8"%>
 				<label for="chkSave">아이디 저장하기</label>	
 			</div><br>
 			<div class="btn-group" role="group">
-				<button type="submit" class="btn btn-outline-secondary">로그인</button>
-				<button type="button" class="btn btn-outline-secondary">회원가입</button>
+				<button type="submit" class="btn btn-dark btn-block" style="width: 400px;">로그인</button>
 			</div>
 		</div>
+	</fieldset>
 	</form>
 </article>
 </div>
@@ -65,6 +74,3 @@ pageEncoding="UTF-8"%>
 <br>
 
 <jsp:include page="../inc/footer.jsp"></jsp:include>
-<link rel="stylesheet" href="css/footer.css">
-</html>
->>>>>>> 8dfce477c672becee71ac41b0213754b3dee7929

@@ -24,17 +24,11 @@
 			location.href="noticeWrite.jsp";
 		});	
 	});
-</script>
-
-	<br>
-	<br>
-	<br>
-	<div class="container text-center">
+</script>	
+<div style="height: 800px;">
+	<div class="container text-center" style="margin-top: 100px;">
 		<h2>공지사항 게시판</h2>
 	</div>
-	<br>
-	<br>
-	<br>
 	<div id="div1" class="container text-center">
 		<table class="table table-hover">
 			<thead>
@@ -70,5 +64,5 @@
 		<button id="btn1" type="button" class="btn btn-success" style="float: right">글쓰기</button>
 		<br> <br> <br>
 	</div>
+</div>s
 <jsp:include page="../inc/footer.jsp"></jsp:include>
-

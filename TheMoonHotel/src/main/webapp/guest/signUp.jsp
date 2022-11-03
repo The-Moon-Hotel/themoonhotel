@@ -1,26 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <jsp:include page="../inc/top.jsp"></jsp:include>
-<link rel="stylesheet" href="css/top.css">
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Insert title here</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
 	crossorigin="anonymous">
-</head>
+
 <style type="text/css">
 #sub1{
-	float:right;
+	float: right;
 	width: 300px;
 }
 </style>
-<body>
-	<div class="container">
+
+	<div class="container" style="width: 800px;">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
 			<br><br><br>
@@ -68,15 +62,14 @@
 						<input type="checkbox" class="custom-control-input" id="aggrement" required>
 						<label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
 					</div>
-					<div class="mb-4"></div>
+					<div class="mb-4">
 					<button id="sub1" class="btn btn-dark btn-lg btn-block" type="submit">가입완료</button>
+					</div>
 				</form>
 			</div>
 		</div>
-		<footer class="my-3 text-center text-small">
-		<br>
-			<p class="mb-1" style="font-weight: bold">WECOME! THE MOON HOTEL</p>
-		</footer>
+		<br><br><br>
+			<p class="mb-1 text-center" style="font-weight: bold">WECOME! THE MOON HOTEL</p>
 	</div>
 <!-- 	<script>
     window.addEventListener('load', () => {
