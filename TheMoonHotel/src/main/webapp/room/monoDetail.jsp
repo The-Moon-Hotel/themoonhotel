@@ -3,19 +3,19 @@
 <%@ include file="../inc/top.jsp" %>
 <link rel="stylesheet" href="../css/top.css">
 <style>
-	.top-nav{
+/* 	.top-nav{
 		position: absolute;
 		top: 650px;
 		display: inline-block;
 		font-size: 25px;
 		padding: 30px;
-	}
+	} */
 
 	.rooms{
 		position:relative;
 		font-size: 30px;
 		margin: 300px;
-		margin-top: 200px;
+		margin-top: 180px;
 	}
 	
 	.carousel-inner{
@@ -31,21 +31,21 @@
 	
 	.right_box{
 		position: absolute;
-		right: 0px;
-		top: 700px;
+		left: 1000px;
+		top: 760px;
 		font-size: 20px;
 	}
 </style>
 
 
-<section style="width: 100%; align: center;">
+<section style="width: 2000px; align: center;">
 	<article>
 
 		<div class="carousel-item active ">
-			<img src="images/hotel1.png" class="d-block  CarouselImage  "
-				alt="..." style="width: 100%; height: 600px">
+			<img src="../images/hotel1.png" class="d-block  CarouselImage  "
+				alt="..." style="width: 2120px; height: 600px">
 
-			<div class="top-nav">
+<!-- 			<div class="top-nav">
 				<p>
 					<a class="nav-link active" aria-current="page" href="#">superior</a>
 				</p>
@@ -58,12 +58,12 @@
 				<p>
 					<a class="nav-link disabled">monogram suit</a>
 				</p>
-			</div> 
+			</div>  -->
 			
-			
-			
+
 			<div class="rooms">
 				<p><b>모노그램 스위트</b></p>
+				<br>
 					
 					<img src="../images/mono_big.png" style="width: 1200px;">
 
@@ -151,9 +151,9 @@
 				</div>
 			</div>
 		</div>
+<link rel="stylesheet" href="../css/footer.css"> 
+<%@ include file="../inc/footer.jsp" %>
 	</article>
 </section>
 
 
-<link rel="stylesheet" href="../css/footer.css"> 
-<%@ include file="../inc/footer.jsp" %>
