@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%
+String ctx = request.getContextPath();
+%>
 <jsp:include page="../inc/top.jsp"></jsp:include>
 <link rel="stylesheet" href="css/top.css">
 <!DOCTYPE html>
@@ -14,48 +17,85 @@
 	crossorigin="anonymous">
 </head>
 <style type="text/css">
-#div1{
+#div1 {
 	width: 900px;
 }
-#formFile{
+
+#formFile {
 	width: 400px;
 }
-#btn1{
+
+#btn1 {
 	clear: none;
-	float: right;
 }
 </style>
+<script type="text/javascript"
+	src="../smartEdit/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
+<script type="text/javascript">
+var oEditors=[];
+	$(function() {
+		nhn.husky.EZCreator.createInIFrame({
+			oAppRef: oEditors,
+			elPlaceHolder : "txtCon",
+			sSkinURI : "../smartEdit/SmartEditor2Skin.html",
+		      htParams : {
+		          bUseToolbar : true,             
+		          bUseVerticalResizer : true,     
+		          bUseModeChanger : true,         
+		          fOnBeforeUnload : function(){
+		        	  
+		          }
+		      }, 
+		      fCreator: "createSEditor2"
+		      });
+		/* nhn.husky.EZCreator.createInIFrame({
+			oAppRef : editor,
+			elPlaceHolder : 'txtCon',
+			sSkinURI : '../WEB-INF/lib/smartEdit/SmartEditor2Skin.html',
+			fCreator : 'createSEditor2' */
+		$('#btn1').click(function() {
+			location.href = "noticeBoardList.jsp";
+		});
+	});
+</script>
 <body>
-<br><br><br>
-<div id="div1" class="container text-left">
-	<form>
-		<fieldset>
-			<legend>글 쓰기</legend>
-			<div class="form-group">
-				<label for="exampleSelect1" class="form-label mt-4">게시판 목록</label>
-				<select class="form-select" id="selBoard">
-					<option>공지사항</option>
-				</select>
-			</div>
-			<div class="form-group">
-				<label for="exampleInputEmail1" class="form-label mt-4"></label>
-				<input type="email" class="form-control" id="title1"
-					placeholder="제목을 입력하세요" > 
-			</div>
-			<div class="form-group">
-				<label for="exampleTextarea" class="form-label mt-4"></label>
-				<textarea class="form-control" rows="6" placeholder="내용을 입력하세요"></textarea>
-			</div>
-			<div class="form-group">
-				<label for="formFile" class="form-label mt-4">파일 첨부</label>
-				<input class="form-control" type="file" id="formFile">
-			</div>
-			<button it="btn1" type="submit" class="btn btn-primary" style="float: right">작성</button>
-		</fieldset>
-	</form>
+	<br>
+	<br>
+	<br>
+	<div id="div1" class="container text-left">
+		<form>
+			<fieldset>
+				<legend>글 쓰기</legend>
+				<div class="form-group">
+					<label for="exampleSelect1" class="form-label mt-4">게시판 목록</label>
+					<select class="form-select" id="selBoard">
+						<option>공지사항</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputEmail1" class="form-label mt-4"></label> <input
+						type="email" class="form-control" id="title1"
+						placeholder="제목을 입력하세요">
+				</div>
+				<div class="form-group">
+					<label for="exampleTextarea" class="form-label mt-4"></label>
+					<textarea id="txtCon" class="form-control" rows="6"
+						placeholder="내용을 입력하세요"></textarea>
+				</div>
+				<div class="form-group">
+					<label for="formFile" class="form-label mt-4">파일 첨부</label> <input
+						class="form-control" type="file" id="formFile">
+				</div>
+				<button id="sub1" type="submit" class="btn btn-primary">작성</button>
+				<button id="btn1" type="button" class="btn btn-primary">목록</button>
+			</fieldset>
+		</form>
 	</div>
 </body>
-<br><br><br>
+<br>
+<br>
+<br>
 <jsp:include page="../inc/footer.jsp"></jsp:include>
 <link rel="stylesheet" href="css/footer.css">
 </html>
