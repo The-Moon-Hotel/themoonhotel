@@ -30,6 +30,15 @@
   			
   		}
   	});
+  	
+  	$(function(){
+  		$('#bookBtn1').click(function(){
+  			$(location).attr("href", "<%=request.getContextPath() %>/reservation/reservation.jsp");
+  		});
+  		$('#bookBtn2').click(function(){
+  			$(location).attr("href", "<%=request.getContextPath() %>/reservation/reservation.jsp");
+  		});
+  	})
   </script>
   </head>
 <body>
@@ -50,8 +59,8 @@
             소개
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">인사말</a></li>
-            <li><a class="dropdown-item" href="#">지점별 정보</a></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/about/greetings.jsp">인사말</a></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/about/aboutBranch.jsp">지점별 정보</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -59,30 +68,24 @@
             객실소개
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">스탠다드</a></li>
-            <li><a class="dropdown-item" href="#">디럭스</a></li>
-            <li><a class="dropdown-item" href="#">슈페리어</a></li>
-            <li><a class="dropdown-item" href="#">스위트</a></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/room/deluxeDetail.jsp">디럭스</a></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/room/supeDetail.jsp">슈페리어</a></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/room/suitDetail.jsp">스위트</a></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/room/monoDetail.jsp">모노그램스위트</a></li>
           </ul>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle navColor" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <li class="nav-item">
+          <a class="nav-link  navColor" href="<%=request.getContextPath() %>/facility/facility.jsp" role="button" aria-expanded="false">
             부대시설
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">레스토랑</a></li>
-            <li><a class="dropdown-item" href="#">수영장</a></li>
-            <li><a class="dropdown-item" href="#">사우나</a></li>
-            <li><a class="dropdown-item" href="#">헬스장</a></li>
-          </ul>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle navColor" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             게시판
           </a>
           <ul class="dropdown-menu">
-          	<li><a class="dropdown-item" href="#">공지사항</a></li>
-            <li><a class="dropdown-item" href="#">리뷰게시판</a></li>
+          	<li><a class="dropdown-item" href="<%=request.getContextPath() %>/noticeBoard/noticeBoardList.jsp">공지사항</a></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/reviewBoard/reviewBoard.jsp">리뷰게시판</a></li>
             <li><a class="dropdown-item" href="#">문의게시판</a></li>
           </ul>
         </li>
@@ -94,16 +97,16 @@
             마이페이지
           </a>
           <ul class="dropdown-menu">
-          	<li><a class="dropdown-item" href="#">예약정보 확인</a></li>
-            <li><a class="dropdown-item" href="#">회원정보수정</a></li>
-            <li><a class="dropdown-item" href="#">문의내역</a></li>
+          	<li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/myReservList.jsp">예약정보 확인</a></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/signEdit.jsp">회원정보수정</a></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/signEdit.jsp">문의내역</a></li>
           </ul>
         </li>
       	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor"   href="#"  style="display: none;">로그아웃</a>
-      	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor"   href="#" >로그인</a>
-      	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor" href="#">회원가입</a>
+      	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor"   href="<%=request.getContextPath() %>/login/login.jsp"  >로그인</a>
+      	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor" href="<%=request.getContextPath() %>/guest/signUp.jsp">회원가입</a>
       <form class="d-flex navColor" role="search" >
-        <button class="btn btn-outline-primary" type="submit" >book a room</button>
+        <button class="btn btn-outline-primary" type="button" id="bookBtn1">book a room</button>
       </form>
     </div>
   </div>
@@ -140,7 +143,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link  navColor" href="<%=request.getContextPath() %>/facility/facility.jsp" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link  navColor" href="<%=request.getContextPath() %>/facility/facility.jsp" role="button" aria-expanded="false">
             부대시설
           </a>
         </li>
@@ -171,7 +174,7 @@
       	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor"   href="<%=request.getContextPath() %>/login/login.jsp" >로그인</a>
       	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor" href="<%=request.getContextPath() %>/guest/signUp.jsp">회원가입</a>
       <form class="d-flex navColor" role="search" >
-        <button class="btn btn-outline-primary" type="submit" >book a room</button>
+        <button class="btn btn-outline-primary" type="button" id="bookBtn2">book a room</button>
       </form>
     </div>
   </div>
