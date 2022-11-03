@@ -3,50 +3,8 @@
 <jsp:include page="../inc/top.jsp"></jsp:include>
 <link rel="stylesheet" href="../css/top.css">
 
-<style>
 
-	.rooms{
-		position:relative;
-		font-size: 30px;
-		margin: 300px;
-		margin-top: 100px;
-	}
-	
-	.rooms img{
-		width: 700px;
-		height: 350px;
-	}
-	
-	.roomtype{
-		font-size: 20px;
-		margin: 20px;
-	}
-	
-	.look{
-		position: absolute;
-		font-size: 15px;
-		background: #DBD5CA;
-	}
 
-	
-	pre{
-		font-size: 15px
-	}
-	
-	.deluxe{
-		position: absolute;
-		right: 0px;
-		top: 105px;
-	}
-	
-	.monogramsuit{
-		position: absolute;
-		right: 0px;
-		top: 700px;
-	}
-	
-		
-</style>
 <section style="width: 2150px; align:center;">
 <article>
 
