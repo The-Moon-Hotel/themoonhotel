@@ -27,7 +27,7 @@
 </script>	
 <div style="height: 800px;">
 	<div class="container text-center" style="margin-top: 100px;">
-		<h2>공지사항</h2>
+		<h2>공지사항 게시판</h2>
 	</div>
 	<div id="div1" class="container text-center">
 		<table class="table table-hover">
