@@ -33,10 +33,10 @@
   	
   	$(function(){
   		$('#bookBtn1').click(function(){
-  			$(location).attr("href", "<%=request.getContextPath() %>/reservation/reservation.jsp");
+  			$(location).attr("href", "<%=request.getContextPath() %>/reservRoom/reservation1.jsp");
   		});
   		$('#bookBtn2').click(function(){
-  			$(location).attr("href", "<%=request.getContextPath() %>/reservation/reservation.jsp");
+  			$(location).attr("href", "<%=request.getContextPath() %>/reservRoom/reservation1.jsp");
   		});
   	})
   </script>
