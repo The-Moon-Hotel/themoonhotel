@@ -54,6 +54,12 @@ input, select{
 	font-size: medium;
 	color: white;
 }
+.reservResult{
+	border-top:1px solid #e3e3e3;
+	border-collapse:collapse;
+	padding:1%;
+	margin-bottom:80px;
+}
 </style>
 <div style="margin-top: 100px; margin-bottom: 800px;">
 	<p style="font-size: 30px; text-align: center; font-weight: bold;">객실예약</p>

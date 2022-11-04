@@ -20,10 +20,6 @@
 	height:600px;
 
 }
-#line{
-    border-bottom:1px solid #e3e3e3;
-    padding:20px;
-}
 input{
     height:20px;
     width:60%;
@@ -42,6 +38,37 @@ input{
 	font-size: medium;
 	color: white;
 }
+#step3{
+	width:33%;
+	height: 80px;
+	border: 1px solid white;
+	background-color: black;
+	color: white;
+	font-weight:900;
+}
+#step1, #step2{
+	width:33%;
+	height: 80px;
+	border: 1px solid black;
+	color:black;
+	background-color:white;
+	font-weight:900;
+}
+input{
+    height:20px;
+    width:60%;
+    border:none;
+    text-align:center;
+    font-size:large;
+    font-weight:bold;
+}
+#option{
+	background-color: white;
+	border: 1px solid black; 
+	width: 100px; 
+	text-align: center;
+}
+
 </style>
 <div style="margin-top: 100px; margin-bottom: 800px;">
 	<p style="font-size: 30px; text-align: center; font-weight: bold;">객실예약</p>
@@ -54,15 +81,18 @@ input{
 		</tr>
 	</table>
 	<form name="confirmRoom" method="post" action="reservation_ok.jsp" >
-		<table width="80%" align="center" class="reserveOption">
-			<tr height="15%">
-				<th colspan="4" align="center"><bold size="5">예약정보</bold></th>
+		<table style="width: 900px" align="center" class="reserveOption" >
+			<tr>
+				<td colspan="4" align="center" 
+				style="font-size: 25px; font-weight: bold; border-top:2px solid #e3e3e3;">
+					예약정보
+				</td>
 			</tr>
 			<tr id="line">
 				<td align="center" id="line">
-				<img src="" width="280" height="200"></td>
+				<img src="../images/room-suite.png" style="width:280px; height: 200px"></td>
 				<td colspan="3" id="line">
-					<table width="100%">
+					<table style="width: 100%">
 						<tr align="left">
 							<td>예약 객실 : <b>디럭스</b> 
 								<input type="hidden" name="r_type" value="">
@@ -92,14 +122,42 @@ input{
 				</td>
 			</tr>
 			<tr>
-				<td colspan="4" align="center" style="font-weight: bold;"
-					height="15%"><font size="5">옵션선택</font></td>
+				<td colspan="4" align="center" 
+				style="font-size: 25px; font-weight: bold; border-top:2px solid #e3e3e3;">옵션선택</td>
 			</tr>
 			<tr id="line">
-				<td colspan="4" align="center" id="line">조식 인원 수 (1인당 20,000원) : 
-				<input type="number" style="background-color: #e7eaed; text-align: center;"
-					name="breakfast" id="input" size="5" min="0" max=''><br><br> 
-					<input type="button" id="submitBtn" value=" 옵션 확인"><br><br><br><br><br><br> 
+				<td colspan="4" id="line">
+					<table style="width: 100%; height: 80px;">
+						<tr align="center">
+							<td colspan="2" style="width: 50%"></td>
+							<td>성인</td>
+							<td>아동</td>
+						</tr>
+						<tr align="center">
+							<td colspan="2">조식 인원 수 (1인당 20,000원) :</td>
+							<td><input type="number" name="b_adult" id="option" value="0"></td>
+							<td><input type="number" name="b_kids" id="option" value="0"></td>
+						</tr>
+						<tr align="center">
+							<td colspan="2">수영장 인원 수 (1인당 20,000원) : </td>
+							<td><input type="number" name="p_adult" id="option" value="0"></td>
+							<td><input type="number" name="p_kids" id="option" value="0"></td>
+						</tr>
+						<tr align="center">
+							<td colspan="2">사우나 인원 수 (1인당 20,000원) : </td>
+							<td><input type="number" name="s_adult" id="option" value="0"></td>
+							<td><input type="number" name="s_kids" id="option" value="0"></td>
+						</tr>
+						<tr align="center">
+							<td colspan="2">헬스장 인원 수 (1인당 20,000원) : </td>
+							<td><input type="number" name="g_adult" id="option" value="0"></td>
+							<td><input type="number" name="g_kids" id="option" value="0"></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr style="border-bottom:2px solid #e3e3e3;">
+				<td colspan="4" align="center" id="line"> 
 					<input type="submit" id="submitBtn" value="예약하기">
 				</td>
 			</tr>
