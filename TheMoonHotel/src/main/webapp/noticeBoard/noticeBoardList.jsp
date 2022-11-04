@@ -22,7 +22,9 @@
 	$(function(){
 		$('#btn1').click(function(){
 			location.href="noticeWrite.jsp";
-		});	
+		});
+		
+		
 	});
 </script>	
 <div style="height: 800px;">
@@ -61,7 +63,7 @@
 				</select>
 				<input type="email" class="form-control" id="search" placeholder="검색하고자 하는 내용 입력"> 
 			</div>
-		<button id="btn1" type="button" class="btn btn-success" style="float: right">글쓰기</button>
+		<button id="btn1" type="button" class="btn btn-dark" style="float: right">글쓰기</button>
 		<br> <br> <br>
 	</div>
 </div>s

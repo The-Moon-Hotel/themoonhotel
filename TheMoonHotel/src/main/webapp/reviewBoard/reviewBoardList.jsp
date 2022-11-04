@@ -27,7 +27,7 @@
 </script>	
 <div style="height: 800px;">
 	<div class="container text-center" style="margin-top: 100px;">
-		<h2>공지사항 게시판</h2>
+		<h2>리뷰 게시판</h2>
 	</div>
 	<div id="div1" class="container text-center">
 		<table class="table table-hover">
@@ -61,7 +61,7 @@
 				</select>
 				<input type="email" class="form-control" id="search" placeholder="검색하고자 하는 내용 입력"> 
 			</div>
-		<button id="btn1" type="button" class="btn btn-success" style="float: right">글쓰기</button>
+		<button id="btn1" type="button" class="btn btn-dark" style="float: right">글쓰기</button>
 		<br> <br> <br>
 	</div>
 </div>s
