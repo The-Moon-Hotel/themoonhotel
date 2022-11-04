@@ -3,7 +3,7 @@
 
 <jsp:include page="inc/top.jsp"></jsp:include>
 <link rel="stylesheet" href="css/index.css">
-<section class="CarouselSize CarouselLocation" >
+<section class="CarouselSize CarouselLocation " >
 	<article>
 	<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
   <div class="carousel-indicators">
@@ -12,9 +12,9 @@
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
   <!-- 사진 -->
-  <div class="carousel-inner ">
+  <div class="carousel-inner">
     <div class="carousel-item active ">
-      <img src="images/hotel1.png" class="d-block CarouselImage" alt="...">
+      <img src="images/hotel1.png" class=" CarouselImage text-center" alt="...">
       <div class="carousel-caption d-none d-md-block contentFont">
         <h3>Full Moon Hotel</h3>
         <p>현대적인 라이프스타일 데스티네이션</p>
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="carousel-item">
-      <img src="images/hotel2.png" class="d-block CarouselImage " alt="...">
+      <img src="images/hotel2.png" class=" CarouselImage text-center" alt="...">
       <div class="carousel-caption d-none d-md-block contentFont">
         <h3>Half Moon Hotel</h3>
         <p>글로벌 럭셔리 호텔</p>
@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="carousel-item">
-      <img src="images/hotel3.png" class="d-block CarouselImage" alt="...">
+      <img src="images/hotel3.png" class=" CarouselImage text-center" alt="...">
       <div class="carousel-caption d-none d-md-block contentFont">
         <h3>Crescent Moon Hotel</h3>
         <p>현대적인 라이프스타일 데스티네이션</p>
