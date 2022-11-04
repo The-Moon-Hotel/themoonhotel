@@ -44,6 +44,34 @@
 				<img src="../images/fullMoon.jpg" class="card-img-top contentImg" alt="...">
 				<br>
 			</div>
+			<div class="col col-12 card" style="border:0px; ">
+				<br>
+				<div id="map1" style="width:100%;height:350px;"></div>
+
+				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8ebbd73d94acac44304a8ef67b2d3457"></script>
+				<script>
+				var mapContainer = document.getElementById('map1'), // 지도를 표시할 div 
+				    mapOption = { 
+				        center: new kakao.maps.LatLng(37.555697, 127.005172), // 지도의 중심좌표
+				        draggable: false,
+				        level: 5 // 지도의 확대 레벨
+				    };
+				
+				var map1 = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+				
+				// 마커가 표시될 위치입니다 
+				var markerPosition  = new kakao.maps.LatLng(37.555697, 127.005172); 
+				
+				// 마커를 생성합니다
+				var marker = new kakao.maps.Marker({
+				    position: markerPosition
+				});
+				
+				// 마커가 지도 위에 표시되도록 설정합니다
+				marker.setMap(map1);
+				</script>
+				<br>
+			</div>
 			<div class="col col-lg-6 col-md-12 col-sm-12 col-xs-12 card" style="border:0px; ">
 				<br>
 				<img src="../images/halfMoon.jpg" class="card-img-top contentImg" alt="...">
@@ -65,7 +93,35 @@
 				<p class="card-text">예술성에 의해 창조되고, 취향에 따라 움직이며, 연결로 인해 풍요로워집니다.
 					르 코메디안(Le Comedian)을 마시며 사랑하는 사람들과의 재회를 계획해보세요. 찰스 H.의 르 코메디안은
 					마우리치오 카텔란의 2019 아트 바젤 작품에 고개를 끄덕여 마이애미에 전통의 대한 경의를 표합니다.</p>
-				</div>
+			</div>
+			<div class="col col-12 card" style="border:0px; ">
+				<br>
+				<div id="map2" style="width:100%;height:350px;"></div>
+
+				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8ebbd73d94acac44304a8ef67b2d3457"></script>
+				<script>
+				var mapContainer = document.getElementById('map2'), // 지도를 표시할 div 
+				    mapOption = { 
+				        center: new kakao.maps.LatLng(37.555697, 127.005172), // 지도의 중심좌표
+				        draggable: false,
+				        level: 5 // 지도의 확대 레벨
+				    };
+				
+				var map2 = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+				
+				// 마커가 표시될 위치입니다 
+				var markerPosition  = new kakao.maps.LatLng(37.555697, 127.005172); 
+				
+				// 마커를 생성합니다
+				var marker = new kakao.maps.Marker({
+				    position: markerPosition
+				});
+				
+				// 마커가 지도 위에 표시되도록 설정합니다
+				marker.setMap(map2);
+				</script>
+				<br>
+			</div>
 			<div class="col col-lg-6 col-md-12 card card-body" style=" border:0px">
 				<p class="card-text">3rd</p>
 				<h2 class="card-title text-center">Crescent Moon Hotel</h2>
@@ -89,6 +145,34 @@
 			<div class="col col-lg-6 col-md-12 col-sm-12 col-xs-12 card" style="border:0px; ">
 				<br>
 				<img src="../images/crescentMoon.jpg" class="card-img-top contentImg" alt="...">
+				<br>
+			</div>
+			<div class="col col-12 card" style="border:0px; ">
+				<br>
+				<div id="map3" style="width:100%;height:350px;"></div>
+
+				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8ebbd73d94acac44304a8ef67b2d3457"></script>
+				<script>
+				var mapContainer = document.getElementById('map3'), // 지도를 표시할 div 
+				    mapOption = { 
+				        center: new kakao.maps.LatLng(37.555697, 127.005172), // 지도의 중심좌표
+				        draggable: false,
+				        level: 5 // 지도의 확대 레벨
+				    };
+				
+				var map3 = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+				
+				// 마커가 표시될 위치입니다 
+				var markerPosition  = new kakao.maps.LatLng(37.555697, 127.005172); 
+				
+				// 마커를 생성합니다
+				var marker = new kakao.maps.Marker({
+				    position: markerPosition
+				});
+				
+				// 마커가 지도 위에 표시되도록 설정합니다
+				marker.setMap(map3);
+				</script>
 				<br>
 			</div>
 		</div>
