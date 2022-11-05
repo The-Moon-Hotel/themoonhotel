@@ -1,33 +1,12 @@
+<%@page import="java.util.Date"%>
+
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="../inc/top.jsp"></jsp:include>
-
+<link rel="stylesheet" href="../css/reservCSS.css">
 
 <style>
-#submitBtn {
-	margin-top: 15px;
-	margin-bottom: 15px;
-	background-color: black;
-	width: 120px;
-	height: 50px;
-	border: none;
-	font-size: medium;
-	color: white;
-}
-.reserv1{
-	border-top:2px solid black;
-	box-shadow: 0 3px 6px -6px #666;
-	margin-top:10px;
-	text-align: center;
-}
-.reservList1{
-	margin:5% auto;
-	width:50%;
-	text-align:center;
-	border: 1px solid #e3e3e3;
-	background-color:  #e3e3e3;
-	font-size:larger;
-}
 #step1{
 	width:33%;
 	height: 80px;
@@ -45,17 +24,12 @@
 	background-color:white;
 	font-weight:900;
 }
-
-input, select{
-    height:20px;
-    width:60%;
-    border:none;
-    text-align:center;
-    font-size:large;
-    font-weight:bold;
-}
 </style>
-
+<%
+	Date today = new Date();
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	String now = sdf.format(today);
+%>
 <div style="margin-top: 100px; margin-bottom: 500px;">
 	<p style="font-size: 30px; text-align: center; font-weight: bold;">객실예약</p>
 
@@ -69,7 +43,7 @@ input, select{
 
 	<div>
 		<form name="reservForm" method="post" action="reservation2.jsp">
-			<table class="reserv1" style="width: 80%;" align="center">
+			<table class="reserv1" style="width: 900px" align="center">
 				<tr style="color: black; font-weight: bold;">
 					<td>지점</td>
 					<td>체크인</td>
@@ -79,16 +53,16 @@ input, select{
 				</tr>
 				<tr>
 					<td>
-						<select>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
+						<select name="roomNo">
+							<option value="Full Moon">Full Moon</option>
+							<option value="Half Moon">Half Moon</option>
+							<option value="Crescent Moon">Crescent Moon</option>
 						</select>
 					</td>
-					<td><input type="date" name="ci_date"></td>
+					<td><input type="date" name="ci_date" min="<%=now %>" ></td>
 					<td><input type="date" name="co_date"></td>
-					<td><input type="number" name="adult" min="1" value="1"></td>
-					<td><input type="number" name="kids" min="0" value="0"></td>
+					<td><input type="number" name="adult" min="1" value="1" style="width:100px"></td>
+					<td><input type="number" name="kids" min="0" value="0" style="width:100px"></td>
 					<td><input type="submit" value="검색" id="submitBtn"></td>
 				</tr>
 				<tr>
