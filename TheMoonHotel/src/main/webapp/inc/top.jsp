@@ -1,5 +1,30 @@
+<%@page import="java.sql.SQLException"%>
+<%@page import="com.moon.guest.model.GuestSerivce"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <jsp:useBean id="guestService" class="com.moon.guest.model.GuestSerivce" scope="session"></jsp:useBean>
+    <jsp:useBean id="guestVo" class="com.moon.guest.model.GuestVO" scope="page"></jsp:useBean>
+    
+<%
+	String t_userid=(String)session.getAttribute("userid");
+
+	boolean t_login=false;
+	int GuestOrAdmin=GuestSerivce.GUEST_ACCOUNT;
+	
+	if(t_userid!=null&& !t_userid.isEmpty()){
+		t_login=true;
+		try{
+			guestVo=guestService.selectByUserid(t_userid);
+			int sys=guestVo.getSys();
+			if(sys==GuestSerivce.ADMIN_ACCOUNT){
+				GuestOrAdmin=GuestSerivce.ADMIN_ACCOUNT;
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+	}
+	
+%>
 <!doctype html>
 <html>
   <head>
@@ -91,21 +116,40 @@
         </li>
         <!-- 로고 -->
       </ul>
-      <!-- 로그인시 보이게 설정 -->
-        <li class="nav-item dropdown nav-link me-3 mb-2 mb-lg-0 navColor" style="display: none;">
-          <a class="nav-link dropdown-toggle navColor" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            마이페이지
-          </a>
-          <ul class="dropdown-menu">
-          	<li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/myReservList.jsp">예약정보 확인</a></li>
-            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/signEdit.jsp">회원정보수정</a></li>
-            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/signEdit.jsp">문의내역</a></li>
-            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/guestOut.jsp">회원탈퇴</a></li>
-          </ul>
-        </li>
-      	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor"   href="#"  style="display: none;">로그아웃</a>
+      <%if(t_login==true){
+      		if(GuestOrAdmin==GuestSerivce.GUEST_ACCOUNT){%>
+		     	 <!-- 로그인시 보이게 설정 -->
+		        <li class="nav-item dropdown nav-link me-3 mb-2 mb-lg-0 navColor" >
+		          <a class="nav-link dropdown-toggle navColor" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+		            마이페이지
+		          </a>
+		          <ul class="dropdown-menu">
+		          	<li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/myReservList.jsp">예약정보 확인</a></li>
+		            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/signEdit.jsp">회원정보수정</a></li>
+		            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/signEdit.jsp">문의내역</a></li>
+		            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/guestOut.jsp">회원탈퇴</a></li>
+		          </ul>
+		        </li>
+		      	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor"   href="<%=request.getContextPath() %>/login/logout.jsp"  >로그아웃</a>
+      		<%}else{ %>
+		      	<!-- 관리자 로그인시 보이게 설정 -->
+		        <li class="nav-item dropdown nav-link me-3 mb-2 mb-lg-0 navColor" >
+		          <a class="nav-link dropdown-toggle navColor" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+		            관리자페이지
+		          </a>
+		          <ul class="dropdown-menu">
+		          	<li><a class="dropdown-item" href="<%=request.getContextPath() %>/admin/guestList.jsp">회원관리</a></li>
+		            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/admin/reservList.jsp">예약정보조회</a></li>
+		            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/admin/Sales.jsp">매출조회</a></li>
+		          </ul>
+		        </li>
+		      	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor"   href="<%=request.getContextPath() %>/login/logout.jsp"  >로그아웃</a>
+      		<%} %>
+      	<%}else{ %>
+      	<!-- 로그인 전  -->
       	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor"   href="<%=request.getContextPath() %>/login/login.jsp"  >로그인</a>
       	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor" href="<%=request.getContextPath() %>/guest/signUp.jsp">회원가입</a>
+      	<%} %>
       <form class="d-flex navColor" role="search" >
         <button class="btn btn-outline-primary" type="button" id="bookBtn1">book a room</button>
       </form>
@@ -160,21 +204,40 @@
         </li>
         <!-- 로고 -->
       </ul>
-		<!-- 로그인시 보이게 설정 -->
-        <li class="nav-item dropdown nav-link me-3 mb-2 mb-lg-0 navColor"  style="display: ;">
-          <a class="nav-link dropdown-toggle navColor" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            마이페이지
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark">
-          	<li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/myReservList.jsp">예약정보 확인</a></li>
-            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/signEdit.jsp">회원정보수정</a></li>
-            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/signEdit.jsp">문의내역</a></li>
-            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/guestOut.jsp">회원탈퇴</a></li>
-          </ul>
-        </li>
-      	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor"   href="#"  style="display:;">로그아웃</a>      
-      	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor"   href="<%=request.getContextPath() %>/login/login.jsp" >로그인</a>
-      	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor" href="<%=request.getContextPath() %>/guest/signUp.jsp">회원가입</a>
+      <%if(t_login==true){
+      		if(GuestOrAdmin==GuestSerivce.GUEST_ACCOUNT){%>
+				<!-- 로그인시 보이게 설정 -->
+		        <li class="nav-item dropdown nav-link me-3 mb-2 mb-lg-0 navColor"  >
+		          <a class="nav-link dropdown-toggle navColor" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+		            마이페이지
+		          </a>
+		          <ul class="dropdown-menu dropdown-menu-dark">
+		          	<li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/myReservList.jsp">예약정보 확인</a></li>
+		            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/signEdit.jsp">회원정보수정</a></li>
+		            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/signEdit.jsp">문의내역</a></li>
+		            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/guestOut.jsp">회원탈퇴</a></li>
+		          </ul>
+		        </li>
+		      	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor"   href="<%=request.getContextPath() %>/login/logout.jsp" >로그아웃</a>
+      		<%}else if(GuestOrAdmin==GuestSerivce.ADMIN_ACCOUNT){ %>
+		      	<!-- 관리자 로그인시 보이게 설정 -->
+		        <li class="nav-item dropdown nav-link me-3 mb-2 mb-lg-0 navColor" >
+		          <a class="nav-link dropdown-toggle navColor" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+		            관리자페이지
+		          </a>
+		          <ul class="dropdown-menu dropdown-menu-dark">
+		          	<li><a class="dropdown-item" href="<%=request.getContextPath() %>/admin/guestList.jsp">회원관리</a></li>
+		            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/admin/reservList.jsp">예약정보조회</a></li>
+		            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/admin/Sales.jsp">매출조회</a></li>
+		          </ul>
+		        </li>
+		      	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor"   href="<%=request.getContextPath() %>/login/logout.jsp"  >로그아웃</a>
+      		<%} %>
+      	<%}else{ %>
+	      	<!-- 로그인 전  -->      
+	      	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor"   href="<%=request.getContextPath() %>/login/login.jsp" >로그인</a>
+	      	<a class="nav-item nav-link me-3 mb-2 mb-lg-0 navColor" href="<%=request.getContextPath() %>/guest/signUp.jsp">회원가입</a>
+      	<%} %>
       <form class="d-flex navColor" role="search" >
         <button class="btn btn-outline-primary" type="button" id="bookBtn2">book a room</button>
       </form>

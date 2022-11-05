@@ -13,8 +13,8 @@ public class GuestSerivce {
 	public static final int NONE_USERID=3;	//해당 아이디 존재하지 않음
 	
 	//관리자 계정 여부 상수
-	public static final int ADMIN_ACCOUNT=1;	// 관리자 계정
-	public static final int GUEST_ACCOUNT=2;	//Guset 계정
+	public static final int GUEST_ACCOUNT=1;	//Guset 계정
+	public static final int ADMIN_ACCOUNT=2;	// 관리자 계정
 
 	private GuestDAO guestDAO;
 	

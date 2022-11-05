@@ -24,17 +24,14 @@ public class GuestDAO {
 			con=pool.getConnection();
 			
 			//3
-			String sql="insert into guest(guestNo,name,userid,pwd,email,tel,joindate,outdate,sys)"
-					+ " values(member_seq.nextval, ?,?,?,?,?,?,?,?)";
+			String sql="insert into guest(guestNo,name,userid,pwd,email,tel)"
+					+ " values(guest_seq.nextval, ?,?,?,?,?)";
 			ps=con.prepareStatement(sql);
 			ps.setString(1, vo.getName());
 			ps.setString(2, vo.getUserid());
 			ps.setString(3, vo.getPwd());
 			ps.setString(4, vo.getEmail());
 			ps.setString(5, vo.getTel());
-			ps.setTimestamp(6, vo.getJoindate());
-			ps.setTimestamp(7, vo.getOutdate());
-			ps.setInt(8, vo.getSys());
 			
 			int cnt=ps.executeUpdate();
 			
@@ -118,7 +115,7 @@ public class GuestDAO {
 		}
 	}
 	
-	//회원정보 페이제에 회원정보 불러올때
+	//회원정보 페이wl에 회원정보 불러올때
 	public GuestVO selectByUserid(String userid) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
