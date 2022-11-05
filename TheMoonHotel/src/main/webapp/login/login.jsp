@@ -1,7 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <jsp:include page="../inc/top.jsp"></jsp:include>
-
+<%
+	String ck_value="";
+	Cookie [] ckArr=request.getCookies();
+	if(ckArr!=null){
+		for(int i=0;i<ckArr.length;i++){
+			if(ckArr[i].getName().equals("ck_userid")){
+				ck_value=ckArr[i].getValue();
+				break;
+			}
+		}//for
+	}
+%>
 <!-- <section class="loginBanner">
 	<article>
 		<div>
@@ -43,7 +54,7 @@ pageEncoding="UTF-8"%>
 				<span class="input-group-text">ID</span>
  				<div class="form-floating">
 				    <input type="text" class="form-control" id="userid" 
-				    placeholder="userid" name="userid" >
+				    placeholder="userid" name="userid"  value="<%=ck_value%>">
 	   				<label for="userid">아이디를 입력하세요</label>
  				 </div>
 			</div>
@@ -59,7 +70,12 @@ pageEncoding="UTF-8"%>
 		</div>
 		<div style="display:table; width: 400px; margin: auto;">
 			<div style="text-align: right;">
-				<input class="form-check-input mt-0" type="checkbox" name="chkSave" value=""> 
+				<input class="form-check-input mt-0" type="checkbox" name="chkSave" 
+					<%
+						if(ck_value!=null && !ck_value.isEmpty()){%>
+							ckecked='checked'	
+					<%  }%>
+				> 
 				<label for="chkSave">아이디 저장하기</label>	
 			</div><br>
 			<div class="btn-group" role="group">

@@ -1,4 +1,4 @@
-package com.moon.noticeBoard.model;
+package com.moon.guest.model;
 
 import java.sql.Timestamp;
 
