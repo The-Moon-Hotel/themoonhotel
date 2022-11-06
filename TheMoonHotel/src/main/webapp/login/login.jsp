@@ -62,7 +62,7 @@ pageEncoding="UTF-8"%>
 			<div class="input-group mb-3">
 				<span class="input-group-text">PASSWORD</span>
  				<div class="form-floating">
-				    <input type="text" class="form-control" id="pwd" 
+				    <input type="password" class="form-control" id="pwd" 
 				    placeholder="pwd" name="pwd">
 	   				<label for="pwd">비밀번호를 입력하세요</label>
  				 </div>
