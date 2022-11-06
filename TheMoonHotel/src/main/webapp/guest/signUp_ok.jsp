@@ -19,8 +19,23 @@
 		String name= request.getParameter("name");
 		String userid= request.getParameter("userid");
 		String pwd= request.getParameter("pwd");
-		String email= request.getParameter("email");
-		String tel= request.getParameter("tel");
+		String email1= request.getParameter("email1");
+		String email2= request.getParameter("email2");
+		String tel1= request.getParameter("tel1");
+		String tel2= request.getParameter("tel2");
+		String tel3= request.getParameter("tel3");
+		
+		String tel="", email="";
+		if(tel2!=null&&!tel2.isEmpty()&&tel3!=null&&!tel3.isEmpty()){
+			tel=tel1+"-"+tel2+"-"+tel3;
+		}
+		
+		if(email1!=null && !email1.isEmpty()){
+				if(email2!=null && !email2.isEmpty()){
+			   		email=email1+"@"+email2;
+				}
+		}
+	   	
 		
 		guestVo.setName(name);
 		guestVo.setUserid(userid);

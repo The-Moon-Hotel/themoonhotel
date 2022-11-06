@@ -11,7 +11,6 @@ h3{
 }
 </style>
 <script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
-<script type="text/javascript" src="../js/member.js"></script>
 <script type="text/javascript">
 $(function(){
 	$('#name').focus();
@@ -37,9 +36,13 @@ $(function(){
 			alert('비밀번호가 일치하지 않습니다.');
 			$('#pwd2').focus();
 			event.preventDefault();
+		}else if($('#tel').val().length<1){
+			alert('전화번호를 입력하세요.');
+			$('#tel').focus();
+			event.preventDefault();
 		}else if(!validate_phone($('#tel').val())){
 			alert('전화번호는 숫자와 '-'만 가능합니다.');
-			$('#hp2').focus();
+			$('#tel').focus();
 			event.preventDefault();
 		}else if($('#chkId').val()!='Y'){
 			alert('아이디 중복확인을 하세요');
@@ -51,11 +54,22 @@ $(function(){
 			event.preventDefault()
 		}
 	});
+	
+	$('#btnChkId').click(function(){
+    	var id=$('#userid').val(); 		
+	    open('checkUserid.jsp?userid='+$('#userid').val(),'chk',
+	    			'width=500,height=300,left=0, top=0, location=yes, resizable=yes');
+    });
  });
- function validate_userid(var){
-	 userid
- }
- 
+function validate_phone(tel){
+	 var pattern=new RegExp(/^[0-9-]*$/g);
+	 return pattern.test(tel);
+}
+
+function validate_userid(id){
+	 var pattern = new RegExp(/^[a-zA-Z0-9_]+$/g);
+	 return pattern.test(id);
+}
 </script>
 <form class="validation-form" novalidate action="signUp_ok.jsp">
 	<div class="container" style="width: 800px; margin-top: 100px;">
@@ -76,28 +90,53 @@ $(function(){
 					<div class="col-md-6 mb-3">
 						<label for="id" style="display: block;">ID</label> <input type="text" style="display: inline-block;width: 264px" class="form-control"
 							id="userid"  name="userid" placeholder="아이디를 입력하세요." required>
-						<button type="button" class="btn btn-secondary" id="btnChkId">ID중복확인</button>
+						<button type="button" class="btn btn-secondary" id="btnChkId" >ID중복확인</button>
 					</div>
 					<div class="col-md-6 mb-3">
-						<label for="pwd">비밀번호</label> <input type="text"
+						<label for="pwd">비밀번호</label> <input type="password"
 							class="form-control" id="pwd" name="pwd" placeholder="비밀번호를 입력하세요." required>
 					</div>
 					<div class="col-md-6 mb-3">
-						<label for="pwd2">비밀번호 확인</label> <input type="text"
+						<label for="pwd2">비밀번호 확인</label> <input type="password"
 							class="form-control" id="pwd2" placeholder="비밀번호를 확인하세요." required>
 						<div class="invalid-feedback"></div>
 					</div>
-					<div class="mb-3">
-						<label for="email">이메일</label> <input type="email"
-							class="form-control" id="email" name="email"
-							placeholder="ex)TheMoonHotel@naver.com" required>
-						<div class="invalid-feedback">이메일을 입력해주세요.</div>
+						<p style="margin-bottom: 1px;">이메일</p>
+					<div class="input-group mb-3">
+						<br>
+						  <input type="text" class="form-control" id="email1" name="email1" aria-label="TheMoonHotel" value="">
+						  <span class="input-group-text">@</span>
+						  <input type="text" class="form-control" id="email2" name="email2" aria-label="naver.com" value="">
 					</div>
-					<div class="col-md-6 mb-3">
-						<label for="tel">전화번호</label> <input type="text"
-							class="form-control" id="tel" name="tel"
-							placeholder="ex)010-0000-0000 '-' 포함해서 작성" required>
-						<div class="invalid-feedback"></div>
+						<p >전화번호</p> 
+					<div class="mb-3" style="">
+						<div class="container " style="height: 30px">
+						  <div class="row">
+						    <div class="col" style="padding:0">
+						    	<select class="form-select"
+									aria-label="Default select example" id="tel1" name="te1" >
+									<option value="010">010</option>
+									<option value="011">011</option>
+									<option value="016">016</option>
+									<option value="017">017</option>
+									<option value="018">018</option>
+									<option value="019">019</option>
+							  	</select>
+						    </div>
+						    <div class="" style="padding:5px;text-align: center;width: 20px;">
+						      -
+						    </div>
+						    <div class="col" style="padding:0">
+								<input type="text" class="form-control" id="tel2" name="tel2" maxlength="4" title="휴대폰 가운데자리" >
+						    </div>
+						    <div class="" style="padding:5px;text-align: center;width: 20px;">
+						      -
+						    </div>
+						    <div class="col" style="padding:0">
+								<input type="text" class="form-control" id="tel3" name="tel3" maxlength="4" title="휴대폰 뒷자리" >
+						    </div>
+						  </div>
+						</div>
 					</div>
 					<hr class="mb-4">
 					<div class="custom-control custom-checkbox">
@@ -109,12 +148,12 @@ $(function(){
 						<button id="sub1" class="btn btn-dark btn-lg btn-block"
 							type="submit">가입완료</button>
 					</div>
+					<input type ="hidden" name="chkId" id="chkId">
 			</div>
 		</div>
 		<br> <br> <br>
 		<p class="mb-1 text-center" style="font-weight: bold">WECOME! THE
 			MOON HOTEL</p>
-	
 </form>
 <!-- 	<script>
     window.addEventListener('load', () => {
