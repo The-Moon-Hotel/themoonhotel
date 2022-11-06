@@ -5,6 +5,11 @@
 <%@page import="com.moon.guest.model.GuestDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<jsp:useBean id="guestService" class="com.moon.guest.model.GuestSerivce" 
+	scope="session"></jsp:useBean>
+<jsp:useBean id="guestVo" class="com.moon.guest.model.GuestVO" 
+	scope="page"></jsp:useBean>
 
 <!DOCTYPE html>
 <html>
@@ -14,9 +19,9 @@
 </head>
 <body>
 <%	
-	GuestDAO dao = new GuestDAO();
-	String userid = (String)session.getAttribute("userid");	
-	GuestVO vo = dao.selectByUserid(userid);
+	
+ 	String userid = (String)session.getAttribute("userid");	
+	GuestVO vo = guestService.selectByUserid(userid);  
 	
 	//1. 읽어오기
 	request.setCharacterEncoding("utf-8");
@@ -28,7 +33,7 @@
 	//2. db
 	AskBoardDAO a_dao = new AskBoardDAO();
 	AskBoardVO a_vo = new AskBoardVO();
-	a_vo.setGuestNo(guestno);
+	a_vo.setGuestNo(guestno); 
 	a_vo.setA_title(a_title);
 	a_vo.setA_content(a_content);
 	

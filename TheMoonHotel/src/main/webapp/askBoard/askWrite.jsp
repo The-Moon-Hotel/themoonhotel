@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <jsp:include page="../inc/top.jsp"></jsp:include>
-<%@ include file = "../login/checkLogin.jsp" %>
+<%-- <%@ include file = "../login/checkLogin.jsp" %> --%>
 
 <style type="text/css">
 #div1 {
@@ -22,20 +22,20 @@
 <script type="text/javascript">
 var oEditors=[];
 	$(function() {
- 		nhn.husky.EZCreator.createInIFrame({
-			oAppRef: oEditors,
-			elPlaceHolder : "txtCon",
-			sSkinURI : "../js/smartEdit/SmartEditor2Skin.html",
-		      htParams : {
-		          bUseToolbar : true,             
-		          bUseVerticalResizer : true,     
-		          bUseModeChanger : true,         
-		          fOnBeforeUnload : function(){
-		        	  
-		          }
-		      }, 
-		      fCreator: "createSEditor2"
-		      });
+	 		/* nhn.husky.EZCreator.createInIFrame({
+				oAppRef: oEditors,
+				elPlaceHolder : "txtCon",
+				sSkinURI : "../js/smartEdit/SmartEditor2Skin.html",
+			      htParams : {
+			          bUseToolbar : true,             
+			          bUseVerticalResizer : true,     
+			          bUseModeChanger : true,         
+			          fOnBeforeUnload : function(){
+			        	  
+			          }
+			      }, 
+			      fCreator: "createSEditor2"
+			      }); */
 			$('#btn1').click(function() {
 			location.href = "askBoardList.jsp";
 			});
@@ -67,10 +67,11 @@ var oEditors=[];
 				<select class="form-select" id="selBoard">
 					<option>문의게시판</option>
 				</select>
+			<%-- <input type="text" name="userid" value="<%=servic %> %>" --%>
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1" class="form-label mt-4"></label> 
-				<input type="email" class="form-control" id="title1" name="a_title"
+				<input type="text" class="form-control" id="title1" name="a_title"
 					placeholder="제목을 입력하세요">
 			</div>
 			<div class="form-group">

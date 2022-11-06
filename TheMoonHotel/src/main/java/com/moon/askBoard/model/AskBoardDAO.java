@@ -55,7 +55,7 @@ public class AskBoardDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<AskBoardVO> selectAll() throws SQLException{
+	public List<AskBoardVO> selectAll(String condition, String keyword) throws SQLException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -66,8 +66,18 @@ public class AskBoardDAO {
 			con = pool.getConnection();
 		
 			String sql = "select * from askboard";
+			
+			//검색의 경우
+			if(keyword!=null && !keyword.isEmpty()) {
+				sql+=" where "+ condition +" like '%'|| ? ||'%'";
+			}
+			sql+=" order by askno desc";
 			ps = con.prepareStatement(sql);
 			
+			if(keyword!=null && !keyword.isEmpty()) {
+				ps.setString(1, keyword);
+			}
+
 			rs = ps.executeQuery();
 				
 			while(rs.next()) {
@@ -96,7 +106,7 @@ public class AskBoardDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public AskBoardVO selectByGuestNo(int askno) throws SQLException {
+	public AskBoardVO selectByAskNo(int askno) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -146,12 +156,12 @@ public class AskBoardDAO {
 			
 			String sql = "update askboard"
 					+ " set a_title = ?, a_content = ?"
-					+ " where guestno = ?";
+					+ " where askno = ?";
 			ps = con.prepareStatement(sql);
 			
 			ps.setString(1, vo.getA_title());
 			ps.setString(2, vo.getA_content());
-			ps.setInt(3, vo.getGuestNo());
+			ps.setInt(3, vo.getAskNo());
 			
 			int cnt = ps.executeUpdate();
 			
