@@ -153,6 +153,4 @@ String guestNo = (String)session.getAttribute("guestNo");
 		</table>
 	</form>
 </div>
-
-
 <jsp:include page="../inc/footer.jsp"></jsp:include>
