@@ -1,3 +1,4 @@
+<%@page import="com.moon.common.Utility"%>
 <%@page import="java.util.Date"%>
 
 <%@page import="java.text.SimpleDateFormat"%>
@@ -5,7 +6,7 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="../inc/top.jsp"></jsp:include>
 <link rel="stylesheet" href="../css/reservCSS.css">
-
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 <style>
 #step1{
 	width:33%;
@@ -25,7 +26,19 @@
 	font-weight:900;
 }
 </style>
+<script type="text/javascript">
+	$(function(){
+		$('#submitBtn').click(function(){
+			if(gapDate<0){
+				alert('체크아웃 날짜를 다시 선택해주세요');
+				event.preventDefault();
+			}
+		});
+	});
+</script>
 <%
+	String guestNo = (String)session.getAttribute("guestNo");
+
 	Date today = new Date();
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	String now = sdf.format(today);
@@ -53,14 +66,14 @@
 				</tr>
 				<tr>
 					<td>
-						<select name="roomNo">
+						<select name="locName">
 							<option value="Full Moon">Full Moon</option>
 							<option value="Half Moon">Half Moon</option>
 							<option value="Crescent Moon">Crescent Moon</option>
 						</select>
 					</td>
-					<td><input type="date" name="ci_date" min="<%=now %>" ></td>
-					<td><input type="date" name="co_date"></td>
+					<td><input type="date" name="ci_date" id="ci_date" min="<%=now %>" required></td>
+					<td><input type="date" name="co_date" id="ci_date" required></td>
 					<td><input type="number" name="adult" min="1" value="1" style="width:100px"></td>
 					<td><input type="number" name="kids" min="0" value="0" style="width:100px"></td>
 					<td><input type="submit" value="검색" id="submitBtn"></td>

@@ -26,22 +26,24 @@
 	width: 100px; 
 	text-align: center;
 }
+
+</style>
 <%
+	String guestNo = (String)session.getAttribute("guestNo");
+	
 	request.setCharacterEncoding("utf-8");
 
 	//1. 파라미터 읽어오기
-	String roomNo = request.getParameter("roomNo");
+	String locName = request.getParameter("locName");
 	String ci_date = request.getParameter("ci_date");
 	String co_date = request.getParameter("co_date");
 	String adult = request.getParameter("adult");
 	String kids = request.getParameter("kids");
 	String roomType = request.getParameter("roomType");
-	String roomPrice = request.getParameter("roomPrice");
+	String totalPrice = request.getParameter("totalPrice");
 	
-	String totalPrice = roomPrice;
 
 %>
-</style>
 <div style="margin-top: 100px; margin-bottom: 800px;">
 	<p style="font-size: 30px; text-align: center; font-weight: bold;">객실예약</p>
 
@@ -66,28 +68,36 @@
 				<td colspan="3" id="line">
 					<table style="width: 100%">
 						<tr align="left">
-							<td>예약 객실 : <b><%=roomType%></b> 
-								<input type="hidden" name="r_type" value="<%=roomType%>">
+							<td>지점 : <b><%=locName%></b> 
+								<input type="hidden" name="locName" value="<%=locName%>">
 							</td>
+							<td>예약 객실 : <b><%=roomType%></b> 
+								<input type="hidden" name="roomType" value="<%=roomType%>">
+							</td>	
+						</tr>
+						<tr align="left">
 							<td>체크인날짜 : <b><%=ci_date%></b> 
 								<input type="hidden" name="ci_date" value="<%=ci_date%>">
 							</td>
-						</tr>
-						<tr align="left">
 							<td>체크아웃 날짜 : <b><%=co_date%></b> 
 								<input type="hidden" name="co_date" value="<%=co_date%>">
 							</td>
+							
+						</tr>
+						<tr align="left">
 							<td>성인 투숙객 수 : <b><%=adult%></b>명 
 								<input type="hidden" name="adult" value="<%=adult%>">
 							</td>
-						</tr>
-						<tr align="left">
 							<td>아동 투숙객 수 : <b><%=kids%></b>명 
-							<input type="hidden" name="kids" value="<%=kids%>">
+							    <input type="hidden" name="kids" value="<%=kids%>">
 							</td>
-							<td>총 금액 :
-								<input type="number" name="totalPrice" id="input" readonly="readonly" value="" >원 
-								<input type="hidden" name="totalPrice" value="">
+						</tr>
+						<tr><td colspan="2" style="height: 20px;"></td></tr>
+						<tr>
+							<td colspan="2" align="center">총 금액 :
+								<input type="text" name="totalPrice" style="width: 100px"
+								readonly="readonly" value="<%=totalPrice %>" >원 
+								<input type="hidden" name="totalPrice" value="<%=totalPrice %>">
 							</td>
 						</tr>
 					</table>

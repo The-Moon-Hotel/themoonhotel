@@ -1,31 +1,37 @@
 package com.moon.reservation.model;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 public class ReservationVO {
 	private int reservNo;
 	private int guestNo;
+	private int roomNo;
 	private int facNo;
 	private int adult;
 	private int kids;
-	private Timestamp ci_date;
-	private Timestamp co_date;
+	private Date ci_date;
+	private Date co_date;
+	private int totalPrice;
 	
 	public ReservationVO() {
 		super();
 	}
 
-	public ReservationVO(int reservNo, int guestNo, int facNo, int adult, int kids, Timestamp ci_date,
-			Timestamp co_date) {
+	public ReservationVO(int reservNo, int guestNo, int roomNo, int facNo, int adult, int kids, Date ci_date,
+			Date co_date, int totalPrice) {
 		super();
 		this.reservNo = reservNo;
 		this.guestNo = guestNo;
+		this.roomNo = roomNo;
 		this.facNo = facNo;
 		this.adult = adult;
 		this.kids = kids;
 		this.ci_date = ci_date;
 		this.co_date = co_date;
+		this.totalPrice = totalPrice;
 	}
+
+
 
 	public int getReservNo() {
 		return reservNo;
@@ -67,25 +73,46 @@ public class ReservationVO {
 		this.kids = kids;
 	}
 
-	public Timestamp getCi_date() {
+	public Date getCi_date() {
 		return ci_date;
 	}
 
-	public void setCi_date(Timestamp ci_date) {
+	public void setCi_date(Date ci_date) {
 		this.ci_date = ci_date;
 	}
 
-	public Timestamp getCo_date() {
+	public Date getCo_date() {
 		return co_date;
 	}
 
-	public void setCo_date(Timestamp co_date) {
+	public void setCo_date(Date co_date) {
 		this.co_date = co_date;
 	}
+	
+	public int getRoomNo() {
+		return roomNo;
+	}
+
+	public void setRoomNo(int roomNo) {
+		this.roomNo = roomNo;
+	}
+
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+
 
 	@Override
 	public String toString() {
-		return "reservationVO [reservNo=" + reservNo + ", guestNo=" + guestNo + ", facNo=" + facNo + ", adult=" + adult
-				+ ", kids=" + kids + ", ci_date=" + ci_date + ", co_date=" + co_date + "]";
+		return "ReservationVO [reservNo=" + reservNo + ", guestNo=" + guestNo + ", roomNo=" + roomNo + ", facNo="
+				+ facNo + ", adult=" + adult + ", kids=" + kids + ", ci_date=" + ci_date + ", co_date=" + co_date
+				+ ", totalPrice=" + totalPrice + "]";
 	}
+
+	
 }

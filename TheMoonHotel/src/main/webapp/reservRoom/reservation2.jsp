@@ -1,3 +1,8 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.moon.room.model.RoomVO"%>
+<%@page import="java.sql.SQLException"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.moon.common.Utility"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -25,22 +30,42 @@
 }
 
 </style>
+<script type="text/javascript">
+	$(function(){
+		$('#submitBtn').click(function(){
+			if(gapDate<0){
+				alert('체크아웃 날짜를 다시 선택해주세요');
+				event.preventDefault();
+			}
+		});
+	});
+</script>
+<jsp:useBean id="locInfoService" 
+class="com.moon.room.model.RoomService" scope="session"></jsp:useBean>
 <%
+String guestNo = (String)session.getAttribute("guestNo");
+
 	request.setCharacterEncoding("utf-8");
 
 	//1. 파라미터 읽어오기
-	String roomNo = request.getParameter("roomNo");
+	String locName = request.getParameter("locName");
 	String ci_date = request.getParameter("ci_date");
 	String co_date = request.getParameter("co_date");
 	String adult = request.getParameter("adult");
 	String kids = request.getParameter("kids");
 	
 	//2. db 작업
+	List<RoomVO> rlist = null;
+	try{
+		rlist = locInfoService.selectRoom(locName);	
+	}catch(SQLException e){
+		e.printStackTrace();
+	}
 	//3. 출력 처리
 	long gapDate = Utility.calDate(ci_date, co_date);
-	
+	DecimalFormat df = new DecimalFormat("#,###");
 %>
-<div style="margin-top: 100px; height: 800px;">
+<div style="margin-top: 100px;">
 	<p style="font-size: 30px; text-align: center; font-weight: bold;">객실예약</p>
 
 	<table class="reservList1" align="center">
@@ -63,45 +88,68 @@
 				<td width="10%">어린이</td>
 			</tr>
 			<tr align="center">
-				<td><select name="roomNo">
-						<option value="Full Moon" <%if(roomNo.equals("Full Moon")){ %>
-							selected="selected" <%} %>>Full Moon</option>
-						<option value="Half Moon" <%if(roomNo.equals("Half Moon")){ %>
-							selected="selected" <%} %>>Half Moon</option>
+				<td><select name="locName">
+						<option value="Full Moon" <%if(locName.equals("Full Moon")){%>
+							selected="selected" <%}%>>Full Moon</option>
+						<option value="Half Moon" <%if(locName.equals("Half Moon")){%>
+							selected="selected" <%}%>>Half Moon</option>
 						<option value="Crescent Moon"
-							<%if(roomNo.equals("Crescent Moon")){ %> selected="selected"
-							<%} %>>Crescent Moon</option>
+							<%if(locName.equals("Crescent Moon")){%> selected="selected"
+							<%}%>>Crescent Moon</option>
 				</select></td>
 				<td><input type="text" name="ci_date" readonly
 					value="<%=ci_date%>"></td>
 				<td><input type="text" name="co_date" readonly
 					value="<%=co_date%>"></td>
 				<td><input type="text" name="dateGap" size="10"
-					value="<%=gapDate %>" readonly="readonly" style="width: 100px"></td>
+					value="<%=gapDate%>" readonly="readonly" style="width: 100px"></td>
 				<td><input type="text" name="adult" size="10"
 					value="<%=adult%>" style="width: 100px"></td>
 				<td><input type="text" name="kids" size="10" value="<%=kids%>"
 					style="width: 100px"></td>
-				<td><input type="button" id="submitBtn" value="다시 선택"></td>
 			</tr>
 		</table>
 		<table align="center" > 
-			<tr align="center" id="line" >
-				<td width="30%" id="line">
-				<img src="../images/dex.png" style="width: 300px; height: 200px"></td>
-				<td id="line">
-					<table style="width: 200px" >
-						<tr>
-							<th name="roomType">룸 타입: </th>
-						</tr>
-						<tr>
-							<td>최대 수용 인원 : 2명</td>
-						</tr>
-					</table>
-				</td>
-				<td width="25%" name="roomPrice" id="line"><b> 240,000 원 (1박)</b></td>
-				<td id="line"><input type="submit" id="submitBtn" value="예약하기"></td>
+		<%
+ 		if(rlist==null || rlist.isEmpty()){
+ 		%>
+			<tr>
+				<td align="center">예약하실 수 있는 방이 없습니다.</td>
 			</tr>
+			<tr><td align="center"><a href="reservation1.jsp" >다시 선택하기</a></td></tr>
+		<%
+		}else{
+		%>
+			<%
+			for(int i=0; i<rlist.size(); i++){ 
+				RoomVO roomVo = rlist.get(i);
+			%>
+				<tr align="center" id="line" >
+					<td width="30%" id="line">
+					<img src="../images/<%=roomVo.getRoomImage() %>" style="width: 300px; height: 200px"></td>
+					<td id="line">
+						<table style="width: 200px" >
+							<tr>
+								<th>룸 타입: <input type="text" name="roomType" 
+								value="<%=roomVo.getRoomType() %>" readonly style="width: 120px; font-size:100%;"></th>
+							</tr>
+							<tr>
+								<td>최대 수용 인원 : 2명</td>
+							</tr>
+						</table>
+					</td>
+					<td width="25%" id="line">
+						일 박: <input type="text" name="roomPrice" value="<%=df.format(roomVo.getRoomPrice())%>" 
+							readonly style="width: 100px; font-size:100%;"> 원<br>
+						총 가격: <input type="text" name="totalPrice" value="<%=df.format(roomVo.getRoomPrice()*gapDate)%>"
+						readonly style="width: 100px; font-size:100%;"> 원
+					</td>
+					<td id="line">
+						<input type="submit" id="submitBtn" value="예약하기">
+					</td>
+				</tr>
+		<%}//if
+		}//for %>
 		</table>
 	</form>
 </div>
