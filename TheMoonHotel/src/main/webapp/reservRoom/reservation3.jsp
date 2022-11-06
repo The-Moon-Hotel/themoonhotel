@@ -1,43 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="../inc/top.jsp"></jsp:include>
-<link rel="stylesheet" href="reservation.css">
+<link rel="stylesheet" href="../css/reservCSS.css">
 <style>
-.reservList1{
-	margin:5% auto;
-	width:50%;
-	text-align:center;
-	border: 1px solid #e3e3e3;
-	background-color:  #e3e3e3;
-	font-size:larger;
-}
-.reserveOption{
-	border-top:1px solid #e3e3e3;
-	border-collapse:collapse;
-	margin-top:5%;
-	margin-bottom:5%;
-	width:80%;
-	height:600px;
-
-}
-input{
-    height:20px;
-    width:60%;
-    border:none;
-    text-align:center;
-    font-size:large;
-    font-weight:bold;
-}
-#submitBtn {
-	margin-top: 15px;
-	margin-bottom: 15px;
-	background-color: black;
-	width: 120px;
-	height: 50px;
-	border: none;
-	font-size: medium;
-	color: white;
-}
 #step3{
 	width:33%;
 	height: 80px;
@@ -54,21 +19,28 @@ input{
 	background-color:white;
 	font-weight:900;
 }
-input{
-    height:20px;
-    width:60%;
-    border:none;
-    text-align:center;
-    font-size:large;
-    font-weight:bold;
-}
+
 #option{
 	background-color: white;
 	border: 1px solid black; 
 	width: 100px; 
 	text-align: center;
 }
+<%
+	request.setCharacterEncoding("utf-8");
 
+	//1. 파라미터 읽어오기
+	String roomNo = request.getParameter("roomNo");
+	String ci_date = request.getParameter("ci_date");
+	String co_date = request.getParameter("co_date");
+	String adult = request.getParameter("adult");
+	String kids = request.getParameter("kids");
+	String roomType = request.getParameter("roomType");
+	String roomPrice = request.getParameter("roomPrice");
+	
+	String totalPrice = roomPrice;
+
+%>
 </style>
 <div style="margin-top: 100px; margin-bottom: 800px;">
 	<p style="font-size: 30px; text-align: center; font-weight: bold;">객실예약</p>
@@ -94,28 +66,28 @@ input{
 				<td colspan="3" id="line">
 					<table style="width: 100%">
 						<tr align="left">
-							<td>예약 객실 : <b>디럭스</b> 
-								<input type="hidden" name="r_type" value="">
+							<td>예약 객실 : <b><%=roomType%></b> 
+								<input type="hidden" name="r_type" value="<%=roomType%>">
 							</td>
-							<td>체크인날짜 : <b>2022-10-04</b> 
-								<input type="hidden" name="ci_date" value="">
-							</td>
-						</tr>
-						<tr align="left">
-							<td>체크아웃 날짜 : <b>2022-10-05</b> 
-								<input type="hidden" name="co_date" value="">
-							</td>
-							<td>성인 투숙객 수 : <b>1</b>명 
-								<input type="hidden" name="adult" value="">
+							<td>체크인날짜 : <b><%=ci_date%></b> 
+								<input type="hidden" name="ci_date" value="<%=ci_date%>">
 							</td>
 						</tr>
 						<tr align="left">
-							<td>아동 투숙객 수 : <b>1</b>명 
-							<input type="hidden" name="kids" value="">
+							<td>체크아웃 날짜 : <b><%=co_date%></b> 
+								<input type="hidden" name="co_date" value="<%=co_date%>">
+							</td>
+							<td>성인 투숙객 수 : <b><%=adult%></b>명 
+								<input type="hidden" name="adult" value="<%=adult%>">
+							</td>
+						</tr>
+						<tr align="left">
+							<td>아동 투숙객 수 : <b><%=kids%></b>명 
+							<input type="hidden" name="kids" value="<%=kids%>">
 							</td>
 							<td>총 금액 :
-								<input type="number" name="price" id="input" readonly="readonly" value="" >원 
-								<input type="hidden" name="price" value="">
+								<input type="number" name="totalPrice" id="input" readonly="readonly" value="" >원 
+								<input type="hidden" name="totalPrice" value="">
 							</td>
 						</tr>
 					</table>
@@ -135,23 +107,23 @@ input{
 						</tr>
 						<tr align="center">
 							<td colspan="2">조식 인원 수 (1인당 20,000원) :</td>
-							<td><input type="number" name="b_adult" id="option" value="0"></td>
-							<td><input type="number" name="b_kids" id="option" value="0"></td>
+							<td><input type="number" name="b_adult" id="option" value="0" max=<%=adult%>></td>
+							<td><input type="number" name="b_kids" id="option" value="0" max=<%=kids%>></td>
 						</tr>
 						<tr align="center">
 							<td colspan="2">수영장 인원 수 (1인당 20,000원) : </td>
-							<td><input type="number" name="p_adult" id="option" value="0"></td>
-							<td><input type="number" name="p_kids" id="option" value="0"></td>
+							<td><input type="number" name="p_adult" id="option" value="0" max=<%=adult%>></td>
+							<td><input type="number" name="p_kids" id="option" value="0" max=<%=kids%>></td>
 						</tr>
 						<tr align="center">
 							<td colspan="2">사우나 인원 수 (1인당 20,000원) : </td>
-							<td><input type="number" name="s_adult" id="option" value="0"></td>
-							<td><input type="number" name="s_kids" id="option" value="0"></td>
+							<td><input type="number" name="s_adult" id="option" value="0" max="<%=adult%>"></td>
+							<td><input type="number" name="s_kids" id="option" value="0" max="<%=kids%>"></td>
 						</tr>
 						<tr align="center">
 							<td colspan="2">헬스장 인원 수 (1인당 20,000원) : </td>
-							<td><input type="number" name="g_adult" id="option" value="0"></td>
-							<td><input type="number" name="g_kids" id="option" value="0"></td>
+							<td><input type="number" name="g_adult" id="option" value="0" max=<%=adult%>></td>
+							<td><input type="number" name="g_kids" id="option" value="0" max=<%=kids%>></td>
 						</tr>
 					</table>
 				</td>
