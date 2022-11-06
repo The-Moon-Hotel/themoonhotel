@@ -90,11 +90,24 @@ body {
 <script type="text/javascript"src="../js/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
 	$(function(){
+		$('#btnDelete').click(function(){
+			if(!confirm('삭제하시겠습니까?')){
+				event.preventDefault();
+			}
+		});
+	});
+
+	
+	$(function(){
 		$('#btnUpdate').click(function(){
 			location.href="askEdit.jsp?askno=<%=askno %>";
 		});
 		$('#btnDelete').click(function(){
-			location.href="askDelete.jsp?askno=<%=askno %>";
+			if(!confirm('해당 문의글을 삭제하시겠습니까?')){
+				event.preventDefault();
+			}else{
+				location.href="askDelete_ok.jsp?askno=<%=askno %>";
+			}
 		});
 		$('#btnList').click(function(){
 			location.href="askBoardList.jsp";

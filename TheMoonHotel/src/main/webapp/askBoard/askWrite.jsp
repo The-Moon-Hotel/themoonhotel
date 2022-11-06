@@ -22,7 +22,7 @@
 <script type="text/javascript">
 var oEditors=[];
 	$(function() {
-	 		/* nhn.husky.EZCreator.createInIFrame({
+	 		nhn.husky.EZCreator.createInIFrame({
 				oAppRef: oEditors,
 				elPlaceHolder : "txtCon",
 				sSkinURI : "../js/smartEdit/SmartEditor2Skin.html",
@@ -35,7 +35,7 @@ var oEditors=[];
 			          }
 			      }, 
 			      fCreator: "createSEditor2"
-			      }); */
+			      }); 
 			$('#btn1').click(function() {
 			location.href = "askBoardList.jsp";
 			});
@@ -67,7 +67,6 @@ var oEditors=[];
 				<select class="form-select" id="selBoard">
 					<option>문의게시판</option>
 				</select>
-			<%-- <input type="text" name="userid" value="<%=servic %> %>" --%>
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1" class="form-label mt-4"></label> 

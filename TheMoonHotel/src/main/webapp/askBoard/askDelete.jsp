@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%-- <%
+<%
 	String askno = request.getParameter("askno");
 	AskBoardDAO dao = new AskBoardDAO();
 	AskBoardVO vo = null;
@@ -15,7 +15,7 @@
 	}catch(SQLException e){
 		e.printStackTrace();
 	}
-%> --%>
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,10 +26,9 @@
 		padding:5px;
 		margin:5px;
 	 }
-	 
 	.divForm{
 		width:650px;
-		border:1px solid #ddd;		
+		border:1px solid gray;		
 	}
 	
 	.divForm div	{
@@ -40,8 +39,7 @@
 	}	
 	
 	.sp{
-		font-size:0.9em;
-		color:#0056AC;			
+		font-size:0.9em;		
 	}
 	
 	.divForm fieldset	{
@@ -50,6 +48,7 @@
 </style>
 <script type="text/javascript" src = "../js/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
+
 	$(function(){
 		$('form[name=frmDelete]').submit(function(){
 			if($('#pwd').val().length<1){
@@ -71,7 +70,7 @@
 <div class="divForm">
 <form name="frmDelete" method="post"	action="delete_ok.jsp" >
 		<!-- 삭제시 no가 필요하므로 hidden 필드에 넣는다 -->
-		<input type="hidden" name="askno" value="1">
+		<input type="hidden" name="askno" value="<%= askno%>">
 		<fieldset>
 		<legend>글 삭제</legend>
 	        <div>           
@@ -83,8 +82,9 @@
 	        </div>
 	        <div class="center">
 	            <input type ="submit"  value="삭제" />
-	            <input type = "Button" value="글목록" 
-                	OnClick="location.href='list.jsp" />
+	            <a href="askBoardList.jsp">
+	            	<input type = "button" value="글목록"" />
+	            </a>
 	        </div>
 	    </fieldset>
     </form>

@@ -23,14 +23,13 @@
  	String userid = (String)session.getAttribute("userid");	
 	GuestVO vo = guestService.selectByUserid(userid);  
 	
-	//1. 읽어오기
 	request.setCharacterEncoding("utf-8");
 
 	int guestno = vo.getGuestNo();
 	String a_title = request.getParameter("a_title");
 	String a_content = request.getParameter("a_content");
 	
-	//2. db
+
 	AskBoardDAO a_dao = new AskBoardDAO();
 	AskBoardVO a_vo = new AskBoardVO();
 	a_vo.setGuestNo(guestno); 
@@ -40,7 +39,6 @@
 	try{
 		int cnt = a_dao.insert(a_vo);
 		
-		//3. 결과처리
 		if(cnt > 0){%>
 			<script type="text/javascript">
 				alert('문의글이 등록되었습니다.');

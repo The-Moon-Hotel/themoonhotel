@@ -9,21 +9,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%-- <%@ include file = "../login/checkLogin.jsp" %> --%>
-
+<%@ include file = "../login/checkLogin.jsp" %>
 <jsp:include page="../inc/top.jsp"></jsp:include>
+
+<jsp:useBean id="guestSerivce" class="com.moon.guest.model.GuestSerivce" scope="session"></jsp:useBean>
+<jsp:useBean id="guestVO" class="com.moon.guest.model.GuestVO" scope="page"></jsp:useBean>
+
+
+
 <%
+	String userid=(String)session.getAttribute("userid");
+
 	//1. 파라미터 확인
 	request.setCharacterEncoding("utf-8");
 	String condition = request.getParameter("searchCondition");
 	String keyword = request.getParameter("searchKeyword");	
 	
- 	String userid = (String)session.getAttribute("userid");
-	//String userid = "hong"; 
 	
 	/* GuestVO g_vo = new GuestVO(); */
-	GuestSerivce gs = new GuestSerivce();
-	GuestVO g_vo = gs.selectByUserid(userid);
+	GuestVO g_vo = guestSerivce.selectByUserid(userid);
 	//error! ********** 
 	
 	if(keyword == null) keyword ="";

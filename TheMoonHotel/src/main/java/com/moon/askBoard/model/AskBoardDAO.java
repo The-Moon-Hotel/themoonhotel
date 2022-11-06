@@ -180,18 +180,17 @@ public class AskBoardDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public int deleteAskboard(int askno, String pwd) throws SQLException {
+	public int deleteAskboard(int askno) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
 		try {
 			con = pool.getConnection();
 			
-			String sql = "delete from askboard where askno = ? and pwd = ?";
+			String sql = "delete from askboard where askno = ?";
 			ps = con.prepareStatement(sql);
 			
 			ps.setInt(1, askno);
-			ps.setString(2, pwd);
 			
 			int cnt = ps.executeUpdate();
 			
