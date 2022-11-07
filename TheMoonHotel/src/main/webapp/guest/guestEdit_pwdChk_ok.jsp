@@ -37,9 +37,8 @@
 		}else{%>
 			<script type="text/javascript">
 				alert("비밀번호를 확인하세요");
-				location.href("guestEdit_pwdChk.jsp");
-			</script>
-			
+				location.href="guestEdit_pwdChk.jsp";
+			</script>	
 	<%	}
 	}catch(SQLException e){
 		e.printStackTrace();
