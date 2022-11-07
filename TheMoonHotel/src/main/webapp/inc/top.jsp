@@ -199,11 +199,7 @@
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item" href="<%=request.getContextPath() %>/noticeBoard/noticeBoardList.jsp">공지사항</a></li>
             <li><a class="dropdown-item" href="<%=request.getContextPath() %>/reviewBoard/reviewBoard.jsp">리뷰게시판</a></li>
-<<<<<<< HEAD
-            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/askBoard/askBoardList.jsp"">문의게시판</a></li>
-=======
             <li><a class="dropdown-item" href="<%=request.getContextPath() %>/askBoard/askBoardList.jsp">문의게시판</a></li>
->>>>>>> cfdd3aaf1dd26467cacefa5361d59ed78906cd25
           </ul>
         </li>
         <!-- 로고 -->
