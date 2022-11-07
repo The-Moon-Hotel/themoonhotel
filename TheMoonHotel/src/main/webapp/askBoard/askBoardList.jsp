@@ -26,9 +26,7 @@
 	String keyword = request.getParameter("searchKeyword");	
 	
 	
-	/* GuestVO g_vo = new GuestVO(); */
 	GuestVO g_vo = guestSerivce.selectByUserid(userid);
-	//error! ********** 
 	
 	if(keyword == null) keyword ="";
 	
@@ -121,7 +119,11 @@
 					<td>
 						<a href="askDetail.jsp?askno=<%=vo.getAskNo() %>"><%=vo.getA_title() %></a>
 					</td>
-					<td><%=g_vo.getName() %></td>
+					<%if(g_vo.getSys()==1){ %>
+						<td><%=g_vo.getName() %></td>
+					<%}else{ %>
+						<td><%=vo.getGuestNo() %></td>
+					<%} %>
 					<td><%=sdf.format(vo.getA_regdate()) %></td>
 				</tr>
 			<%}//for %>

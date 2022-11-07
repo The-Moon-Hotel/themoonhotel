@@ -115,6 +115,14 @@ body {
 		$('#btnlist').click(function(){
 			location.href="askBoardList.jsp";
 		});
+		
+		$('#btnre').click(function(){
+			<%-- location.href="commentsWrite.jsp?askno="<%=askno%>"; --%>
+			window.open(
+					"commentsWrite.jsp?askno="<%=askno%>",
+					"c_Write", "width=400", "height=500", 
+					 "top= 100", "left=100");
+		});
 	});
 </script>
 <body>
@@ -145,6 +153,9 @@ body {
 				<button type="button" class="btn btn-sm btn-primary" id="btnUpdate">수정</button>
 				<button type="button" class="btn btn-sm btn-primary" id="btnDelete">삭제</button>
 				<button type="button" class="btn btn-sm btn-primary" id="btnlist">목록</button>
+				<%if(g_vo.getSys() != 1){ %>
+					<button type="button" class="btn btn-sm btn-primary" id="btnre">답글</button>
+				<%} %>
 				<br><br><br>
 				
 			</div>
@@ -154,11 +165,7 @@ body {
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 		crossorigin="anonymous"></script>
-		
 <jsp:include page="commentsList.jsp?askno=<%=askno %>"></jsp:include>
-<%if(g_vo.getSys() != 1){ %>
-	<jsp:include page="commentsWrite.jsp?askno=<%=askno %>"></jsp:include>
-<%} %>
 <br><br><br>
 </body>
 
