@@ -7,7 +7,7 @@
 
 <style>
 	table{
-		width: 500px; 
+		width: 300px; 
 		height: 90px;
 		text-align: center;
 	}
@@ -35,24 +35,7 @@
 		<br>
 		<p>이용 시간 및 요금 안내
 		<br>
-		<table border='1'> 
-			<tr style="font-weight: bold">
-				<td>조식</td>
-				<td>06:30 ~ 10:30</td>
-				<td>35,000</td>
-			</tr>
-			<tr style="font-weight: bold">
-				<td>중식(A la carte)</td>
-				<td>11:00 ~ 14:00</td>
-				<td>50,000</td>
-			</tr>
-			<tr style="font-weight: bold">
-				<td>석식(A la carte)</td>
-				<td>17:00 ~ 22:00</td>
-				<td>70,000</td>
-			</tr>
-		</table>
-		<p>※특정 일자에는 운영 시간이 변동될 수 있습니다.
+		<pre style="font-size: 17px">조식     성인  40,000    어린이  17,000</pre>
 		<hr><br>
 	</div>
 	
