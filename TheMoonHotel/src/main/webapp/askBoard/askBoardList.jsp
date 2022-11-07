@@ -96,7 +96,7 @@
 	<p style="font-size: 120%; text-align: center; margin-top:20px;">나의 문의내역</p>
 
 	<hr>
-	<table class="table" style="width: 800px; margin:auto; text-align: center;">
+	<table class="table" style="width: 800px; margin:auto; text-align: center;height:400px">
 	  <thead>
 	    <tr>
 	      <th>번호</th>
@@ -121,17 +121,16 @@
 					<td>
 						<a href="askDetail.jsp?askno=<%=vo.getAskNo() %>"><%=vo.getA_title() %></a>
 					</td>
-					<td><%=vo.getGuestNo() %></td>
+					<td><%=g_vo.getName() %></td>
 					<td><%=sdf.format(vo.getA_regdate()) %></td>
 				</tr>
 			<%}//for %>
 		<%} %>
 	  </tbody>
 </table>
-</div>
 
 
-<div class="divPage">
+<div class="divPage" style="text-align: center">
 <%	
 	//page 나타내기
 	//첫 페이지가 1이 아니면 앞쪽 화살표 나타내기
@@ -164,7 +163,7 @@
 </div>
 	
 	
-<div class="divSearch">
+<div class="divSearch" style="text-align: center">
    	<form name="frmSearch" method="post" action='askBoardList.jsp'>
         <select name="searchCondition" value="condition">
             <option value="title" 
@@ -189,9 +188,16 @@
     </form>
 </div>
 
-<div class="divBtn">
+<div class="divBtn" style="text-align: right">
     <a href='askwrite.jsp' >글쓰기</a>
 </div>
+
+
+
+</div>
+
+
+
 
 
 <jsp:include page="../inc/footer.jsp"></jsp:include>
