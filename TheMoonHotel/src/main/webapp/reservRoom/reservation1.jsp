@@ -1,6 +1,5 @@
 <%@page import="com.moon.common.Utility"%>
 <%@page import="java.util.Date"%>
-
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -37,7 +36,7 @@
 	});
 </script>
 <%
-	String guestNo = (String)session.getAttribute("guestNo");
+	String userid = (String)session.getAttribute("userid"); //로그인 정보
 
 	Date today = new Date();
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -74,8 +73,8 @@
 					</td>
 					<td><input type="date" name="ci_date" id="ci_date" min="<%=now %>" required></td>
 					<td><input type="date" name="co_date" id="ci_date" required></td>
-					<td><input type="number" name="adult" min="1" value="1" style="width:100px"></td>
-					<td><input type="number" name="kids" min="0" value="0" style="width:100px"></td>
+					<td><input type="number" name="adult" min="1" max="2" value="1" style="width:100px"></td>
+					<td><input type="number" name="kids" min="0" max="2" value="0" style="width:100px"></td>
 					<td><input type="submit" value="검색" id="submitBtn"></td>
 				</tr>
 				<tr>

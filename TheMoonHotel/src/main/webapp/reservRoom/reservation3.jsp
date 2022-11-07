@@ -29,7 +29,7 @@
 
 </style>
 <%
-	String guestNo = (String)session.getAttribute("guestNo");
+	String userid = (String)session.getAttribute("userid"); //로그인 정보
 	
 	request.setCharacterEncoding("utf-8");
 
@@ -39,10 +39,9 @@
 	String co_date = request.getParameter("co_date");
 	String adult = request.getParameter("adult");
 	String kids = request.getParameter("kids");
+	
 	String roomType = request.getParameter("roomType");
 	String totalPrice = request.getParameter("totalPrice");
-	
-
 %>
 <div style="margin-top: 100px; margin-bottom: 800px;">
 	<p style="font-size: 30px; text-align: center; font-weight: bold;">객실예약</p>
@@ -116,24 +115,24 @@
 							<td>아동</td>
 						</tr>
 						<tr align="center">
-							<td colspan="2">조식 인원 수 (1인당 20,000원) :</td>
-							<td><input type="number" name="b_adult" id="option" value="0" max=<%=adult%>></td>
-							<td><input type="number" name="b_kids" id="option" value="0" max=<%=kids%>></td>
+							<td colspan="2">조식 인원 수 (1인당 40,000원 / 17,000원) :</td>
+							<td><input type="number" name="b_adult" id="option" value="0" min="0" max="<%=adult%>"></td>
+							<td><input type="number" name="b_kids" id="option" value="0" min="0" max="<%=kids%>"></td>
 						</tr>
 						<tr align="center">
-							<td colspan="2">수영장 인원 수 (1인당 20,000원) : </td>
-							<td><input type="number" name="p_adult" id="option" value="0" max=<%=adult%>></td>
-							<td><input type="number" name="p_kids" id="option" value="0" max=<%=kids%>></td>
+							<td colspan="2">수영장 인원 수 (1인당 45,000원 / 28,000원) : </td>
+							<td><input type="number" name="p_adult" id="option" value="0" min="0" max="<%=adult%>"></td>
+							<td><input type="number" name="p_kids" id="option" value="0" min="0" max="<%=kids%>"></td>
 						</tr>
 						<tr align="center">
-							<td colspan="2">사우나 인원 수 (1인당 20,000원) : </td>
-							<td><input type="number" name="s_adult" id="option" value="0" max="<%=adult%>"></td>
-							<td><input type="number" name="s_kids" id="option" value="0" max="<%=kids%>"></td>
+							<td colspan="2">사우나 인원 수 (1인당 35,000원) : </td>
+							<td><input type="number" name="s_adult" id="option" value="0" min="0" max="<%=adult%>"></td>
+							<td><b>아동 입장 불가</b></td>
 						</tr>
 						<tr align="center">
 							<td colspan="2">헬스장 인원 수 (1인당 20,000원) : </td>
-							<td><input type="number" name="g_adult" id="option" value="0" max=<%=adult%>></td>
-							<td><input type="number" name="g_kids" id="option" value="0" max=<%=kids%>></td>
+							<td><input type="number" name="g_adult" id="option" value="0" min="0" max="<%=adult%>"></td>
+							<td><b>아동 입장 불가</b></td>
 						</tr>
 					</table>
 				</td>
