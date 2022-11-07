@@ -5,7 +5,7 @@ CREATE TABLE Room (
 	roomNo NUMBER NOT NULL, 
 	locName VARCHAR2(50) NOT NULL, 
 	roomType VARCHAR2(50) NOT NULL, 
-	NUMBER NOT NULL, 
+	roomPrice NUMBER NOT NULL, 
 	roomImage VARCHER2(100) NOT NULL, 
 	roomCount NUMBER NOT NULL 
 );

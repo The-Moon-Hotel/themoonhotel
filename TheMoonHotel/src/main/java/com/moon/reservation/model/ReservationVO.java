@@ -1,37 +1,31 @@
 package com.moon.reservation.model;
 
-import java.sql.Date;
-
 public class ReservationVO {
 	private int reservNo;
 	private int guestNo;
 	private int roomNo;
-	private int facNo;
 	private int adult;
 	private int kids;
-	private Date ci_date;
-	private Date co_date;
+	private String ci_date;
+	private String co_date;
 	private int totalPrice;
 	
 	public ReservationVO() {
 		super();
 	}
 
-	public ReservationVO(int reservNo, int guestNo, int roomNo, int facNo, int adult, int kids, Date ci_date,
-			Date co_date, int totalPrice) {
+	public ReservationVO(int reservNo, int guestNo, int roomNo, int adult, int kids, String ci_date,
+			String co_date, int totalPrice) {
 		super();
 		this.reservNo = reservNo;
 		this.guestNo = guestNo;
 		this.roomNo = roomNo;
-		this.facNo = facNo;
 		this.adult = adult;
 		this.kids = kids;
 		this.ci_date = ci_date;
 		this.co_date = co_date;
 		this.totalPrice = totalPrice;
 	}
-
-
 
 	public int getReservNo() {
 		return reservNo;
@@ -47,14 +41,6 @@ public class ReservationVO {
 
 	public void setGuestNo(int guestNo) {
 		this.guestNo = guestNo;
-	}
-
-	public int getFacNo() {
-		return facNo;
-	}
-
-	public void setFacNo(int facNo) {
-		this.facNo = facNo;
 	}
 
 	public int getAdult() {
@@ -73,19 +59,19 @@ public class ReservationVO {
 		this.kids = kids;
 	}
 
-	public Date getCi_date() {
+	public String getCi_date() {
 		return ci_date;
 	}
 
-	public void setCi_date(Date ci_date) {
+	public void setCi_date(String ci_date) {
 		this.ci_date = ci_date;
 	}
 
-	public Date getCo_date() {
+	public String getCo_date() {
 		return co_date;
 	}
 
-	public void setCo_date(Date co_date) {
+	public void setCo_date(String co_date) {
 		this.co_date = co_date;
 	}
 	
@@ -105,14 +91,10 @@ public class ReservationVO {
 		this.totalPrice = totalPrice;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "ReservationVO [reservNo=" + reservNo + ", guestNo=" + guestNo + ", roomNo=" + roomNo + ", facNo="
-				+ facNo + ", adult=" + adult + ", kids=" + kids + ", ci_date=" + ci_date + ", co_date=" + co_date
+		return "ReservationVO [reservNo=" + reservNo + ", guestNo=" + guestNo + ", roomNo=" + roomNo
+				+ ", adult=" + adult + ", kids=" + kids + ", ci_date=" + ci_date + ", co_date=" + co_date
 				+ ", totalPrice=" + totalPrice + "]";
-	}
-
-	
+	}	
 }
