@@ -67,6 +67,16 @@ class="com.moon.room.model.RoomService" scope="session"></jsp:useBean>
 	long gapDate = Utility.calDate(ci_date, co_date);
 	DecimalFormat df = new DecimalFormat("#,###");
 %>
+
+
+
+
+
+
+
+
+
+
 <div style="margin-top: 100px;">
 	<p style="font-size: 30px; text-align: center; font-weight: bold;">객실예약</p>
 

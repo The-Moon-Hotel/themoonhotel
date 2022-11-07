@@ -4,6 +4,15 @@
 <link rel="stylesheet" href="../css/facility.css">
 
 <section class = "faci">
+	<span>
+		<a href="<%=request.getContextPath() %>/facility/facility.jsp">
+			<input type="button" value="부대시설">
+		</a>
+		<a href="<%=request.getContextPath() %>/facility/dining.jsp">
+			<input type="button" value="다이닝">	
+		</a>
+	</span>
+	<br><br>
 	<div class="swim">
 		<h3><b>아름다운 자연 안에서 즐기는 아늑한 휴식</b></h3><br>
 		<p style="font-size: 17px">끝없이 펼쳐지는 바다를 바라보며 즐기는 여유로운 수영과 가벼운 칵테일 한잔.<br>
@@ -42,7 +51,7 @@
 	<div>
 		<span class="title">
 			<b>사우나</b>
-			<b style="margin-left: 510px">실내 체육관</b>
+			<b style="margin-left: 510px">헬스장</b>
 		</span><br><br>
 		<img src = "../images/sau.png" style="cursor:pointer" 
 			onclick="window.open('sauna.jsp','asdfo8or','scrollbars=yes, width=900,height=800,top=10,left=20');">

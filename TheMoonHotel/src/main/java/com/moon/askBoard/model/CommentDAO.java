@@ -23,7 +23,7 @@ public class CommentDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<CommentVO> selectComment(int bdno) throws SQLException {
+	public List<CommentVO> selectComment(int askno) throws SQLException {
 
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -36,9 +36,9 @@ public class CommentDAO {
 			con = pool.getConnection();
 			
 			String sql="select * from comments"
-					+ "	where bdno = ?";
+					+ "	where askno = ?";
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, bdno);
+			ps.setInt(1, askno);
 			
 			rs = ps.executeQuery();
 			
@@ -49,7 +49,7 @@ public class CommentDAO {
 				String content = rs.getString("content");
 				
 				CommentVO vo 
-					= new CommentVO(no, name, regdate, content, bdno);
+					= new CommentVO(no, name, regdate, content, askno);
 				
 				list.add(vo);
 			}
@@ -77,14 +77,13 @@ public class CommentDAO {
 			con=pool.getConnection();
 			
 			//3. ps
-			String sql="insert into comments(no, name, regdate, content, bdno)"
-				+ " values(comments_seq.nextval, ?,?,?,?)";
+			String sql="insert into comments(no, name, content, askno)"
+				+ " values(comments_seq.nextval, ?, ?, ?)";
 			ps=con.prepareStatement(sql);
 			
 			ps.setString(1, vo.getName());
-			ps.setTimestamp(3, vo.getRegdate());
-			ps.setString(4, vo.getContent());
-			ps.setInt(5, vo.getBdno());
+			ps.setString(2, vo.getContent());
+			ps.setInt(3, vo.getAskno());
 			
 			//4. exec
 			int cnt=ps.executeUpdate();

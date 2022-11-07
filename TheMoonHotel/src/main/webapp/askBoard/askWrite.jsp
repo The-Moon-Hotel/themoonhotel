@@ -20,31 +20,17 @@
 	src="../js/smartEdit/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
-var oEditors=[];
+
 	$(function() {
-	 		nhn.husky.EZCreator.createInIFrame({
-				oAppRef: oEditors,
-				elPlaceHolder : "txtCon",
-				sSkinURI : "../js/smartEdit/SmartEditor2Skin.html",
-			      htParams : {
-			          bUseToolbar : true,             
-			          bUseVerticalResizer : true,     
-			          bUseModeChanger : true,         
-			          fOnBeforeUnload : function(){
-			        	  
-			          }
-			      }, 
-			      fCreator: "createSEditor2"
-			      }); 
-			$('#btn1').click(function() {
+		$('#btn1').click(function() {
 			location.href = "askBoardList.jsp";
-			});
+		});
 	});
 	
 	$(function(){
 		$('form[name=askWrite]').submit(function(){
 			$('.form-control').each(function(index, item){
-				if($(this).val().length < 1){
+				if($(this).val()=""){
 					alert('작성이 완료되지 않았습니다.');
 					$(this).focus();
 					event.preventDefault();
@@ -75,8 +61,10 @@ var oEditors=[];
 			</div>
 			<div class="form-group">
 				<label for="exampleTextarea" class="form-label mt-4"></label>
-				<textarea id="txtCon" class="form-control" rows="6" name="a_content"
-					placeholder="내용을 입력하세요"></textarea>
+				<!-- <textarea id="txtCon" class="form-control" rows="6" name="a_content"
+					placeholder="내용을 입력하세요"></textarea> -->
+				<input id="txtCon" class="form-control" rows="6" name="a_content"
+					 style="height: 200px;"></input>
 			</div>
 			<div class="form-group">
 				<label for="formFile" class="form-label mt-4">파일 첨부</label> 

@@ -9,7 +9,7 @@ import java.sql.Timestamp;
     name             varchar2(20)    not null,            --이름    
     regdate         date        default  sysdate,    --작성일
     content         varchar2(2000)         null,            --내용
-    bdNo            number references askboard(askno) on delete cascade not null        --원본 게시판 글번호    
+    askno           number references askboard(askno) on delete cascade not null        --원본 게시판 글번호    
 );
 
 create sequence comments_seq
@@ -24,7 +24,7 @@ public class CommentVO {
 	private String name;
 	private Timestamp regdate;
 	private String content;
-	private int bdno;
+	private int askno;
 	
 	
 	public CommentVO() {
@@ -32,13 +32,13 @@ public class CommentVO {
 	}
 
 
-	public CommentVO(int no, String name, Timestamp regdate, String content, int bdno) {
+	public CommentVO(int no, String name, Timestamp regdate, String content, int askno) {
 		super();
 		this.no = no;
 		this.name = name;
 		this.regdate = regdate;
 		this.content = content;
-		this.bdno = bdno;
+		this.askno = askno;
 	}
 
 
@@ -81,20 +81,20 @@ public class CommentVO {
 	}
 
 
-	public int getBdno() {
-		return bdno;
+	public int getAskno() {
+		return askno;
 	}
 
 
-	public void setBdno(int bdno) {
-		this.bdno = bdno;
+	public void setAskno(int askno) {
+		this.askno = askno;
 	}
 
 
 	@Override
 	public String toString() {
 		return "CommentVO [no=" + no + ", name=" + name + ", regdate=" + regdate + ", content="
-				+ content + ", bdno=" + bdno + "]";
+				+ content + ", askno=" + askno + "]";
 	}
 	
 	

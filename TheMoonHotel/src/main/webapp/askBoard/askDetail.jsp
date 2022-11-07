@@ -1,3 +1,4 @@
+<%@page import="com.moon.guest.model.GuestVO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.moon.askBoard.model.AskBoardVO"%>
@@ -6,7 +7,17 @@
 	pageEncoding="utf-8"%>
 <jsp:include page="../inc/top.jsp"></jsp:include>
 <%-- <%@ include file = "../login/checkLogin.jsp" %> --%>
+
+<jsp:useBean id="guestSerivce" class="com.moon.guest.model.GuestSerivce" scope="session"></jsp:useBean>
+<jsp:useBean id="guestVO" class="com.moon.guest.model.GuestVO" scope="page"></jsp:useBean>
+
+
+
 <%
+	String userid=(String)session.getAttribute("userid");
+	GuestVO g_vo = guestSerivce.selectByUserid(userid);
+
+
 	String askno = request.getParameter("askno");
 
 	if (askno == null || askno.isEmpty()) {%>
@@ -90,15 +101,6 @@ body {
 <script type="text/javascript"src="../js/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		$('#btnDelete').click(function(){
-			if(!confirm('삭제하시겠습니까?')){
-				event.preventDefault();
-			}
-		});
-	});
-
-	
-	$(function(){
 		$('#btnUpdate').click(function(){
 			location.href="askEdit.jsp?askno=<%=askno %>";
 		});
@@ -109,7 +111,8 @@ body {
 				location.href="askDelete_ok.jsp?askno=<%=askno %>";
 			}
 		});
-		$('#btnList').click(function(){
+		
+		$('#btnlist').click(function(){
 			location.href="askBoardList.jsp";
 		});
 	});
@@ -119,15 +122,18 @@ body {
 		<div class="container" role="main">
 		<br><br><br>
 			<h2>문의내역</h2>
+			<br><br>
 			<div class="bg-white rounded shadow-sm">
 				<div class="board_title">
 				<%=vo.getA_title() %>
 				<!-- 클릭한 게시물 제목 보이기 -->
-				</div>
+				<span class="board_date"><%=sdf.format(vo.getA_regdate()) %> </span><!-- 게시글 날짜 -->
+				</div> 
+				<br><br>
 				<div class="board_info_box">
-					<span class="board_author"><%=vo.getA_content() %></span><!-- 게시글 내용 -->
-					<span class="board_date"><%=sdf.format(vo.getA_regdate()) %> </span><!-- 게시글 날짜 -->
+					<span class="board_author" style=font-size:1em><%=vo.getA_content() %></span><!-- 게시글 내용 -->
 				</div>
+				<br>
 				<div class="board_content"></div>
 				<div class="board_tag">
 				</div>
@@ -135,11 +141,12 @@ body {
 			<div style="margin-top: 20px">
 				<br>
 				<br>
-				<br>
+				
 				<button type="button" class="btn btn-sm btn-primary" id="btnUpdate">수정</button>
 				<button type="button" class="btn btn-sm btn-primary" id="btnDelete">삭제</button>
-				<button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
+				<button type="button" class="btn btn-sm btn-primary" id="btnlist">목록</button>
 				<br><br><br>
+				
 			</div>
 		</div>
 	</article>
@@ -147,6 +154,13 @@ body {
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 		crossorigin="anonymous"></script>
+		
+<jsp:include page="commentsList.jsp?askno=<%=askno %>"></jsp:include>
+<%if(g_vo.getSys() != 1){ %>
+	<jsp:include page="commentsWrite.jsp?askno=<%=askno %>"></jsp:include>
+<%} %>
+<br><br><br>
 </body>
+
 <jsp:include page="../inc/footer.jsp"></jsp:include>
 </html>
