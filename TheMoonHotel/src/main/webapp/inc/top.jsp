@@ -126,7 +126,7 @@
 		          <ul class="dropdown-menu">
 		          	<li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/myReservList.jsp">예약정보 확인</a></li>
 		            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/guestEdit_pwdChk.jsp">회원정보수정</a></li>
-		            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/signEdit.jsp">문의내역</a></li>
+		            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/askBoard/askBoardList.jsp">문의내역</a></li>
 		            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/guest/guestOut.jsp">회원탈퇴</a></li>
 		          </ul>
 		        </li>
@@ -199,7 +199,7 @@
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item" href="<%=request.getContextPath() %>/noticeBoard/noticeBoardList.jsp">공지사항</a></li>
             <li><a class="dropdown-item" href="<%=request.getContextPath() %>/reviewBoard/reviewBoard.jsp">리뷰게시판</a></li>
-            <li><a class="dropdown-item" href="<%=request.getContextPath() %>">문의게시판</a></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/askBoard/askBoardList.jsp">문의게시판</a></li>
           </ul>
         </li>
         <!-- 로고 -->
