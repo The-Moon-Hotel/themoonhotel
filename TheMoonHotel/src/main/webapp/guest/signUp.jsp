@@ -9,12 +9,32 @@
 h3{
 	font-weight: bold;
 }
+span{
+	color: red;
+	font-size: 0.8em;
+	vertical-align: top;
+	padding-top: 2px;
+}
 </style>
 <script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	$('#name').focus();
-	
+	$('#name').keyup(function(){
+		$('#spanName').css("display","none");
+	});
+	$('#userid').keyup(function(){
+		$('#spanUserid').css("display","none");
+	});
+	$('#pwd').keyup(function(){
+		$('#spanPwd').css("display","none");
+	});
+	$('#pwd2').keyup(function(){
+		$('#spanPwd2').css("display","none");
+	})
+	$('#tel2').keyup(function(){
+		$('#spanTel').css("display","none");
+	})
 	$('#sub1').click(function(){
 		if(!$('#chkAgree').is(':checked')){
 			alert("약관에 동의해야합니다.");
@@ -84,20 +104,20 @@ function validate_userid(id){
 					<hr>
 					<br>
 					<div class="col col-md-6 mb-3">
-						<label for="name">이름</label> <input type="text"
+						<label for="name">이름<span id="spanName"> *필수 입력사항입니다.</span></label> <input type="text"
 							class="form-control" id="name" name="name" placeholder="이름을 입력하세요." required>
 					</div>
 					<div class="col-md-6 mb-3">
-						<label for="id" style="display: block;">ID</label> <input type="text" style="display: inline-block;width: 264px" class="form-control"
+						<label for="id" style="display: block;">ID<span id="spanUserid"> *필수 입력사항입니다.</span></label> <input type="text" style="display: inline-block;width: 264px" class="form-control"
 							id="userid"  name="userid" placeholder="아이디를 입력하세요." required>
 						<button type="button" class="btn btn-secondary" id="btnChkId" >ID중복확인</button>
 					</div>
 					<div class="col-md-6 mb-3">
-						<label for="pwd">비밀번호</label> <input type="password"
+						<label for="pwd">비밀번호<span id="spanPwd"> *필수 입력사항입니다.</span></label> <input type="password"
 							class="form-control" id="pwd" name="pwd" placeholder="비밀번호를 입력하세요." required>
 					</div>
 					<div class="col-md-6 mb-3">
-						<label for="pwd2">비밀번호 확인</label> <input type="password"
+						<label for="pwd2">비밀번호 확인<span id="spanPwd2"> *필수 입력사항입니다.</span></label> <input type="password"
 							class="form-control" id="pwd2" placeholder="비밀번호를 확인하세요." required>
 						<div class="invalid-feedback"></div>
 					</div>
@@ -108,7 +128,7 @@ function validate_userid(id){
 						  <span class="input-group-text">@</span>
 						  <input type="text" class="form-control" id="email2" name="email2" aria-label="naver.com" value="">
 					</div>
-						<p >전화번호</p> 
+						<p style="margin-bottom: 0">전화번호<span id="spanTel"> *필수 입력사항입니다.</span></p> 
 					<div class="mb-3" style="">
 						<div class="container " style="height: 30px">
 						  <div class="row">
