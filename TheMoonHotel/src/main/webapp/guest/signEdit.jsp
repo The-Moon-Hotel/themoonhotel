@@ -23,8 +23,8 @@
 	}
 	String email=guestVO.getEmail();
 	String email1="", email2="", email3="";
-	if(email!=null&& !email.isEmpty()){
-		String[] emailArr=tel.split("@");
+	if(email!=null && !email.isEmpty()){
+		String[] emailArr=email.split("@");
 		email1=emailArr[0];
 		email2=emailArr[1];
 	}

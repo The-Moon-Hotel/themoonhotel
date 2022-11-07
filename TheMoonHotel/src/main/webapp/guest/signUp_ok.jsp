@@ -16,6 +16,7 @@
 <jsp:useBean id="guestSerivce" class="com.moon.guest.model.GuestSerivce" scope="page"></jsp:useBean>
 	
 	<%
+		
 		String name= request.getParameter("name");
 		String userid= request.getParameter("userid");
 		String pwd= request.getParameter("pwd");
