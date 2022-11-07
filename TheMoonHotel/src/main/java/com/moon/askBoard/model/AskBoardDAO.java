@@ -218,7 +218,7 @@ public class AskBoardDAO {
 		try {
 			con = pool.getConnection();
 			
-			String sql = "select * from askboard where guestno = ?";
+			String sql = "select * from askboard where guestno = ? order by askno desc";
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, guestno);
 			

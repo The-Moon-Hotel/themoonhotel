@@ -24,6 +24,7 @@
 
 	vo.setA_title(a_title);
 	vo.setA_content(a_content);
+	vo.setAskNo(Integer.parseInt(askno));
 
 	try {
 		int cnt = dao.updateAskboard(vo);

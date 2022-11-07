@@ -96,7 +96,7 @@
 	<p style="font-size: 120%; text-align: center; margin-top:20px;">나의 문의내역</p>
 
 	<hr>
-	<table class="table" style="width: 800px; margin:auto; text-align: center;height:400px">
+	<table class="table" style="width: 800px; margin:auto; text-align: center">
 	  <thead>
 	    <tr>
 	      <th>번호</th>
@@ -130,7 +130,7 @@
 </table>
 
 
-<div class="divPage" style="text-align: center">
+<div class="divPage" style="text-align: center"; margin: 10px;>
 <%	
 	//page 나타내기
 	//첫 페이지가 1이 아니면 앞쪽 화살표 나타내기
@@ -188,8 +188,8 @@
     </form>
 </div>
 
-<div class="divBtn" style="text-align: right">
-    <a href='askwrite.jsp' >글쓰기</a>
+<div class="divbtn" style="margin-left: 1300px">
+    <a href='askWrite.jsp' >글쓰기</a>
 </div>
 
 

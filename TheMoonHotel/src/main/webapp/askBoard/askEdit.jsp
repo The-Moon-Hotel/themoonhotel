@@ -29,7 +29,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
@@ -54,23 +54,9 @@
 	src="../js/smartEdit/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
-var oEditors=[];
 	$(function() {
-		nhn.husky.EZCreator.createInIFrame({
-			oAppRef: oEditors,
-			elPlaceHolder : "txtCon",
-			sSkinURI : "../js/smartEdit/SmartEditor2Skin.html",
-		      htParams : {
-		          bUseToolbar : true,             
-		          bUseVerticalResizer : true,     
-		          bUseModeChanger : true,         
-		          fOnBeforeUnload : function(){
-		          }
-		      }, 
-		      fCreator: "createSEditor2"
-		      });
-			$('#btn1').click(function() {
-			location.href = "noticeBoardList.jsp";
+		$('#btn1').click(function() {
+			location.href = "askBoardList.jsp";
 		});
 	});
 </script>
@@ -78,7 +64,7 @@ var oEditors=[];
 <br><br><br>
 <div id="div1" class="container text-left">
 	<form name="askEdit" method="post" action="askEdit_ok.jsp">
-		<input type = "hidden" name="askno" value ="<%= askno %>"/>
+		<input type = "text" name="askno" value ="<%= askno %>"/>
 		<fieldset>
 			<legend>게시글 수정</legend>
 			<div class="form-group">
@@ -89,19 +75,19 @@ var oEditors=[];
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1" class="form-label mt-4"></label>
-				<input type="text" class="form-control" id="title1" name="a_tite"
+				<input type="text" class="form-control" id="title1" name="a_title"
 					value=<%=vo.getA_title() %> > 
 			</div>
 			<div class="form-group">
 				<label for="exampleTextarea" class="form-label mt-4"></label>
-				<textarea id="txtCon" class="form-control" rows="6" 
-					value="<%=vo.getA_content()%>"></textarea>
+				<input id="txtCon" class="form-control" rows="6" name="a_content"
+					 value=<%=vo.getA_content() %> style="height: 200px;"></input>
 			</div>
 			<div class="form-group">
 				<label for="formFile" class="form-label mt-4">파일 첨부</label>
 				<input class="form-control" type="file" id="formFile">
 			</div>
-			<button id="sub1" type="submit" class="btn btn-primary">작성</button>
+			<button id="sub1" type="submit" class="btn btn-primary">수정</button>
 			<button id="btn1" type="button" class="btn btn-primary">목록</button>
 		</fieldset>
 	</form>

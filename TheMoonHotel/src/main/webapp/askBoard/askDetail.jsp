@@ -90,15 +90,6 @@ body {
 <script type="text/javascript"src="../js/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		$('#btnDelete').click(function(){
-			if(!confirm('삭제하시겠습니까?')){
-				event.preventDefault();
-			}
-		});
-	});
-
-	
-	$(function(){
 		$('#btnUpdate').click(function(){
 			location.href="askEdit.jsp?askno=<%=askno %>";
 		});
@@ -109,7 +100,7 @@ body {
 				location.href="askDelete_ok.jsp?askno=<%=askno %>";
 			}
 		});
-		$('#btnList').click(function(){
+		$('#btnlist').click(function(){
 			location.href="askBoardList.jsp";
 		});
 	});
@@ -119,15 +110,18 @@ body {
 		<div class="container" role="main">
 		<br><br><br>
 			<h2>문의내역</h2>
+			<br><br>
 			<div class="bg-white rounded shadow-sm">
 				<div class="board_title">
 				<%=vo.getA_title() %>
 				<!-- 클릭한 게시물 제목 보이기 -->
-				</div>
+				<span class="board_date"><%=sdf.format(vo.getA_regdate()) %> </span><!-- 게시글 날짜 -->
+				</div> 
+				<br><br>
 				<div class="board_info_box">
-					<span class="board_author"><%=vo.getA_content() %></span><!-- 게시글 내용 -->
-					<span class="board_date"><%=sdf.format(vo.getA_regdate()) %> </span><!-- 게시글 날짜 -->
+					<span class="board_author" style=font-size:1em><%=vo.getA_content() %></span><!-- 게시글 내용 -->
 				</div>
+				<br>
 				<div class="board_content"></div>
 				<div class="board_tag">
 				</div>
@@ -138,7 +132,7 @@ body {
 				<br>
 				<button type="button" class="btn btn-sm btn-primary" id="btnUpdate">수정</button>
 				<button type="button" class="btn btn-sm btn-primary" id="btnDelete">삭제</button>
-				<button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
+				<button type="button" class="btn btn-sm btn-primary" id="btnlist">목록</button>
 				<br><br><br>
 			</div>
 		</div>
