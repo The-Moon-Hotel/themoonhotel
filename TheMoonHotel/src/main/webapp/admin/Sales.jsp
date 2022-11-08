@@ -1,3 +1,7 @@
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.util.List"%>
+<%@page import="com.moon.sales.model.SalesVO"%>
+<%@page import="com.moon.sales.model.SalesService"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -15,26 +19,34 @@ String date1=request.getParameter("searchDate1");
 String date2=request.getParameter("searchDate2");
 SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
 
+SalesService salesService =new SalesService();
+List<SalesVO> list=null;
 //branchType는  
 if(branchType!=null&& !branchType.isEmpty()&&salesType!=null&& !salesType.isEmpty()){
+	int bt=Integer.parseInt(branchType);
+	int st=Integer.parseInt(salesType);
+	Date d1=sdf.parse(date1);
+	Date d2=sdf.parse(date2);
+	int compareDate=d1.compareTo(d2);
+	Date change=null;
+	if(compareDate>0){
+		change=d1;
+		d1=d2;
+		d2=change;
+	} 
+	String date01=sdf.format(d1);
+	String date02=sdf.format(d2);
+	if(st==1){//타입별
+		try{
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+	}else if(st==2){//부대시설별
+		
+	}else if(st==3){//전체(부대시설+ 타입)
+		
+	}	
 	
-	if(Integer.parseInt(branchType)>=1 && Integer.parseInt(branchType)<=3){ //지점별
-		if(Integer.parseInt(salesType)==1){//타입별
-			
-		}else if(Integer.parseInt(salesType)==2){//부대시설별
-			
-		}else if(Integer.parseInt(salesType)==3){//전체(부대시설+ 타입)
-			
-		}
-	}else{ //전체 지점
-		if(Integer.parseInt(salesType)==1){//타입별
-			
-		}else if(Integer.parseInt(salesType)==2){//부대시설별
-			
-		}else if(Integer.parseInt(salesType)==3){//전체(부대시설+ 타입)
-			
-		}
-	}
 }else{
 	branchType="";
 	salesType="";
@@ -46,10 +58,24 @@ if(branchType!=null&& !branchType.isEmpty()&&salesType!=null&& !salesType.isEmpt
 <script type="text/javascript">
 	$(function(){
 		$('form[name=SalseCk]').submit(function(){
-			if($('#branchType').val().length<1){
-				
-			}else if($('#salesType').val().length<1){
-				
+			var branchChk=$('#branchType option:selected').val();
+			var salesChk=$('#salesType option:selected').val();
+			if(branchChk=='0'){
+				alert("조회할 지점을 선택하세요");
+				$(this).focus();s
+				event.preventDefault();
+			}else if(salesChk=='0'){
+				alert("조회목록을 선택하세요");
+				$(this).focus();
+				event.preventDefault();
+			}else if($('#date1').val().length<1){
+				alert("조회할 기간을 선택하세요");
+				$(this).focus();
+				event.preventDefault();
+			}else if($('#date2').val().length<1){
+				alert("조회할 기간을 선택하세요");
+				$(this).focus();
+				event.preventDefault();
 			}
 		});
 	});
@@ -72,31 +98,31 @@ if(branchType!=null&& !branchType.isEmpty()&&salesType!=null&& !salesType.isEmpt
 						<div>
 							<p class="pSize" style="display: inline-block;">지점 : </p>
 							<select class="form-select form-select-md mb-3 selectSize" id="branchType" name="SearchBranchType" style="display: inline-block;" >
-							  	<option selected>지점선택</option>
-								<option value="1"
-									<%if(branchType.equals("1")){ %>
+							  	<option value="0">지점선택</option>
+								<option value="Full Moon"
+									<%if(branchType.equals("Full Moon")){ %>
 							  			selected="selected"
 							  		<%} %>
-								>FullMoon</option>
-								<option value="2"
-									<%if(branchType.equals("2")){ %>
+								>Full Moon</option>
+								<option value="Half Moon"
+									<%if(branchType.equals("Half Moon")){ %>
 							  			selected="selected"
 							  		<%} %>								
-								>HalfMoon</option>
-								<option value="3"
-									<%if(branchType.equals("3")){ %>
+								>Half Moon</option>
+								<option value="Crescent Moon"
+									<%if(branchType.equals("Crescent Moon")){ %>
 							  			selected="selected"
 							  		<%} %>								
-								>CrescentMoon</option>
-								<option value="4"
-									<%if(branchType.equals("4")){ %>
+								>Crescent Moon</option>
+								<option value="all"
+									<%if(branchType.equals("all")){ %>
 							  			selected="selected"
 							  		<%} %>								
 								>전체지점</option>
 							</select>
 							<p class="pSize" style="display: inline-block;">조회목록 : </p>
 							<select class="form-select form-select-md mb-3 selectSize" id="salesType" name="SearchSalesType" style="display: inline-block;" >
-							  	<option selected>조회 목록</option>
+							  	<option value="0">조회 목록</option>
 								<option value="1"
 									<%if(salesType.equals("1")){ %>
 							  			selected="selected"
@@ -116,11 +142,11 @@ if(branchType!=null&& !branchType.isEmpty()&&salesType!=null&& !salesType.isEmpt
 						</div>
 							<p class="pSize" style="display: inline-block;">조회기간 : </p>
 						<div class="input-group mb-3 dateSize" style="display: inline-block;width: 311px;">
-						  	<input type="date" class="form-control " style="width: 100%" name="searchDate1" value="<%=date1 %>">
+						  	<input type="date" class="form-control " style="width: 100%" name="searchDate1" id="date1" value="<%=date1 %>">
 						</div>
 							<p class="pSize" style="display: inline-block; width: 30px">&nbsp;~&nbsp;</p>
 						<div class="input-group mb-3 dateSize" style="display: inline-block; width: 311px;">
-						  	<input type="date" class="form-control" style="width: 100%" name="searchDate2" value="<%=date2 %>">
+						  	<input type="date" class="form-control" style="width: 100%" name="searchDate2" id="date2" value="<%=date2 %>">
 						</div>
 						<div style="text-align:center ;display: block;">
 							<button type="submit" class="btn btn-dark" style="width: 100px">조회</button>
