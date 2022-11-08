@@ -72,29 +72,21 @@ body {
 	});
 </script>
 <%
-String no = request.getParameter("no");
-if (no == null || no.isEmpty()) {
-%>
-<script type="text/javascript">
-	alert('잘못된 url입니다');
-	location.href = "list.jsp";
-</script>
+String noticeNo = request.getParameter("noticeNo");
+String guestNo = request.getParameter("guestNo");
 
-<%
-return;
-}
+
 NoticeBoardDAO dao = new NoticeBoardDAO();
 NoticeBoardVO vo = null;
 
 try{
-	vo = dao.selectByNo(Integer.parseInt(no));
+	vo = dao.selectByNo(Integer.parseInt(noticeNo));
 }catch(SQLException e){
 	e.printStackTrace();
 }
 %>
 <body>
 	<article>
-
 		<div class="container" role="main">
 		<br><br><br>
 			<h2>상세보기</h2>
@@ -103,7 +95,7 @@ try{
 				<%=vo.getN_title() %><!-- 클릭한 게시물 제목 보이기 -->
 				</div>
 				<div class="board_info_box">
-					<span class="board_author"><%=vo.getN_content()%></span><!-- 게시글 내용 -->
+					<span class="board_author"><%=vo.getN_title() %></span><!-- 게시글 내용 -->
 					<span class="board_date"><%=vo.getN_regdate() %> </span><!-- 게시글 날짜 -->
 				</div>
 				<div class="board_content"></div>
