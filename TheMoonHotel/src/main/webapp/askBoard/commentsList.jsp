@@ -5,6 +5,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<link rel="stylesheet" type="text/css" href="../css/sales.css">
 
 
 <%
@@ -31,7 +32,7 @@
 </style>
 <body>
 	<h4 style="margin-left: 90px">답글</h4>
-	<table  border="1">
+	<%-- <table  border="1">
 	<tr>
 		<th>작성자</th>
 		<th>내용</th>
@@ -51,4 +52,32 @@
 			</tr>
 		<% }%>
 	<%} %>
-</table>
+</table> --%>
+	<div class="tableSize">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">작성자</th>
+					<th scope="col">내용</th>
+					<th scope="col">시간</th>
+				</tr>
+				
+			<tbody>
+				<%if(list==null||list.isEmpty()){ %>
+				<tr>
+					<td colspan="3" style="text-align: center">등록된 답변이 없습니다.</td>
+				</tr>
+				<% }else{%>
+					<%for(int i=0; i<list.size(); i++){ 
+						CommentVO vo = list.get(i);%>
+					
+						<tr>
+							<td><%=vo.getName()%></td>
+							<td><%=vo.getContent()%></td>
+							<td><%=sdf.format(vo.getRegdate())%></td>
+						</tr>
+					<% }%>
+				<%} %>
+			</tbody>
+		</table>
+	</div>
