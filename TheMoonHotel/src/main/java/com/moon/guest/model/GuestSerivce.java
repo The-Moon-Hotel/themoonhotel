@@ -48,4 +48,9 @@ public class GuestSerivce {
 	public int OutGuset(String userid , String pwd) throws SQLException {
 		return guestDAO.OutGuset(userid, pwd);
 	}
+	
+	//매개변수 회원번호로 회원정보 불러오는 매서드
+	public GuestVO selectByGuestNo(int guestNo) throws SQLException {
+		return guestDAO.selectByGuestNo(guestNo);
+	}
 }

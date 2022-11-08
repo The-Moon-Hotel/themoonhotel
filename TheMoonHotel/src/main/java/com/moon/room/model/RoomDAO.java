@@ -32,6 +32,7 @@ private ConnectionPoolMgr pool;
 			
 			rs = ps.executeQuery();
 			
+			RoomVO roomVo = null;
 			while(rs.next()) {
 				int roomNo = rs.getInt("roomNo");
 				String roomType = rs.getString("roomType");
@@ -39,7 +40,7 @@ private ConnectionPoolMgr pool;
 				String roomImage = rs.getString("roomImage");
 				int roomCount = rs.getInt("roomCount");
 				
-				RoomVO roomVo = new RoomVO(roomNo, locName, roomType, roomPrice, roomImage, roomCount);
+				roomVo = new RoomVO(roomNo, locName, roomType, roomPrice, roomImage, roomCount);
 				rlist.add(roomVo);
 			}
 			System.out.println("룸 전체 조회 결과 rlist.size="+rlist.size());

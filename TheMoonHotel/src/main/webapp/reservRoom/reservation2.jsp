@@ -44,6 +44,7 @@
 </script>
 <jsp:useBean id="roomService" 
 class="com.moon.room.model.RoomService" scope="session"></jsp:useBean>
+
 <%
 	String userid = (String)session.getAttribute("userid"); //로그인 정보
 
@@ -67,15 +68,6 @@ class="com.moon.room.model.RoomService" scope="session"></jsp:useBean>
 	long gapDate = Utility.calDate(ci_date, co_date);
 	DecimalFormat df = new DecimalFormat("#,###");
 %>
-
-
-
-
-
-
-
-
-
 
 <div style="margin-top: 100px;">
 	<p style="font-size: 30px; text-align: center; font-weight: bold;">객실예약</p>
@@ -150,9 +142,11 @@ class="com.moon.room.model.RoomService" scope="session"></jsp:useBean>
 						readonly style="width: 100px; font-size:100%;"> 원
 					</td>
 					<td id="line">
-						<input type="submit" id="submitBtn" value="예약하기" >
+						<!-- <input type="submit" id="submitBtn" value="예약하기" > -->
+						<input type="button" id="submitBtn" value="예약하기" onclick="location.href='reservation3.jsp?ci_date=<%=ci_date%>&co_date=<%=co_date%>&adult=<%=adult%>&kids=<%=kids%>&roomType=<%=roomVo.getRoomType()%>&roomImage=<%=roomVo.getRoomImage()%>&totalPrice=<%=df.format(roomVo.getRoomPrice()*gapDate)%>&locName=<%=locName%>'"
 					</td>
 				</tr>
+			
 		<%	
 			}//for 		
 		}//if%>

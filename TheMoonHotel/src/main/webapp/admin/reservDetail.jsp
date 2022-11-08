@@ -54,7 +54,7 @@
 		</ul>
 	</div>
 	</div>
-	<div>
+	<div style="display: inline-block;">
 		<a class="btn btn-secondary" role="button" id="reservList"
 			 href="reservList.jsp">예약 목록</a>
 	</div>
