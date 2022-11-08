@@ -22,7 +22,7 @@
 	.divForm{
 		width: 800px;
 		margin-top: 30px;
-		margin-left: 90px;
+		margin-left: 300px;
 	}
 </style>
 <div class="divForm">
@@ -31,10 +31,10 @@
 	
 	<input type="hidden" name="askno" value="<%=askno%>">
 	
-        <div>  
+        <div >  
         	<label for="c_content"><b>관리자 문의답변 작성</b></label>
         	<br> <br>     
- 			<textarea id="c_content" name="c_content" style="height: 200px; width:490px;font-size: 15px"></textarea>
+ 			<textarea id="c_content" name="c_content" style="height: 200px; width:450px;font-size: 15px;border:1px solid #d1d1d1;"></textarea>
         </div>
         <br>
         <div class="center">

@@ -41,13 +41,6 @@
 	//3.
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-	/* not null
-	String content = vo.getContent();
-	if (content != null && !content.isEmpty()) {
-		content = content.replace("\r\n", "<br>");
-	} else {
-		content = "";
-	}*/
 %>
 <!DOCTYPE html>
 <html>
