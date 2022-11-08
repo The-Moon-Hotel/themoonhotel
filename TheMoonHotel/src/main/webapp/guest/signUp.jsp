@@ -71,7 +71,7 @@ $(function(){
 		}else if(!$('#aggrement').is(':checked')){
 			alert("개인정보 수집 및 이용에 동의해야합니다.");
 			$('#aggrement').focus();
-			event.preventDefault()
+			event.preventDefault();
 		}
 	});
 	
