@@ -91,15 +91,22 @@
 	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
 	crossorigin="anonymous">
 <div style="height: 800px;">
-	<p style="font-size: 120%; text-align: center; margin-top:20px;">나의 문의내역</p>
-
+	<%if(g_vo.getSys() != 1){ %>
+		<p style="font-size: 120%; text-align: center; margin-top:20px;">고객 문의내역</p>
+	<%}else{%>
+		<p style="font-size: 120%; text-align: center; margin-top:20px;">나의 문의내역</p>
+	<%} %>
 	<hr>
 	<table class="table" style="width: 800px; margin:auto; text-align: center">
 	  <thead>
 	    <tr>
 	      <th>번호</th>
 		  <th>제목</th>
-		  <th>고객이름</th>
+		  <%if(g_vo.getSys() != 1){ %>
+		  	<th>고객번호</th>
+		  <%}else{%>
+		 	 <th>고객이름</th>
+		  <%} %>
 		  <th>등록날짜</th>	
 	    </tr>
 	  </thead>
