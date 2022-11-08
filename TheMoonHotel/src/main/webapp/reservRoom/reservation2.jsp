@@ -38,12 +38,14 @@
 				event.preventDefault();
 			}
 		});
+		
+		if('#submiBtn').
 	});
 </script>
-<jsp:useBean id="locInfoService" 
+<jsp:useBean id="roomService" 
 class="com.moon.room.model.RoomService" scope="session"></jsp:useBean>
 <%
-String guestNo = (String)session.getAttribute("guestNo");
+	String userid = (String)session.getAttribute("userid"); //로그인 정보
 
 	request.setCharacterEncoding("utf-8");
 
@@ -57,7 +59,7 @@ String guestNo = (String)session.getAttribute("guestNo");
 	//2. db 작업
 	List<RoomVO> rlist = null;
 	try{
-		rlist = locInfoService.selectRoom(locName);	
+		rlist = roomService.selectRoom(locName);			
 	}catch(SQLException e){
 		e.printStackTrace();
 	}
@@ -98,15 +100,8 @@ String guestNo = (String)session.getAttribute("guestNo");
 				<td width="10%">어린이</td>
 			</tr>
 			<tr align="center">
-				<td><select name="locName">
-						<option value="Full Moon" <%if(locName.equals("Full Moon")){%>
-							selected="selected" <%}%>>Full Moon</option>
-						<option value="Half Moon" <%if(locName.equals("Half Moon")){%>
-							selected="selected" <%}%>>Half Moon</option>
-						<option value="Crescent Moon"
-							<%if(locName.equals("Crescent Moon")){%> selected="selected"
-							<%}%>>Crescent Moon</option>
-				</select></td>
+				<td><input type="text" name="locName" readonly
+					value="<%=locName %>"></td>
 				<td><input type="text" name="ci_date" readonly
 					value="<%=ci_date%>"></td>
 				<td><input type="text" name="co_date" readonly
@@ -149,17 +144,18 @@ String guestNo = (String)session.getAttribute("guestNo");
 						</table>
 					</td>
 					<td width="25%" id="line">
-						일 박: <input type="text" name="roomPrice" value="<%=df.format(roomVo.getRoomPrice())%>" 
+						1 박: <input type="text" name="roomPrice" value="<%=df.format(roomVo.getRoomPrice())%>" 
 							readonly style="width: 100px; font-size:100%;"> 원<br>
 						총 가격: <input type="text" name="totalPrice" value="<%=df.format(roomVo.getRoomPrice()*gapDate)%>"
 						readonly style="width: 100px; font-size:100%;"> 원
 					</td>
 					<td id="line">
-						<input type="submit" id="submitBtn" value="예약하기">
+						<input type="submit" id="submitBtn" value="예약하기" >
 					</td>
 				</tr>
-		<%}//if
-		}//for %>
+		<%	
+			}//for 		
+		}//if%>
 		</table>
 	</form>
 </div>
