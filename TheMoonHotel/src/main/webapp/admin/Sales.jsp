@@ -1,3 +1,4 @@
+<%@page import="com.moon.sales.model.SalesVO2"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.util.List"%>
 <%@page import="com.moon.sales.model.SalesVO"%>
@@ -20,11 +21,12 @@ String date2=request.getParameter("searchDate2");
 SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
 
 SalesService salesService =new SalesService();
-List<SalesVO> list=null;
+List<SalesVO2> list=null;
+List<SalesVO2> list1=null;
+int st=0;
 //branchType는  
 if(branchType!=null&& !branchType.isEmpty()&&salesType!=null&& !salesType.isEmpty()){
-	int bt=Integer.parseInt(branchType);
-	int st=Integer.parseInt(salesType);
+	st=Integer.parseInt(salesType);
 	Date d1=sdf.parse(date1);
 	Date d2=sdf.parse(date2);
 	int compareDate=d1.compareTo(d2);
@@ -36,16 +38,19 @@ if(branchType!=null&& !branchType.isEmpty()&&salesType!=null&& !salesType.isEmpt
 	} 
 	String date01=sdf.format(d1);
 	String date02=sdf.format(d2);
-	if(st==1){//타입별
+	if(st==1||st==3){//타입별
 		try{
+			list = salesService.salesByLocNo(date01, date02, branchType);
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-	}else if(st==2){//부대시설별
-		
-	}else if(st==3){//전체(부대시설+ 타입)
-		
-	}	
+	}else if(st==2||st==3){//부대시설별
+		try{
+			list1 = salesService.salesByFac(date01, date02, branchType);
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+	} 	
 	
 }else{
 	branchType="";
@@ -153,32 +158,80 @@ if(branchType!=null&& !branchType.isEmpty()&&salesType!=null&& !salesType.isEmpt
 						</div>
 					</div>
 				</fieldset>
-				
 				<div class="tableSize">
+				<%if(st==1 || st==3){ %>
 					<table class="table">
 						<thead>
-							<tr>
-								<th scope="col">#</th>
+							<tr>							
+								<th scope="col">날짜</th>
+								<th scope="col">지점</th>
 								<th scope="col">타입</th>
 								<th scope="col">단가</th>
 								<th scope="col">수량</th>
 								<th scope="col">합계</th>								
 							</tr>
-s
+							
+						 	<%int sum=0;
+						 		for(int i=0; i<list.size(); i++){
+						 		SalesVO2 vo = list.get(i);	 
+						 		sum += vo.getRoom_total_Price();%>
 						<tbody>
 							<tr>
-								<th scope="row">1</th>
-								<td>디럭스</td>								
-								<td>240000</td>								
-								<td>12</td>								
-								<td>2480000</td>								
+								<td><%=vo.getCi_date() %></td>
+								<td><%=vo.getLocName() %></td>	
+								<td><%=vo.getRoomType() %></td>							
+								<td><%=vo.getRoomPrice() %></td>								
+								<td><%=vo.getQuantity() %></td>								
+								<td><%=vo.getRoom_total_Price() %> 원</td>								
 							</tr>
 						</tbody>
+						<%} %>
 						<tfoot>
-							<th colspan="4">총 매출</th>
-							<th>132648716원</th>
+							<th colspan="5">총 매출</th>
+							<th>
+								<%=sum%> 원					
+							</th>
 						</tfoot>
-					</table>				
+					</table>
+					<%}else if(st==2||st==3){ %>
+						<table class="table">
+						<thead>
+							<tr>							
+								<th scope="col">날짜</th>
+								<th scope="col">지점</th>
+								<th scope="col">시설명</th>
+								<th scope="col">성인수</th>
+								<th scope="col">아동수</th>
+								<th scope="col">성인가격</th>								
+								<th scope="col">아동가격</th>								
+								<th scope="col">합계</th>								
+							</tr>
+							
+						 	<%int sum=0;
+						 		for(int i=0; i<list.size(); i++){
+						 		SalesVO2 vo = list1.get(i);	 
+						 		sum += vo.getFac_total_Price();%>
+						<tbody>
+							<tr>
+								<td><%=vo.getCi_date() %></td>
+								<td><%=vo.getLocName() %></td>	
+								<td><%=vo.getFac_name() %></td>							
+								<td><%=vo.getFac_adultNo() %></td>								
+								<td><%=vo.getFac_kidsNo() %></td>								
+								<td><%=vo.getFac_Adult_Price() %></td>								
+								<td><%=vo.getFac_kids_Price() %></td>								
+								<td><%=vo.getRoom_total_Price() %> 원</td>								
+							</tr>
+						</tbody>
+						<%} %>
+						<tfoot>
+							<th colspan="7">총 매출</th>
+							<th>
+								<%=sum%> 원					
+							</th>
+						</tfoot>
+					</table>
+					<%} %>				
 				</div>
 			</form>
 		</div>

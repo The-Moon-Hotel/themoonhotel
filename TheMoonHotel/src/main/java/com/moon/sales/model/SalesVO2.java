@@ -3,13 +3,12 @@ package com.moon.sales.model;
 public class SalesVO2 {
 	private String locName; //지점명
 	private String roomType; //객실 타입
-	private int adult;//어른수
-	private int kids;//어린이수
 	private String ci_date;//체크인날짜
 	private int quantity; //판매수량
 	private int roomPrice;//객실 가격
 	private int room_total_Price; //객실 가격 합계
 	
+	private String fac_name;	//부대시설 이름
 	private int fac_adultNo; //부대시설 이용 성인수
 	private int fac_kidsNo;	//부대시설 이용 어린이수
 	private int fac_Adult_Price;//부대시설 이용 성인 요금
@@ -25,24 +24,26 @@ public class SalesVO2 {
 	
 
 
-	public SalesVO2(String locName, String roomType, int adult, int kids, String ci_date, int quantity, int roomPrice,
-			int room_total_Price, int fac_adultNo, int fac_kidsNo, int fac_Adult_Price, int fac_kids_Price,
+	public SalesVO2(String locName, String roomType, String ci_date, int quantity, int roomPrice, int room_total_Price,
+			String fac_name, int fac_adultNo, int fac_kidsNo, int fac_Adult_Price, int fac_kids_Price,
 			int fac_total_Price) {
 		super();
 		this.locName = locName;
 		this.roomType = roomType;
-		this.adult = adult;
-		this.kids = kids;
 		this.ci_date = ci_date;
 		this.quantity = quantity;
 		this.roomPrice = roomPrice;
 		this.room_total_Price = room_total_Price;
+		this.fac_name = fac_name;
 		this.fac_adultNo = fac_adultNo;
 		this.fac_kidsNo = fac_kidsNo;
 		this.fac_Adult_Price = fac_Adult_Price;
 		this.fac_kids_Price = fac_kids_Price;
 		this.fac_total_Price = fac_total_Price;
 	}
+
+
+
 
 
 	/**
@@ -64,6 +65,33 @@ public class SalesVO2 {
 		this.quantity = quantity;
 		this.roomPrice = roomPrice;
 		this.room_total_Price = room_total_Price;
+	}
+
+
+	/**
+	 * 부대시설 매출 조회
+	 * @param locName
+	 * @param ci_date
+	 * @param fac_name
+	 * @param fac_adultNo
+	 * @param fac_kidsNo
+	 * @param fac_Adult_Price
+	 * @param fac_kids_Price
+	 * @param fac_total_Price
+	 */
+	
+
+	public SalesVO2(String locName, String ci_date, String fac_name, int fac_adultNo, int fac_kidsNo, int fac_Adult_Price,
+			int fac_kids_Price, int fac_total_Price) {
+		super();
+		this.locName = locName;
+		this.ci_date = ci_date;
+		this.fac_name = fac_name;
+		this.fac_adultNo = fac_adultNo;
+		this.fac_kidsNo = fac_kidsNo;
+		this.fac_Adult_Price = fac_Adult_Price;
+		this.fac_kids_Price = fac_kids_Price;
+		this.fac_total_Price = fac_total_Price;
 	}
 
 
@@ -92,34 +120,6 @@ public class SalesVO2 {
 
 	public void setRoomType(String roomType) {
 		this.roomType = roomType;
-	}
-
-
-
-
-	public int getAdult() {
-		return adult;
-	}
-
-
-
-
-	public void setAdult(int adult) {
-		this.adult = adult;
-	}
-
-
-
-
-	public int getKids() {
-		return kids;
-	}
-
-
-
-
-	public void setKids(int kids) {
-		this.kids = kids;
 	}
 
 
@@ -176,6 +176,20 @@ public class SalesVO2 {
 
 	public void setRoom_total_Price(int room_total_Price) {
 		this.room_total_Price = room_total_Price;
+	}
+
+
+
+
+	public String getFac_name() {
+		return fac_name;
+	}
+
+
+
+
+	public void setFac_name(String fac_name) {
+		this.fac_name = fac_name;
 	}
 
 
@@ -247,6 +261,10 @@ public class SalesVO2 {
 	public void setFac_total_Price(int fac_total_Price) {
 		this.fac_total_Price = fac_total_Price;
 	}
+
+
+
+
 
 	
 	

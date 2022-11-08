@@ -72,4 +72,64 @@ private ConnectionPoolMgr pool;
 			pool.dbClose(rs, ps, con);
 		}
 	}
+	
+	
+	
+	public List<SalesVO2> salesByFac(String d1, String d2, String locName) throws SQLException{
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		List<SalesVO2> list = new ArrayList<>();
+		
+		try {
+			con = pool.getConnection();
+		
+			String sql = "select locname, facname, "
+					+ " count(adultno) as fac_adultNo, count(kidsno) as fac_kidsNo,"
+					+ " sum(adultprice)  as fac_Adult_Price, sum(kidsprice) as fac_kids_Price, ci_date"
+					+ " from v_fac_sales"
+					+ " where ci_date between ? and  ?";
+			
+					if(!locName.equals("all") ) {
+						sql+= " and locname" +" =  ? ";
+					}
+					
+					sql+= " group by locname, facname, adultprice, kidsprice, ci_date"
+							+ " order by locname";
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, d1);
+			ps.setString(2, d2);
+			if(!locName.equals("all") ) {
+				ps.setString(3, locName);
+			}
+				
+			rs = ps.executeQuery();
+				
+			while(rs.next()) {
+				String locname = rs.getString("locname");
+				String ci_date = rs.getString("ci_date");
+				String facname = rs.getString("facname");
+				int fac_adultNo = rs.getInt("fac_adultNo");
+				int fac_kidsNo = rs.getInt("fac_kidsNo");
+				int fac_Adult_Price = rs.getInt("fac_Adult_Price");
+				int fac_kids_Price = rs.getInt("fac_kids_Price");
+				int fac_total_Price = rs.getInt("fac_total_Price");
+				
+
+				
+				SalesVO2 vo 
+					= new SalesVO2(locname, ci_date, facname, fac_adultNo, fac_kidsNo, 
+							fac_Adult_Price, fac_kids_Price, fac_total_Price);
+				list.add(vo);
+			}
+			
+			System.out.println("부대시설 판매 매출 조회 결과 list.size: " + list.size());
+			return list;
+		}finally {
+			pool.dbClose(rs, ps, con);
+		}
+	}
+	
 }

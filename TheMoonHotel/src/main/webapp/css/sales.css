@@ -63,3 +63,6 @@ fieldset{
 thead tr{
 	background: #e1e1e1;
 }
+thead tr th{
+	text-align: center;
+}
