@@ -64,7 +64,7 @@
 <br><br><br>
 <div id="div1" class="container text-left">
 	<form name="askEdit" method="post" action="askEdit_ok.jsp">
-		<input type = "text" name="askno" value ="<%= askno %>"/>
+		<input type = "hidden" name="askno" value ="<%= askno %>"/>
 		<fieldset>
 			<legend>게시글 수정</legend>
 			<div class="form-group">

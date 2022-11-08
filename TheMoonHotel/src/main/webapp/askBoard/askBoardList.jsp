@@ -36,7 +36,7 @@
 	
 	 try{
 		AskBoardDAO dao = new AskBoardDAO();
-		
+
 		//일반회원이라면 (sys==1)
 		 if(g_vo.getSys() == 1){
 			list = dao.selectByGuestno(g_vo.getGuestNo()); 
@@ -171,29 +171,30 @@
 	<% }%> 
 </div>
 	
-	
+<%--  <%if(g_vo.getSys()==1){ %> --%>	
 <div class="divSearch" style="text-align: center">
    	<form name="frmSearch" method="post" action='askBoardList.jsp'>
         <select name="searchCondition" value="condition">
             <option value="title" 
-            <%if("title".equals(condition)){ %>
+            <%if("a_title".equals(condition)){ %>
             	selected="selected"
             <%} %>
             >제목</option>
             <option value="content"
-            <%if("content".equals(condition)){%>
+            <%if("a_content".equals(condition)){%>
             	selected="selected"
             <%} %>
             >내용</option>
             <option value="name"
-             <%if("name".equals(condition)){%>
+             <%if("askno".equals(condition)){%>
             	selected="selected"
             <%} %>
             >고객번호</option>
-        </select>   
-        <input type="text" name="searchKeyword" title="검색어 입력"
-        	value="<%= keyword%>">    
-		<input type="submit" value="검색">
+        </select>
+			<input type="text" name="searchKeyword" title="검색어 입력"
+        		value="<%= keyword%>">    
+			<input type="submit" value="검색">
+
     </form>
 </div>
 
