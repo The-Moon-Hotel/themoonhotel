@@ -39,6 +39,8 @@
 	String kids = request.getParameter("kids");
 	String roomType = request.getParameter("roomType");
 	String totalPrice = request.getParameter("totalPrice");
+	String roomImage = request.getParameter("roomImage");
+	
 	totalPrice = totalPrice.replaceAll(",", "");
 	
 	/* 조식 인원 */
@@ -58,7 +60,7 @@
 	//2. db 작업
 	
 	//RoomNo 정보 읽어오기
-	RoomVO roomVo =null;
+	RoomVO roomVo = new RoomVO();
 	try{
 		roomVo = roomService.selectRoomByType(locName, roomType);
 		

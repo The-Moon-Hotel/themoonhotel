@@ -115,7 +115,7 @@ public class GuestDAO {
 		}
 	}
 	
-	//회원정보 페이wl에 회원정보 불러올때
+	//회원정보 페이지에 회원정보 불러올때
 	public GuestVO selectByUserid(String userid) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -151,6 +151,49 @@ public class GuestDAO {
 	            vo.setSys(sys);
 			}
 			System.out.println("회원조회 결과 vo="+vo+", 매개변수 userid="+userid);
+			
+			return vo;
+		}finally {
+			pool.dbClose(rs, ps, con);
+		}
+	}
+	
+	//매개변수 회원번호로 회원정보 불러오는 매서드
+	public GuestVO selectByGuestNo(int guestNo) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		GuestVO vo = new GuestVO();
+		try {
+			con = pool.getConnection();
+
+			String sql = "select * from guest where guestNo = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, guestNo);
+
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				String userid = rs.getString("userid");
+				String name = rs.getString("name");
+				String pwd = rs.getString("pwd");
+				String email = rs.getString("email");
+				String tel = rs.getString("tel");
+				Timestamp joindate = rs.getTimestamp("joindate");
+				Timestamp outdate = rs.getTimestamp("outdate");
+				int sys = rs.getInt("sys");
+
+				vo.setGuestNo(guestNo);
+	            vo.setName(name);
+	            vo.setUserid(userid);
+	            vo.setPwd(pwd);
+	            vo.setEmail(email);
+	            vo.setTel(tel);
+	            vo.setJoindate(joindate);
+	            vo.setOutdate(outdate);
+	            vo.setSys(sys);
+			}
+			System.out.println("회원조회 결과 vo="+vo+", 매개변수 userid="+guestNo);
 			
 			return vo;
 		}finally {

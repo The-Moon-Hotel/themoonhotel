@@ -124,7 +124,7 @@ public class ReservationDAO {
 		try {
 			con = pool.getConnection();
 			
-			String sql = "select * from Reservation where guestNo=?";
+			String sql = "select * from Reservation where guestNo=? order by reservNo desc";
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, guestNo);
 			
@@ -148,4 +148,80 @@ public class ReservationDAO {
 			pool.dbClose(rs, ps, con);
 		}
 	}
+	
+	//예약번호를 매개 변수로 받아서 예약 정보 조회하는 메서드
+	public ReservationVO searchReservByNo(int reservNo) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		ReservationVO reservVo = new ReservationVO();
+		try {
+			con = pool.getConnection();
+			String sql = "select * from Reservation \r\n"
+					+ "where reservNo=?";
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, reservNo);
+			
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				int guestNo = rs.getInt("guestNo");
+				int roomNo = rs.getInt("roomNo");
+				int adult = rs.getInt("adult");
+				int kids = rs.getInt("kids");
+				String ci_date = rs.getString("ci_date");
+				String co_date = rs.getString("co_date");
+				int totalPrice = rs.getInt("totalPrice");
+				
+				reservVo.setGuestNo(guestNo);
+				reservVo.setRoomNo(roomNo);
+				reservVo.setAdult(adult);
+				reservVo.setKids(kids);
+				reservVo.setCi_date(ci_date);
+				reservVo.setCo_date(co_date);
+				reservVo.setTotalPrice(totalPrice);
+			}
+			return reservVo;
+		}finally {
+			pool.dbClose(rs, ps, con);
+		}
+	}
+	
+	//=====관리자 기능
+	//회원번호를 매개변수로 모든 예약 조회 검색하기
+	public List<ReservationVO> selectAllReserv() throws SQLException{
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		List<ReservationVO> rlist = new ArrayList<>();
+		try {
+			con = pool.getConnection();
+			
+			String sql = "select * from Reservation order by reservNo desc";
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				int reservNo = rs.getInt("reservNo");
+				int guestNo = rs.getInt("guestNo");
+				int roomNo = rs.getInt("roomNo");
+				int adult = rs.getInt("adult");
+				int kids = rs.getInt("kids");
+				String ci_date = rs.getString("ci_date");
+				String co_date = rs.getString("co_date");
+				int totalPrice = rs.getInt("totalPrice");
+				
+				ReservationVO reservVo = new ReservationVO(reservNo, guestNo, roomNo, adult, 
+						kids, ci_date, co_date, totalPrice);
+				rlist.add(reservVo);
+			}
+			return rlist;
+		}finally {
+			pool.dbClose(rs, ps, con);
+		}
+	}
+		
 }

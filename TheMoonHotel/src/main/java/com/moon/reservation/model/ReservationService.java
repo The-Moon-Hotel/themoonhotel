@@ -29,4 +29,15 @@ public class ReservationService {
 	public List<ReservationVO> selectAllReserv(int guestNo) throws SQLException{
 		return reservDao.selectAllReserv(guestNo);
 	}
+	
+	//예약번호를 매개 변수로 받아서 예약 정보 조회하는 메서드
+	public ReservationVO searchReservByNo(int reservNo) throws SQLException {
+		return reservDao.searchReservByNo(reservNo);
+	}
+	
+	//=====관리자 기능
+	//회원번호를 매개변수로 모든 예약 조회 검색하기
+	public List<ReservationVO> selectAllReserv() throws SQLException{
+		return reservDao.selectAllReserv();
+	}
 }
