@@ -51,18 +51,7 @@ public class SalesVO {
 		this.totalAmount = totalAmount;
 	}
 	//부대시설 이용요금 합계
-	public SalesVO(int reservNo, int facNo, int facInfoNo, int fac_adultNo, int fac_kidsNo, int fac_Adult_Price,
-			int fac_kids_Price, int fac_total_Price) {
-		super();
-		this.reservNo = reservNo;
-		this.facNo = facNo;
-		this.facInfoNo = facInfoNo;
-		this.fac_adultNo = fac_adultNo;
-		this.fac_kidsNo = fac_kidsNo;
-		this.fac_Adult_Price = fac_Adult_Price;
-		this.fac_kids_Price = fac_kids_Price;
-		this.fac_total_Price = fac_total_Price;
-	}
+	
 
 	public String getLocName() {
 		return locName;

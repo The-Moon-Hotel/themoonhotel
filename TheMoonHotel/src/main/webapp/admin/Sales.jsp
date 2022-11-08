@@ -1,9 +1,59 @@
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.time.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="../inc/top.jsp"></jsp:include>
 <link rel="stylesheet" type="text/css" href="../css/sales.css">
+<%
+request.setCharacterEncoding("utf-8");
+String branchType=request.getParameter("SearchBranchType");
+String salesType=request.getParameter("SearchSalesType");
+String date1=request.getParameter("searchDate1");
+String date2=request.getParameter("searchDate2");
+SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
 
-
+//branchType는  
+if(branchType!=null&& !branchType.isEmpty()&&salesType!=null&& !salesType.isEmpty()){
+	
+	if(Integer.parseInt(branchType)>=1 && Integer.parseInt(branchType)<=3){ //지점별
+		if(Integer.parseInt(salesType)==1){//타입별
+			
+		}else if(Integer.parseInt(salesType)==2){//부대시설별
+			
+		}else if(Integer.parseInt(salesType)==3){//전체(부대시설+ 타입)
+			
+		}
+	}else{ //전체 지점
+		if(Integer.parseInt(salesType)==1){//타입별
+			
+		}else if(Integer.parseInt(salesType)==2){//부대시설별
+			
+		}else if(Integer.parseInt(salesType)==3){//전체(부대시설+ 타입)
+			
+		}
+	}
+}else{
+	branchType="";
+	salesType="";
+	date1="";
+	date1="";
+}
+%>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-3.6.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('form[name=SalseCk]').submit(function(){
+			if($('#branchType').val().length<1){
+				
+			}else if($('#salesType').val().length<1){
+				
+			}
+		});
+	});
+</script>
 <section class="salesBanner">
 	<article>
 		<div>
@@ -16,35 +66,64 @@
 		</div>
 <section class="content">
 		<div>
-			<form name="SalseCk" method="post" action="sales_ok.jsp"> 
+			<form name="SalseCk" method="post" action="Sales.jsp"> 
 				<fieldset>
 					<div class="ck">
 						<div>
 							<p class="pSize" style="display: inline-block;">지점 : </p>
-							<select class="form-select form-select-md mb-3 selectSize" id="branchType" style="display: inline-block;" >
+							<select class="form-select form-select-md mb-3 selectSize" id="branchType" name="SearchBranchType" style="display: inline-block;" >
 							  	<option selected>지점선택</option>
-								<option value="1">FullMoon</option>
-								<option value="2">HalfMoon</option>
-								<option value="3">CrescentMoon</option>
+								<option value="1"
+									<%if(branchType.equals("1")){ %>
+							  			selected="selected"
+							  		<%} %>
+								>FullMoon</option>
+								<option value="2"
+									<%if(branchType.equals("2")){ %>
+							  			selected="selected"
+							  		<%} %>								
+								>HalfMoon</option>
+								<option value="3"
+									<%if(branchType.equals("3")){ %>
+							  			selected="selected"
+							  		<%} %>								
+								>CrescentMoon</option>
+								<option value="4"
+									<%if(branchType.equals("4")){ %>
+							  			selected="selected"
+							  		<%} %>								
+								>전체지점</option>
 							</select>
 							<p class="pSize" style="display: inline-block;">조회목록 : </p>
-							<select class="form-select form-select-md mb-3 selectSize" id="salesType" style="display: inline-block;" >
+							<select class="form-select form-select-md mb-3 selectSize" id="salesType" name="SearchSalesType" style="display: inline-block;" >
 							  	<option selected>조회 목록</option>
-								<option value="1">타입별 매출</option>
-								<option value="2">부대시설별 매출</option>
-								<option value="3">모든 항목 매출</option>
+								<option value="1"
+									<%if(salesType.equals("1")){ %>
+							  			selected="selected"
+							  		<%} %>								
+								>타입별 매출</option>
+								<option value="2"
+									<%if(salesType.equals("2")){ %>
+							  			selected="selected"
+							  		<%} %>	
+								>부대시설별 매출</option>
+								<option value="3"
+									<%if(salesType.equals("3")){ %>
+							  			selected="selected"
+							  		<%} %>	
+								>모든 항목 매출</option>
 							</select>
 						</div>
 							<p class="pSize" style="display: inline-block;">조회기간 : </p>
 						<div class="input-group mb-3 dateSize" style="display: inline-block;width: 311px;">
-						  	<input type="date" class="form-control " style="width: 100%" >
+						  	<input type="date" class="form-control " style="width: 100%" name="searchDate1" value="<%=date1 %>">
 						</div>
 							<p class="pSize" style="display: inline-block; width: 30px">&nbsp;~&nbsp;</p>
 						<div class="input-group mb-3 dateSize" style="display: inline-block; width: 311px;">
-						  	<input type="date" class="form-control" style="width: 100%" >
+						  	<input type="date" class="form-control" style="width: 100%" name="searchDate2" value="<%=date2 %>">
 						</div>
 						<div style="text-align:center ;display: block;">
-							<button type="button" class="btn btn-dark" style="width: 100px">조회</button>
+							<button type="submit" class="btn btn-dark" style="width: 100px">조회</button>
 						</div>
 					</div>
 				</fieldset>
@@ -69,86 +148,13 @@ s
 								<td>2480000</td>								
 							</tr>
 						</tbody>
-						<tfoot></tfoot>
+						<tfoot>
+							<th colspan="4">총 매출</th>
+							<th>132648716원</th>
+						</tfoot>
 					</table>				
 				</div>
 			</form>
 		</div>
-		<br>
-		<br>
-
-		<table border='1'>
-			<tr>
-				<th colspan="5">객실판매현황</th>
-			</tr>
-			<tr>
-				<th></th>
-				<th width="22%">수페리어</th>
-				<th width="22%">디럭스</th>
-				<th width="22%">스위트</th>
-				<th width="22%">모노그램스위트</th>
-			</tr>
-			<tr>
-				<th>판매량</th>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
-			</tr>
-			<tr>
-				<th>판매율</th>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
-			</tr>
-			<tr>
-				<th colspan="3">매출</th>
-				<th colspan="2"></th>
-			</tr>
-		</table>
-
-		<table border='1'>
-			<tr>
-				<th colspan="7">부대시설 판매현황</th>
-			</tr>
-			<tr>
-				<th></th>
-				<th width="22%" colspan="2">수영장</th>
-				<th width="22%" colspan="2">카바나</th>
-				<th width="22%">테라피 가든</th>
-				<th width="22%">사우나</th>
-			</tr>
-			<tr>
-				<th>구분</th>
-				<th>성인</th>
-				<th>어린이</th>
-				<th>쁘띠</th>
-				<th>패밀리</th>
-				<th>성인</th>
-				<th>성인</th>
-			</tr>
-			<tr>
-				<th>판매량</th>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
-			</tr>
-			<tr>
-				<th>매출</th>
-				<th colspan="2"></th>
-				<th colspan="2"></th>
-				<th></th>
-				<th></th>
-			</tr>
-			<tr>
-				<th colspan="5">총 매출</th>
-				<th colspan="2"></th>
-			</tr>
-		</table>
-		<p class="total">Total:</p>
 </section>
 <jsp:include page="../inc/footer.jsp"></jsp:include>
