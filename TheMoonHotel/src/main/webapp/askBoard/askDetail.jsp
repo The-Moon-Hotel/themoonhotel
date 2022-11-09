@@ -1,3 +1,4 @@
+<%@page import="com.moon.askBoard.model.AskboardService"%>
 <%@page import="com.moon.guest.model.GuestVO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.SQLException"%>
@@ -29,7 +30,7 @@
 		return;
 	}
 	//2.
-	AskBoardDAO dao = new AskBoardDAO();
+	AskboardService dao = new AskboardService();
 	AskBoardVO vo = null;
 
 	try {
@@ -40,6 +41,7 @@
 	}
 	//3.
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	
 
 %>
 <!DOCTYPE html>
@@ -95,20 +97,36 @@ body {
 <script type="text/javascript">
 	$(function(){
 		$('#btnUpdate').click(function(){
-			location.href="askEdit.jsp?askno=<%=askno %>";
+			location.href="<%=request.getContextPath() %>/askBoard/askEdit.jsp?askno=<%=askno %>";
 		});
 		$('#btnDelete').click(function(){
 			if(!confirm('해당 문의글을 삭제하시겠습니까?')){
 				event.preventDefault();
 			}else{
-				location.href="askDelete_ok.jsp?askno=<%=askno %>";
+				location.href="<%=request.getContextPath() %>/askBoard/askDelete_ok.jsp?askno=<%=askno %>";
 			}
 		});
 		
 		$('#btnlist').click(function(){
-			location.href="askBoardList.jsp";
+			location.href="<%=request.getContextPath() %>/askBoard/askBoardList.jsp";
 		});
+		
+		
+		
 	});
+	
+	/*  function(str) replaceBrTag
+     {
+         if (str == undefined || str == null)
+         {
+             return "";
+         }
+
+         str = str.replace(/\r\n/ig, '<br>');
+         str = str.replace(/\\n/ig, '<br>');
+         str = str.replace(/\n/ig, '<br>');
+         return str;
+     }; */
 </script>
 <body>
 	<article>

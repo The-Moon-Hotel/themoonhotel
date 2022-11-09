@@ -17,6 +17,8 @@
 <%
 	String askno = request.getParameter("askno");
 	List<CommentVO> list = null;
+	
+	CommentVO vo = new CommentVO();
 	CommentDAO dao = new CommentDAO();
 	try{
 		list = dao.selectComment(Integer.parseInt(askno));
@@ -28,18 +30,6 @@
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 %>
 
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-3.6.1.min.js"></script>
-<script type="text/javascript">
-	$(function(){
-		$('#Delete').click(function(){
-			if(!confirm('해당 답변을 삭제하시겠습니까?')){
-				event.preventDefault();
-			}else{
-				location.href="commentDelete_ok.jsp<%-- ?askno=<%=askno%>" --%>;
-			}
-		});
-	});
-</script>
 
 <style>
 	table{
@@ -56,12 +46,14 @@
 <div class="co_list">
 	<h4 style="margin-left: 90px">답글</h4>
 	<div class="tableSize">
+		<input type="hidden" id="askno" name="askno" value="<%=askno%>">
 		<table class="table">
 			<thead>
 				<tr>
 					<th scope="col">작성자</th>
 					<th scope="col">내용</th>
 					<th scope="col">등록시간</th>
+					<th></th>
 				</tr>
 				
 			<tbody>
@@ -71,17 +63,15 @@
 				</tr>
 				<% }else{%>
 					<%for(int i=0; i<list.size(); i++){ 
-						CommentVO vo = list.get(i);%>
+						vo = list.get(i);%>
 					
-						<tr>
+						<tr style="text-align: center">
 							<td><%=vo.getName()%></td>
-							<td><%=vo.getContent()%></td>
+							<td style="text-align: left;margin-left: 50px"><%=vo.getContent()%></td>
 							<td><%=sdf.format(vo.getRegdate())%></td>
 							<%if(g_vo.getSys() != 1){ %>
 								<td>
-									<a href="<%=request.getContextPath() %>/askBoard/commentDelete_ok.jsp">
-										<input type="button" name="Delete" value="삭제">
-									</a>
+									<input type="button" class="Delete" value="삭제">
 								</td>
 							<%} %>
 						</tr>
@@ -91,3 +81,17 @@
 		</table>
 	</div>
 </div>
+
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-3.6.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.Delete').click(function(){
+			if(!confirm('해당 답변을 삭제하시겠습니까?')){
+				event.preventDefault();
+			}else{
+				location.href
+					="<%=request.getContextPath() %>/askBoard/commentDelete_ok.jsp?no=<%=vo.getNo() %>";
+			}
+		});
+	});
+</script>

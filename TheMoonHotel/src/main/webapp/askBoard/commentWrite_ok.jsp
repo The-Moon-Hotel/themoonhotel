@@ -39,7 +39,7 @@
 		if(cnt > 0){%>
 			<script type="text/javascript">
 				alert('답변이 등록되었습니다.');
-				location.href="askDetail.jsp?askno=<%=askno%>";
+				location.href="<%=request.getContextPath() %>/askBoard/askDetail.jsp?askno=<%=askno%>";
 			</script>
 		<%}else{%>
 			<script type="text/javascript">

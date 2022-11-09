@@ -1,3 +1,4 @@
+<%@page import="com.moon.askBoard.model.AskboardService"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.moon.askBoard.model.AskBoardVO"%>
 <%@page import="com.moon.askBoard.model.AskBoardDAO"%>
@@ -30,7 +31,7 @@
 	String a_content = request.getParameter("a_content");
 	
 
-	AskBoardDAO a_dao = new AskBoardDAO();
+	AskboardService a_dao = new AskboardService();
 	AskBoardVO a_vo = new AskBoardVO();
 	a_vo.setGuestNo(guestno); 
 	a_vo.setA_title(a_title);
@@ -42,7 +43,7 @@
 		if(cnt > 0){%>
 			<script type="text/javascript">
 				alert('문의글이 등록되었습니다.');
-				location.href="askBoardList.jsp";
+				location.href="<%=request.getContextPath() %>/askBoard/askBoardList.jsp";
 			</script>
 		<%}else{%>
 			<script type="text/javascript">

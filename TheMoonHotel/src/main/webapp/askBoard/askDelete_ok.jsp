@@ -1,4 +1,5 @@
-askDelete_ok.jsp<%@page import="java.sql.SQLException"%>
+askDelete_ok.jsp<%@page import="com.moon.askBoard.model.AskboardService"%>
+<%@page import="java.sql.SQLException"%>
 <%@page import="com.moon.askBoard.model.AskBoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -15,7 +16,7 @@ askDelete_ok.jsp<%@page import="java.sql.SQLException"%>
 	String askno = request.getParameter("askno");
 
 	
-	AskBoardDAO dao = new AskBoardDAO();
+	AskboardService dao = new AskboardService();
 	try {
 		int cnt = dao.deleteAskboard(Integer.parseInt(askno));
 		

@@ -15,10 +15,10 @@
 <section class = "faci">
 	<span>
 		<a href="<%=request.getContextPath() %>/facility/facility.jsp">
-			<input type="button" value="부대시설">
+			<input type="button" value="부대시설" class="btn btn-dark btn-lg btn-block">
 		</a>
 		<a href="<%=request.getContextPath() %>/facility/dining.jsp">
-			<input type="button" value="다이닝">	
+			<input type="button" value="다이닝" class="btn btn-dark btn-lg btn-block">	
 		</a>
 	</span>
 	<br><br>

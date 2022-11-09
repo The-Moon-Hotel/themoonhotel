@@ -37,7 +37,9 @@
 					<pre style="color: black">위치  본관 7~10층  |  전망  바다  |  침대  더블,트윈  |  
 크기  72m<sub>2</sub>  |  룸구성  침실1, 욕실1, 거실1</pre>
 				<br>
-				<input type="button" value="객실 어메니티 보기" style="background:#7B725E;color:white">
+				<input type="button" value="객실 어메니티 보기" 
+					class="amenity" style="background:#7B725E;color:white"; cursor:pointer
+			onclick="window.open('amenity.jsp','asdfo8or','scrollbars=yes, width=750,height=580,top=250,left=800');">
 				</div>
 				
 				
@@ -77,7 +79,9 @@
 				</div>
 				
 				<div class="right_box"> 
-					<input type="button" value="문의하기" style="background:#7B725E;color:white">
+					<a href ="<%=request.getContextPath() %>/askBoard/askBoardList.jsp">
+						<input type="button" value="문의하기" style="background:#7B725E;color:white">
+					</a>
 					<br><br>
 					<table  style="border-collapse: collapse;background:#E6E6E6;">
 						<tr>

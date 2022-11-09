@@ -6,11 +6,12 @@
 <section class = "faci">
 	<span>
 		<a href="<%=request.getContextPath() %>/facility/facility.jsp">
-			<input type="button" value="부대시설">
+			<input type="button" value="부대시설" class="btn btn-dark btn-lg btn-block">
 		</a>
 		<a href="<%=request.getContextPath() %>/facility/dining.jsp">
-			<input type="button" value="다이닝">	
+			<input type="button" value="다이닝" class="btn btn-dark btn-lg btn-block">	
 		</a>
+		<!-- style="background:#7B725E;color:white" -->
 	</span>
 	<br><br>
 	<div class="swim">
@@ -32,36 +33,44 @@
 		<hr><br>
 	</div>
 	
-	<div>
+	<div>		
 		<span class="title">
 			<b>테라피 가든</b>
-			<b style="margin-left: 450px">카바나</b>
-		</span><br><br>
-		<img src = "../images/t_p.png" style="cursor:pointer" 
-			onclick="window.open('cabana.jsp','asdfo8or','scrollbars=yes, width=900,height=800,top=10,left=20');">
+			<b style="margin-left: 450px">카바나</b><br>
+		<img src = "../images/tera.png" style=" position: absolute;
+			cursor:pointer" 
+			onclick="window.open('tera.jsp','asdfo8or','scrollbars=yes, width=900,height=300,top=10,left=20');">	
+		<img src = "../images/cabanaa.png" style="margin-left: 560px;cursor:pointer" 
+			onclick="window.open('cabana.jsp','asdfo8or','scrollbars=yes, width=900,height=600,top=10,left=20');">
 		<br>
-		<span class="conten">대나무숲 그늘 아래 편안한 휴식</span>
-		<span style="margin-left: 325px" class="conten">소중한 사람들과 함께하는 오붓한 시간</span><br>
-
+		<span class="conten" style="font-size: 15px;">대나무숲 그늘 아래 편안한 휴식</span>
+		<span style="font-size: 15px; margin-left: 340px" class="conten">소중한 사람들과 함께하는 오붓한 시간</span><br>
+	
 		
 		<br><br>
 		<hr><br>
+		</span>
 	</div>
 	
 	<div>
 		<span class="title">
 			<b>사우나</b>
 			<b style="margin-left: 510px">헬스장</b>
-		</span><br><br>
-		<img src = "../images/sau.png" style="cursor:pointer" 
-			onclick="window.open('sauna.jsp','asdfo8or','scrollbars=yes, width=900,height=800,top=10,left=20');">
+			<br>
+		<img src = "../images/saun.png" style=" position: absolute;
+			cursor:pointer" 
+			onclick="window.open('sauna.jsp','asdfo8or','scrollbars=yes, width=900,height=300,top=10,left=20');">
+			
+		<img src = "../images/gym.png" style="margin-left: 560px;  cursor:pointer" 
+			onclick="window.open('gym.jsp','asdfo8or','scrollbars=yes, width=900,height=400,top=10,left=20');">
 		<br>
-		<span class="conten">편안함과 피로해소를 위한 실내 사우나</span>
-		<span style="margin-left: 280px" class="conten">최상의 건강과 체계적인 체력관리를 위한 특별한 공간</span><br>
+		<span class="conten" style="font-size: 15px;">편안함과 피로해소를 위한 실내 사우나</span>
+		<span style="margin-left: 300px; font-size: 15px;" class="conten">최상의 건강과 체계적인 체력관리를 위한 특별한 공간</span><br>
 
 		
 		<br><br>
 		<hr><br>
+		</span>
 	</div>	
 	
 	<div class="swim">

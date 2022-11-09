@@ -1,3 +1,4 @@
+<%@page import="com.moon.askBoard.model.AskboardService"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.moon.askBoard.model.AskBoardVO"%>
 <%@page import="com.moon.askBoard.model.AskBoardDAO"%>
@@ -16,7 +17,7 @@
 		<% return;	
 	}
 	
-	AskBoardDAO dao = new AskBoardDAO();
+	AskboardService dao = new AskboardService();
 	AskBoardVO vo = null;
 
 	try{
@@ -56,8 +57,9 @@
 <script type="text/javascript">
 	$(function() {
 		$('#btn1').click(function() {
-			location.href = "askBoardList.jsp";
+			location.href = "<%=request.getContextPath() %>/askBoard/askBoardList.jsp";
 		});
+		
 	});
 </script>
 <body>
@@ -80,8 +82,8 @@
 			</div>
 			<div class="form-group">
 				<label for="exampleTextarea" class="form-label mt-4"></label>
-				<input id="txtCon" class="form-control" rows="6" name="a_content"
-					 value=<%=vo.getA_content() %> style="height: 200px;"></input>
+				<textarea id="txtCon" class="form-control" rows="6" name="a_content"
+					 style="height: 200px;"><%=vo.getA_content() %></textarea>
 			</div>
 			<div class="form-group">
 				<label for="formFile" class="form-label mt-4">파일 첨부</label>

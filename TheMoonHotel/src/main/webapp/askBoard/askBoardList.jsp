@@ -1,3 +1,4 @@
+<%@page import="com.moon.askBoard.model.AskboardService"%>
 <%@page import="com.moon.guest.model.GuestSerivce"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.SQLException"%>
@@ -35,7 +36,7 @@
 	List<AskBoardVO> list = null;
 	
 	 try{
-		AskBoardDAO dao = new AskBoardDAO();
+		AskboardService dao = new AskboardService();
 
 		//일반회원이라면 (sys==1)
 		 if(g_vo.getSys() == 1){
@@ -124,7 +125,7 @@
 				<tr>
 					<td><%=vo.getAskNo() %>
 					<td>
-						<a href="askDetail.jsp?askno=<%=vo.getAskNo() %>"><%=vo.getA_title() %></a>
+						<a href="<%=request.getContextPath() %>/askBoard/askDetail.jsp?askno=<%=vo.getAskNo() %>"><%=vo.getA_title() %></a>
 					</td>
 					<%if(g_vo.getSys()==1){ %>
 						<td><%=g_vo.getName() %></td>
@@ -144,8 +145,8 @@
 	//page 나타내기
 	//첫 페이지가 1이 아니면 앞쪽 화살표 나타내기
 	if(firstPage>1){ %>
-			<a href="askBoardList.jsp?currentPage=<%=firstPage-1%>&searchCondition=<%=condition%>&searchKeyword=<%=keyword%>">
-				<img src="../images/first.JPG">
+			<a href="<%=request.getContextPath() %>/askBoard/askBoardList.jsp?currentPage=<%=firstPage-1%>&searchCondition=<%=condition%>&searchKeyword=<%=keyword%>">
+				<img src="<%=request.getContextPath() %>/images/first.JPG">
 			</a>	
 	<%	}	%>
 	
@@ -166,26 +167,26 @@
 	<!-- 다음 블럭으로 이동 -->
 		<%if(lastPage < totalPage){  %>
 		<a href="askBoardList.jsp?currentPage=<%=lastPage+1%>&searchCondition=<%=condition%>&searchKeyword=<%=keyword%>">
-			<img src="../images/last.JPG">
+			<img src="<%=request.getContextPath() %>/images/last.JPG">
 		</a>
 	<% }%> 
 </div>
 	
-<%--  <%if(g_vo.getSys()==1){ %> --%>	
+<%if(g_vo.getSys()!=1){ %>	
 <div class="divSearch" style="text-align: center">
    	<form name="frmSearch" method="post" action='askBoardList.jsp'>
-        <select name="searchCondition" value="condition">
-            <option value="title" 
+        <select name="searchCondition" >
+            <option value="a_title" 
             <%if("a_title".equals(condition)){ %>
             	selected="selected"
             <%} %>
             >제목</option>
-            <option value="content"
+            <option value="a_content"
             <%if("a_content".equals(condition)){%>
             	selected="selected"
             <%} %>
             >내용</option>
-            <option value="name"
+            <option value="askno"
              <%if("askno".equals(condition)){%>
             	selected="selected"
             <%} %>
@@ -196,12 +197,12 @@
 			<input type="submit" value="검색">
 
     </form>
-</div>
+<%} %>
 
-<div class="divbtn" style="margin-left: 1300px">
-    <a href='askWrite.jsp' >글쓰기</a>
+	<div class="divbtn" style="margin-left: 1200px">
+    	<a href='<%=request.getContextPath() %>/askBoard/askWrite.jsp' >글쓰기</a>
+	</div>
 </div>
-
 
 
 </div>

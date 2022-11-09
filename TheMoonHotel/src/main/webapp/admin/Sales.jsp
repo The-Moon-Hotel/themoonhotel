@@ -266,13 +266,15 @@ if(branchType!=null&& !branchType.isEmpty()&&salesType!=null&& !salesType.isEmpt
 							</tr>
 						
 						<%} %>
-							<th colspan="6">총 매출</th>
+							<th colspan="5">
+							<th>총 매출</th>
 							<th>
 								<%=sum1%> 원					
 							</th>
 						</tbody>
 						<tfoot>
-							<th colspan="6">
+							<th colspan="5">
+							<th>
 								객실&부대시설 매출 합계</th>
 							<th><%=(sum + sum1) %> 원</th>
 						</tfoot>

@@ -26,7 +26,7 @@
 	}
 </style>
 <div class="divForm">
-<form name="c_Write" method="post" action="commentWrite_ok.jsp" >
+<form name="c_Write" method="post" action="<%=request.getContextPath() %>/askBoard/commentWrite_ok.jsp" >
 <fieldset style="width: 500px; margin: 10;">
 	
 	<input type="hidden" name="askno" value="<%=askno%>">

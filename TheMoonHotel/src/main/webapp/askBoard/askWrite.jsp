@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <jsp:include page="../inc/top.jsp"></jsp:include>
-<%-- <%@ include file = "../login/checkLogin.jsp" %> --%>
+<%@ include file = "../login/checkLogin.jsp" %>
 
 <style type="text/css">
 #div1 {
@@ -23,7 +23,7 @@
 
 	$(function() {
 		$('#btn1').click(function() {
-			location.href = "askBoardList.jsp";
+			location.href = "<%=request.getContextPath() %>/askBoard/askBoardList.jsp";
 		});
 	});
 	

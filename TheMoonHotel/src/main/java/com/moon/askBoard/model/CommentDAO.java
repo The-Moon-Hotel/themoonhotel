@@ -95,4 +95,29 @@ public class CommentDAO {
 			pool.dbClose(ps, con);
 		}
 	}
+	
+	
+	
+	
+	public int deleteComment(int no) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		try {
+			con = pool.getConnection();
+			
+			String sql = "delete from comments where no = ?";
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, no);
+			
+			int cnt = ps.executeUpdate();
+			
+			System.out.println("관리자 답변 삭제 결과: "+cnt);
+			return cnt;
+			
+		}finally {
+			pool.dbClose(ps, con);
+		}
+	}
 }
