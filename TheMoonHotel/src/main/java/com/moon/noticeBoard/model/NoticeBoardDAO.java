@@ -15,27 +15,24 @@ import com.moon.db.ConnectionPoolMgr;
 public class NoticeBoardDAO {
 		ConnectionPoolMgr pool = new ConnectionPoolMgr();
 		
-	public int insertNotice() throws SQLException {
+	public int insertNotice(NoticeBoardVO vo) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
 		try {
 			con=pool.getConnection();
-			String sql = "insert into noticeBoard(no, guestNo, n_title, n_content, n_count)\r\n"
-					+ "values(notice_seq.nextval(), ?,?,?,?)";
+			String sql = "insert into noticeBoard(noticeNo, guestNo, n_title, n_content, n_count, n_fileName, n_fileSize)\r\n"
+					+ "values(noticeboard_seq.nextval,?,?,?,?,?,?)";
 			ps=con.prepareStatement(sql);
 			 
-			NoticeBoardVO nvo = new NoticeBoardVO();
-			ps.setInt(1, nvo.getGuestNo());
-			ps.setString(2, nvo.getN_title());
-			ps.setString(3, nvo.getN_content());
-			ps.setInt(4, nvo.getN_count());
+			ps.setInt(1, vo.getGuestNo());
+			ps.setString(2, vo.getN_title());
+			ps.setString(3, vo.getN_content());
+			ps.setInt(4, vo.getN_count());
+			ps.setString(5, vo.getN_fileName());
+			ps.setLong(6, vo.getN_fileSize());
 			
 			int cnt = ps.executeUpdate();
-			
-			if(cnt>0) {
-				
-			}
 			
 			return cnt;
 		} finally {
@@ -52,16 +49,23 @@ public class NoticeBoardDAO {
 		List<NoticeBoardVO> list = new ArrayList<>();
 		try {
 			con = pool.getConnection();
-			String sql = "select * from noticeBoard";
+			String sql = "select n.noticeNo, n.guestNo, n.n_title, n.n_regdate, n.n_content, n.n_count, n.n_fileName, n.n_fileSize, g.userid"
+							+" from NoticeBoard n, guest g";
+			
 			if(keyword!=null && !keyword.isEmpty()) {
-				sql+=" where " + condition + " like '%' || ? || '%'";
+				sql+=" where " + condition + " like '%' || ? || '%'"
+						+" and n.guestno = g.guestno"
+						+" order by noticeNo desc";
+			}else {
+				sql+=" where n.guestno = g.guestno "
+						+" order by noticeNo desc";
 			}
-			sql+=" order by no desc";
 			ps= con.prepareStatement(sql);
 			
 			if(keyword!=null && !keyword.isEmpty()) {
 				ps.setString(1, keyword);
 			}
+			
 			rs=ps.executeQuery();
 			while(rs.next()) {
 				int noticeNo = rs.getInt("noticeNo");
@@ -70,13 +74,40 @@ public class NoticeBoardDAO {
 				Timestamp n_regdate = rs.getTimestamp("n_regdate");
 				String n_content = rs.getString("n_content");
 				int n_count = rs.getInt("n_count");
+				String n_fileName = rs.getString("n_fileName");
+				long n_fileSize = rs.getLong("n_fileSize");
+				String userid = rs.getString("userid");
 				
-				
-				NoticeBoardVO vo = new NoticeBoardVO(noticeNo, guestNo, n_title, n_regdate, n_content, n_count);
+				NoticeBoardVO vo = new NoticeBoardVO(noticeNo, guestNo, n_title, n_regdate, n_content, n_count, n_fileName, n_fileSize, userid);
 				list.add(vo);
 			}
-			
+			System.out.println("글 전체 조회 결과 list.size="+list.size()
+			+", 매개변수 condition="+condition+", keyword="+keyword);
 			return list;
+		} finally {
+			pool.dbClose(rs, ps, con);
+		}
+	}
+	public NoticeBoardVO selectByUserid(int guestNo) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		NoticeBoardVO vo = new NoticeBoardVO();
+		
+		try {
+			con=pool.getConnection();
+			String sql = "select * from noticeBoard where guestno = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, guestNo);
+			
+			rs= ps.executeQuery();
+			
+			if(rs.next()) {
+				guestNo = rs.getInt("guestNo");
+				vo.setGuestNo(guestNo);
+			}
+			return vo;
 		} finally {
 			pool.dbClose(rs, ps, con);
 		}
@@ -140,18 +171,18 @@ public class NoticeBoardDAO {
 	}
 	//해당 게스트의 비밀번호와 일치하는지 확인을 해야함
 	
-	public int deleteNoticeBoard(int noticeNo, String pwd) throws SQLException {
+	public int deleteNoticeBoard(int noticeNo, int guestNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
 		try {
 			con = pool.getConnection();
 			String sql = "delete from noticeBoard"
-						+" where noticeNo = ? and pwd = ?";
+						+" where noticeNo = ? and guestNo = ?";
 			ps=con.prepareStatement(sql);
 			
 			ps.setInt(1, noticeNo);
-			ps.setString(2, pwd);		
+			ps.setInt(2, guestNo);		
 			int cnt = ps.executeUpdate();
 			
 			return  cnt;
