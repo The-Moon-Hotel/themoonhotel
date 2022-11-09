@@ -45,8 +45,8 @@
 %>
 	
 <div style="height: 800px; margin-top: 100px;">
-	<p style="text-align: center; margin-top:20px;">예약 내역</p>
-	<div style="width: 800px; margin:auto; text-align: center">
+	<p style="text-align: center; margin-top:20px;"><%=guestVo.getName() %>님의 예약 내역</p>
+<!-- 	<div style="width: 800px; margin:auto; text-align: center">
 		<form name="searMyReserv" method="post" action="myReservList_ok.jsp">
 			<span style="margin: 0 10px 0 10px; font-weight: bold">투숙기간</span>
 			<select class="form-select" style="width: 160px; display: inline;">
@@ -60,7 +60,7 @@
 			<input type="date" name="endDate" required> 
 			<input type="submit" value="예약조회"> 
 		</form>
-	</div>
+	</div> -->
 	<hr>
 	<table class="table" style="width: 800px; margin:auto; text-align: center;">
 	  <thead>
