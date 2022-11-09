@@ -8,7 +8,7 @@ public class SalesVO2 {
 	private int roomPrice;//객실 가격
 	private int room_total_Price; //객실 가격 합계
 	
-	private String fac_name;	//부대시설 이름
+	private String facname;	//부대시설 이름
 	private int fac_adultNo; //부대시설 이용 성인수
 	private int fac_kidsNo;	//부대시설 이용 어린이수
 	private int fac_Adult_Price;//부대시설 이용 성인 요금
@@ -25,7 +25,7 @@ public class SalesVO2 {
 
 
 	public SalesVO2(String locName, String roomType, String ci_date, int quantity, int roomPrice, int room_total_Price,
-			String fac_name, int fac_adultNo, int fac_kidsNo, int fac_Adult_Price, int fac_kids_Price,
+			String facname, int fac_adultNo, int fac_kidsNo, int fac_Adult_Price, int fac_kids_Price,
 			int fac_total_Price) {
 		super();
 		this.locName = locName;
@@ -34,7 +34,7 @@ public class SalesVO2 {
 		this.quantity = quantity;
 		this.roomPrice = roomPrice;
 		this.room_total_Price = room_total_Price;
-		this.fac_name = fac_name;
+		this.facname = facname;
 		this.fac_adultNo = fac_adultNo;
 		this.fac_kidsNo = fac_kidsNo;
 		this.fac_Adult_Price = fac_Adult_Price;
@@ -72,7 +72,7 @@ public class SalesVO2 {
 	 * 부대시설 매출 조회
 	 * @param locName
 	 * @param ci_date
-	 * @param fac_name
+	 * @param facname
 	 * @param fac_adultNo
 	 * @param fac_kidsNo
 	 * @param fac_Adult_Price
@@ -81,12 +81,12 @@ public class SalesVO2 {
 	 */
 	
 
-	public SalesVO2(String locName, String ci_date, String fac_name, int fac_adultNo, int fac_kidsNo, int fac_Adult_Price,
+	public SalesVO2(String locName, String ci_date, String facname, int fac_adultNo, int fac_kidsNo, int fac_Adult_Price,
 			int fac_kids_Price, int fac_total_Price) {
 		super();
 		this.locName = locName;
 		this.ci_date = ci_date;
-		this.fac_name = fac_name;
+		this.facname = facname;
 		this.fac_adultNo = fac_adultNo;
 		this.fac_kidsNo = fac_kidsNo;
 		this.fac_Adult_Price = fac_Adult_Price;
@@ -181,15 +181,15 @@ public class SalesVO2 {
 
 
 
-	public String getFac_name() {
-		return fac_name;
+	public String getFacname() {
+		return facname;
 	}
 
 
 
 
-	public void setFac_name(String fac_name) {
-		this.fac_name = fac_name;
+	public void setFacname(String facname) {
+		this.facname = facname;
 	}
 
 

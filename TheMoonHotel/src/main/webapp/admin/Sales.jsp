@@ -44,7 +44,8 @@ if(branchType!=null&& !branchType.isEmpty()&&salesType!=null&& !salesType.isEmpt
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-	}else if(st==2||st==3){//부대시설별
+	}
+	if(st==2||st==3){//부대시설별
 		try{
 			list1 = salesService.salesByFac(date01, date02, branchType);
 		}catch(SQLException e){
@@ -52,12 +53,12 @@ if(branchType!=null&& !branchType.isEmpty()&&salesType!=null&& !salesType.isEmpt
 		}
 	} 	
 	
-}else{
-	branchType="";
-	salesType="";
-	date1="";
-	date1="";
-}
+	}if(st != 1 && st != 2 && st != 3){
+		branchType="";
+		salesType="";
+		date1="";
+		date1="";
+	}
 %>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
@@ -215,7 +216,7 @@ if(branchType!=null&& !branchType.isEmpty()&&salesType!=null&& !salesType.isEmpt
 							<tr>
 								<td><%=vo.getCi_date() %></td>
 								<td><%=vo.getLocName() %></td>	
-								<td><%=vo.getFac_name() %></td>							
+								<td><%=vo.getFacname() %></td>							
 								<td><%=vo.getFac_adultNo() %></td>								
 								<td><%=vo.getFac_kidsNo() %></td>								
 								<td><%=vo.getFac_Adult_Price() %></td>								

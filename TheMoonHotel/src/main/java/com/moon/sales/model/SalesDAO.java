@@ -87,12 +87,12 @@ private ConnectionPoolMgr pool;
 		
 			String sql = "select locname, facname, "
 					+ " count(adultno) as fac_adultNo, count(kidsno) as fac_kidsNo,"
-					+ " sum(adultprice)  as fac_Adult_Price, sum(kidsprice) as fac_kids_Price, ci_date"
+					+ " sum(adultprice) as fac_Adult_Price, sum(kidsprice) as fac_kids_Price, ci_date"
 					+ " from v_fac_sales"
 					+ " where ci_date between ? and  ?";
 			
 					if(!locName.equals("all") ) {
-						sql+= " and locname" +" =  ? ";
+						sql+= " and locname =  ? ";
 					}
 					
 					sql+= " group by locname, facname, adultprice, kidsprice, ci_date"
