@@ -9,6 +9,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<jsp:include page="../inc/top.jsp"></jsp:include>
 <style>
 	p{
 		font-size: 200%; 
@@ -17,7 +18,6 @@
 		font-weight: bold;	
 	}
 </style>
-<jsp:include page="../inc/top.jsp"></jsp:include>
 <jsp:useBean id="reservService" 
 	class="com.moon.reservation.model.ReservationService" scope="session"></jsp:useBean>
 <jsp:useBean id="roomService" 
@@ -28,6 +28,8 @@
 <%
 	String userid = (String)session.getAttribute("userid");
 	String condition = request.getParameter("searchCondition");
+	String startDate = request.getParameter("startDate");
+	String endDate = request.getParameter("endDate");
 	
 	List<ReservationVO> rlist=null;
 	ReservationVO reservVo = new ReservationVO();
@@ -38,6 +40,10 @@
 		
 		if(condition != null){
 			rlist = reservService.selectCondition(condition);
+		}
+		
+		if(startDate != null && endDate != null){
+			rlist = reservService.selectAllReserv(startDate, endDate);
 		}
 	}catch(SQLException e){
 		e.printStackTrace();
@@ -82,9 +88,9 @@
 <div style="height: 800px;">
 	<p style="font-size: 120%; text-align: center; margin-top:100px;">고객 예약 조회</p>
 	<div style="width: 800px; margin:auto; text-align: center">
-		<form name="searReserv" method="get" action="">
+		<form name="searReserv" method="post" action="reservList.jsp">
 			<span style="margin: 0 10px 0 10px; font-weight: bold">투숙기간</span>
-			<select class="form-select" name="searchCondition" style="width: 160px; display: inline;">
+			<select class="form-select" name="searchCondition" value = 'condition' style="width: 160px; display: inline;">
 				<option value="all"
 				<%if("all".equals(condition)){ %>
 					selected="selected"
@@ -109,7 +115,7 @@
 				>투숙중</option>
 			</select>
 			<input type="date" class="" name="startDate"> ~ <input type="date" name="endDate"> 
-			<input type="button" value="예약조회" onclick="location.href='reservList.jsp?searchCondition=<%=condition%>'"> 
+			<input type="submit" value="예약조회" > 
 		</form>
 	</div>
 	<hr>
