@@ -28,8 +28,18 @@
 }
 
 </style>
+
 <%
 	String userid = (String)session.getAttribute("userid"); //로그인 정보
+	
+	if(userid==null || userid.isEmpty()){ %>
+	<script type="text/javascript">
+		alert('먼저 로그인하세요');
+		location.href="<%=request.getContextPath()%>/login/login.jsp";
+	</script>
+	
+<%	return;
+	}
 	
 	request.setCharacterEncoding("utf-8");
 

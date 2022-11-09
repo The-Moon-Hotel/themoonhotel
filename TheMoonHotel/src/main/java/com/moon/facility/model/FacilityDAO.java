@@ -151,7 +151,7 @@ public class FacilityDAO {
 
 			rs = ps.executeQuery();
 				
-			if (rs.next()) {
+			if(rs.next()){
 				int facNo = rs.getInt("facNo");
 				int adultNo = rs.getInt("adultNo");
 				int kidsNo = rs.getInt("kidsNo");
@@ -163,6 +163,29 @@ public class FacilityDAO {
 			return facVo;
 		} finally {
 			pool.dbClose(rs, ps, con);
+		}
+	}
+	
+	//예약번호를 매개 변수로 부대시설 예약 삭제하는 메서드
+	public int deleteFacility(int reservNo) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		try {
+			con = pool.getConnection();
+			
+			String sql = "delete from facility\r\n"
+						+ "where reservNo = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, reservNo);
+			
+			int cnt = ps.executeUpdate();
+			
+			System.out.println("부대시설 예약 취소 수: "+cnt+", 예약번호"+reservNo);
+			
+			return cnt;
+		}finally {
+			pool.dbClose(ps, con);
 		}
 	}
 }

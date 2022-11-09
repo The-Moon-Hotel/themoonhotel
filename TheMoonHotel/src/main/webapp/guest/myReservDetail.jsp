@@ -110,7 +110,7 @@
 		</div>		
 	</div><br><br>
 	<table class="facTable" style="width: 800px; margin:auto; margin-top:200px; text-align: center">
-			<tr><th colspan="8">부대시설예약정보</th></tr>
+			<tr><th colspan="8" style="height: 60px;">부대시설예약정보</th></tr>
 			<tr>
 				<td>조식</td>
 				<td>수영장</td>

@@ -28,8 +28,11 @@
 <script type="text/javascript">
 	$(function(){
 		$('#submitBtn').click(function(){
-			if(gapDate<0){
-				alert('체크아웃 날짜를 다시 선택해주세요');
+			const checkin = new Date($('#ci_date').val());//2022-02-03
+			const checkout = new Date($('#co_date').val());//2022-02-04
+
+			if((checkin<checkout)!=true){
+				alert('체크아웃 날짜를 다시 확인해주세요');
 				event.preventDefault();
 			}
 		});
@@ -72,7 +75,7 @@
 						</select>
 					</td>
 					<td><input type="date" name="ci_date" id="ci_date" min="<%=now %>" required></td>
-					<td><input type="date" name="co_date" id="ci_date" required></td>
+					<td><input type="date" name="co_date" id="co_date" required></td>
 					<td><input type="number" name="adult" min="1" max="2" value="1" style="width:100px"></td>
 					<td><input type="number" name="kids" min="0" max="2" value="0" style="width:100px"></td>
 					<td><input type="submit" value="검색" id="submitBtn"></td>

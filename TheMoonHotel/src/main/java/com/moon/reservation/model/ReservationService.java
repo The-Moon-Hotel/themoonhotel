@@ -40,4 +40,12 @@ public class ReservationService {
 	public List<ReservationVO> selectAllReserv() throws SQLException{
 		return reservDao.selectAllReserv();
 	}
+	public List<ReservationVO> selectCondition(String condition) throws SQLException{
+		return reservDao.selectCondition(condition);
+	}
+	
+	//예약번호를 매개번수로 받아서 방을 취소하는 메서드
+	public int deleteReserv(int reservNo) throws SQLException {
+		return reservDao.deleteReserv(reservNo);
+	}
 }

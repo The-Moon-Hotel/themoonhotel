@@ -8,12 +8,6 @@
 <%@page import="com.moon.guest.model.GuestVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:include page="../inc/top.jsp"></jsp:include>
-<jsp:useBean id="reservService"
-	class="com.moon.reservation.model.ReservationService" scope="session"></jsp:useBean>
-<jsp:useBean id="guestService" class="com.moon.guest.model.GuestSerivce" scope="session"></jsp:useBean>
-<jsp:useBean id="guestVO" class="com.moon.guest.model.GuestVO" scope="page"></jsp:useBean>
-<jsp:useBean id="roomService" class="com.moon.room.model.RoomService" scope="session"></jsp:useBean>
 <style>
 	p{
 		font-size: 200%; 
@@ -22,6 +16,12 @@
 		font-weight: bold;	
 	}
 </style>
+<jsp:include page="../inc/top.jsp"></jsp:include>
+<jsp:useBean id="reservService"
+	class="com.moon.reservation.model.ReservationService" scope="session"></jsp:useBean>
+<jsp:useBean id="guestService" class="com.moon.guest.model.GuestSerivce" scope="session"></jsp:useBean>
+<jsp:useBean id="guestVO" class="com.moon.guest.model.GuestVO" scope="page"></jsp:useBean>
+<jsp:useBean id="roomService" class="com.moon.room.model.RoomService" scope="session"></jsp:useBean>
 <%
 	String userid = (String)session.getAttribute("userid"); //로그인 정보
 	

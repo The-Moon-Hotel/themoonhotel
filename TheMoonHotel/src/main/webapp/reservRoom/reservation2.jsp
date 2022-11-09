@@ -30,24 +30,12 @@
 }
 
 </style>
-<script type="text/javascript">
-	$(function(){
-		$('#submitBtn').click(function(){
-			if(gapDate<0){
-				alert('체크아웃 날짜를 다시 선택해주세요');
-				event.preventDefault();
-			}
-		});
-		
-		if('#submiBtn').
-	});
-</script>
 <jsp:useBean id="roomService" 
 class="com.moon.room.model.RoomService" scope="session"></jsp:useBean>
 
 <%
 	String userid = (String)session.getAttribute("userid"); //로그인 정보
-
+	
 	request.setCharacterEncoding("utf-8");
 
 	//1. 파라미터 읽어오기
@@ -143,7 +131,8 @@ class="com.moon.room.model.RoomService" scope="session"></jsp:useBean>
 					</td>
 					<td id="line">
 						<!-- <input type="submit" id="submitBtn" value="예약하기" > -->
-						<input type="button" id="submitBtn" value="예약하기" onclick="location.href='reservation3.jsp?ci_date=<%=ci_date%>&co_date=<%=co_date%>&adult=<%=adult%>&kids=<%=kids%>&roomType=<%=roomVo.getRoomType()%>&roomImage=<%=roomVo.getRoomImage()%>&totalPrice=<%=df.format(roomVo.getRoomPrice()*gapDate)%>&locName=<%=locName%>'"
+						<input type="button" id="submitBtn" value="예약하기" 
+onclick="location.href='reservation3.jsp?ci_date=<%=ci_date%>&co_date=<%=co_date%>&adult=<%=adult%>&kids=<%=kids%>&roomType=<%=roomVo.getRoomType()%>&roomImage=<%=roomVo.getRoomImage()%>&totalPrice=<%=df.format(roomVo.getRoomPrice()*gapDate)%>&locName=<%=locName%>'"
 					</td>
 				</tr>
 			

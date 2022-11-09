@@ -199,7 +199,9 @@ public class ReservationDAO {
 		try {
 			con = pool.getConnection();
 			
-			String sql = "select * from Reservation order by reservNo desc";
+			String sql = "select * from reservation "
+						+ "order by reservNo desc";
+			
 			ps = con.prepareStatement(sql);
 			
 			rs = ps.executeQuery();
@@ -223,5 +225,71 @@ public class ReservationDAO {
 			pool.dbClose(rs, ps, con);
 		}
 	}
+	
+	public List<ReservationVO> selectCondition(String condition) throws SQLException{
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
 		
+		List<ReservationVO> rlist = new ArrayList<>();
+		try {
+			con = pool.getConnection();
+			
+			String sql = "select * from reservation ";
+			
+			if(condition.equals("complete")) {
+				sql += " where ci_date < sysdate"; 
+			}else if(condition.equals("incomplete")) { //예정
+				sql += " where ci_date > sysdate";
+			}else if(condition.equals("ing")) {
+				sql += " where ci_date<=sysdate and co_date>sysdate";			
+			}
+			
+			sql += " order by reservNo desc";
+			
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				int reservNo = rs.getInt("reservNo");
+				int guestNo = rs.getInt("guestNo");
+				int roomNo = rs.getInt("roomNo");
+				int adult = rs.getInt("adult");
+				int kids = rs.getInt("kids");
+				String ci_date = rs.getString("ci_date");
+				String co_date = rs.getString("co_date");
+				int totalPrice = rs.getInt("totalPrice");
+				
+				ReservationVO reservVo = new ReservationVO(reservNo, guestNo, roomNo, adult, 
+						kids, ci_date, co_date, totalPrice);
+				rlist.add(reservVo);
+			}
+			return rlist;
+		}finally {
+			pool.dbClose(rs, ps, con);
+		}
+	}
+	//예약번호를 매개번수로 받아서 방을 취소하는 메서드
+	public int deleteReserv(int reservNo) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		try {
+			con = pool.getConnection();
+			
+			String sql = "delete from reservation\r\n"
+						+ "where reservNo = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, reservNo);
+			
+			int cnt = ps.executeUpdate();
+			
+			System.out.println("취소된 예약 수: "+cnt+", 예약번호: "+reservNo);
+			
+			return cnt;
+		}finally {
+			pool.dbClose(ps, con);
+		}
+	}
 }

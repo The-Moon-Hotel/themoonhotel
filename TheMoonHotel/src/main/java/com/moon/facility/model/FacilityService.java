@@ -32,4 +32,9 @@ public class FacilityService {
 	public FacilityVO selectGymInfo(int reservNo) throws SQLException {
 		return facDao.selectGymInfo(reservNo);
 	}
+	
+	//예약번호를 매개 변수로 부대시설 예약 삭제하는 메서드
+	public int deleteFacility(int reservNo) throws SQLException {
+		return facDao.deleteFacility(reservNo);	
+	}
 }
