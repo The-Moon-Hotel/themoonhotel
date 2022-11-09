@@ -52,15 +52,15 @@
 				<script>
 				var mapContainer = document.getElementById('map1'), // 지도를 표시할 div 
 				    mapOption = { 
-				        center: new kakao.maps.LatLng(37.555697, 127.005172), // 지도의 중심좌표
-				        draggable: false,
+				        center: new kakao.maps.LatLng(37.557689, 127.007634), // 지도의 중심좌표
+				        //draggable: false,//지도고정
 				        level: 5 // 지도의 확대 레벨
 				    };
 				
 				var map1 = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 				
 				// 마커가 표시될 위치입니다 
-				var markerPosition  = new kakao.maps.LatLng(37.555697, 127.005172); 
+				var markerPosition  = new kakao.maps.LatLng(37.557689, 127.007634); 
 				
 				// 마커를 생성합니다
 				var marker = new kakao.maps.Marker({
@@ -102,15 +102,15 @@
 				<script>
 				var mapContainer = document.getElementById('map2'), // 지도를 표시할 div 
 				    mapOption = { 
-				        center: new kakao.maps.LatLng(37.555697, 127.005172), // 지도의 중심좌표
-				        draggable: false,
+				        center: new kakao.maps.LatLng(37.542765, 126.949617), // 지도의 중심좌표
+				        //draggable: false,//지도고정
 				        level: 5 // 지도의 확대 레벨
 				    };
 				
 				var map2 = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 				
 				// 마커가 표시될 위치입니다 
-				var markerPosition  = new kakao.maps.LatLng(37.555697, 127.005172); 
+				var markerPosition  = new kakao.maps.LatLng(37.542765, 126.949617); 
 				
 				// 마커를 생성합니다
 				var marker = new kakao.maps.Marker({
@@ -155,15 +155,15 @@
 				<script>
 				var mapContainer = document.getElementById('map3'), // 지도를 표시할 div 
 				    mapOption = { 
-				        center: new kakao.maps.LatLng(37.555697, 127.005172), // 지도의 중심좌표
-				        draggable: false,
+				        center: new kakao.maps.LatLng(37.489343, 127.030149), // 지도의 중심좌표
+				        //draggable: false,//지도고정
 				        level: 5 // 지도의 확대 레벨
 				    };
 				
 				var map3 = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 				
 				// 마커가 표시될 위치입니다 
-				var markerPosition  = new kakao.maps.LatLng(37.555697, 127.005172); 
+				var markerPosition  = new kakao.maps.LatLng(37.489343, 127.030149); 
 				
 				// 마커를 생성합니다
 				var marker = new kakao.maps.Marker({

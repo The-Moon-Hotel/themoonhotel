@@ -22,6 +22,8 @@
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
+	}else{
+		t_userid="";
 	}
 	
 %>
@@ -57,11 +59,22 @@
   	});
   	
   	$(function(){
+  		var resevUserid="<%=t_userid%>";
   		$('#bookBtn1').click(function(){
-  			$(location).attr("href", "<%=request.getContextPath() %>/reservRoom/reservation1.jsp");
+  			if(resevUserid==""){
+  				alert("예약을 하려면 로그인이 필요합니다.");
+  				event.preventDefault();
+  			}else{  				
+  				$(location).attr("href", "<%=request.getContextPath() %>/reservRoom/reservation1.jsp");
+  			}
   		});
   		$('#bookBtn2').click(function(){
-  			$(location).attr("href", "<%=request.getContextPath() %>/reservRoom/reservation1.jsp");
+  			if(resevUserid==""){
+  				alert("예약을 하려면 로그인이 필요합니다.");
+  				event.preventDefault();
+  			}else{  				
+  				$(location).attr("href", "<%=request.getContextPath() %>/reservRoom/reservation1.jsp");
+  			}
   		});
   	})
   </script>
