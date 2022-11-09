@@ -1,5 +1,6 @@
 package com.moon.reservation.model;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -40,6 +41,11 @@ public class ReservationService {
 	public List<ReservationVO> selectAllReserv() throws SQLException{
 		return reservDao.selectAllReserv();
 	}
+	
+	public List<ReservationVO> selectAllReserv(String startDate, String endDate) throws SQLException{
+		return reservDao.selectAllReserv(startDate, endDate);
+	}
+	
 	public List<ReservationVO> selectCondition(String condition) throws SQLException{
 		return reservDao.selectCondition(condition);
 	}

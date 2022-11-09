@@ -226,6 +226,47 @@ public class ReservationDAO {
 		}
 	}
 	
+	public List<ReservationVO> selectAllReserv(String startDate, String endDate) throws SQLException{
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		List<ReservationVO> rlist = new ArrayList<>();
+		try {
+			con = pool.getConnection();
+			
+			String sql = "select * from reservation\r\n"
+					+ "where to_date(ci_date, 'yyyy-mm-dd') >= to_date(?, 'yyyy-mm-dd')"
+					+ " and to_date(co_date, 'yyyy-mm-dd') <= to_date(?, 'yyyy-mm-dd')"
+					+ " order by reservNo desc";
+			
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, startDate);
+			ps.setString(2, endDate);
+						
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				int reservNo = rs.getInt("reservNo");
+				int guestNo = rs.getInt("guestNo");
+				int roomNo = rs.getInt("roomNo");
+				int adult = rs.getInt("adult");
+				int kids = rs.getInt("kids");
+				String ci_date = rs.getString("ci_date");
+				String co_date = rs.getString("co_date");
+				int totalPrice = rs.getInt("totalPrice");
+				
+				ReservationVO reservVo = new ReservationVO(reservNo, guestNo, roomNo, adult, 
+						kids, ci_date, co_date, totalPrice);
+				rlist.add(reservVo);
+			}
+			return rlist;
+		}finally {
+			pool.dbClose(rs, ps, con);
+		}
+	}
+	
 	public List<ReservationVO> selectCondition(String condition) throws SQLException{
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -235,14 +276,14 @@ public class ReservationDAO {
 		try {
 			con = pool.getConnection();
 			
-			String sql = "select * from reservation ";
+			String sql = "select * from reservation "; //2022-05-08
 			
 			if(condition.equals("complete")) {
-				sql += " where ci_date < sysdate"; 
+				sql += " where to_date(ci_date, 'YY-MM-DD') < sysdate-1"; 
 			}else if(condition.equals("incomplete")) { //예정
-				sql += " where ci_date > sysdate";
+				sql += " where to_date(ci_date, 'YY-MM-DD') > sysdate";
 			}else if(condition.equals("ing")) {
-				sql += " where ci_date<=sysdate and co_date>sysdate";			
+				sql += " where to_date(ci_date, 'YY-MM-DD') <=sysdate and to_date(co_date, 'YY-MM-DD')>sysdate";			
 			}
 			
 			sql += " order by reservNo desc";
