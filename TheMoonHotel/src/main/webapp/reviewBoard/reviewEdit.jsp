@@ -1,3 +1,6 @@
+<%@page import="java.sql.SQLException"%>
+<%@page import="com.moon.reviewBoard.model.ReviewBoardDAO"%>
+<%@page import="com.moon.reviewBoard.model.ReviewBoardVO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <jsp:include page="../inc/top.jsp"></jsp:include>
@@ -46,14 +49,27 @@ var oEditors=[];
 		      fCreator: "createSEditor2"
 		      });
 			$('#btn1').click(function() {
-			location.href = "noticeBoardList.jsp";
+			location.href = "reviewBoardList.jsp";
 		});
 	});
 </script>
+<%
+String reviewNo = request.getParameter("oticeNo");
+ReviewBoardVO vo = new ReviewBoardVO();
+ReviewBoardDAO dao = new ReviewBoardDAO();
+
+try{
+	vo = dao.selectByNo(Integer.parseInt(reviewNo));
+}catch(SQLException e){
+	e.printStackTrace();
+}
+%>
 <body>
 <br><br><br>
 <div id="div1" class="container text-left">
-	<form>
+	<form id="frm" method="post" enctype="multipart/form-data" action="reviewEdit_ok.jsp">
+		<input type ="hidden" name="reviewNo" value="<%=vo.getReviewNo() %>">
+		<input type ="hidden" name="guestNo" value="<%=vo.getGuestNo() %>">
 		<fieldset>
 			<legend>게시글 수정</legend>
 			<div class="form-group">
@@ -64,16 +80,16 @@ var oEditors=[];
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1" class="form-label mt-4"></label>
-				<input type="email" class="form-control" id="title1"
-					placeholder="제목을 입력하세요" > 
+				<input type="text" name="title" class="form-control" id="title1" value="<%=vo.getR_title()%>">
+				
 			</div>
 			<div class="form-group">
 				<label for="exampleTextarea" class="form-label mt-4"></label>
-				<textarea id="txtCon" class="form-control" rows="6" placeholder="내용을 입력하세요"></textarea>
+				<textarea id="txtCon" name="content"class="form-control" rows="6"><%=vo.getR_content() %></textarea>
 			</div>
 			<div class="form-group">
 				<label for="formFile" class="form-label mt-4">파일 첨부</label>
-				<input class="form-control" type="file" id="formFile">
+				<input class="form-control" type="file" id="formFile" name="fileName">
 			</div>
 			<button id="sub1" type="submit" class="btn btn-primary">작성</button>
 			<button id="btn1" type="button" class="btn btn-primary">목록</button>

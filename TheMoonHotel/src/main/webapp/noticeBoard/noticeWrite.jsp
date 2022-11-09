@@ -46,7 +46,11 @@
 	        //id가 smarteditor인 textarea에 에디터에서 대입
 	          oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
 	        $('#frm').submit();
-	    })
+	    });
+		
+		$("#btn1").click(function(){
+			location.href="noticeBoardList.jsp";
+		});
 	});
 
 </script>

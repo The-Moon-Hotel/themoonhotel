@@ -127,13 +127,14 @@ public class NoticeBoardDAO {
 			
 			rs= ps.executeQuery();
 			
-			while(rs.next()) {
+			if(rs.next()) {
 				int guestNo = rs.getInt("guestNo");
 				String n_title = rs.getString("n_title");
 				Timestamp n_regdate = rs.getTimestamp("n_regdate");
 				String n_content = rs.getString("n_content");
 				int n_count = rs.getInt("n_count");
 				
+				vo.setNoticeNo(noticeNo);
 				vo.setGuestNo(guestNo);
 				vo.setN_title(n_title);
 				vo.setN_regdate(n_regdate);
@@ -145,24 +146,25 @@ public class NoticeBoardDAO {
 			pool.dbClose(rs, ps, con);
 		}
 	}
-	public int updateNoticeBoard(NoticeBoardVO vo) throws SQLException {
+	public int updateNoticeBoard(NoticeBoardVO vo, int noticeNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
 		try {
 		con = pool.getConnection();
 		String sql = "update noticeBoard"
-				+ " set n_title =?, n_content = ?"
-				+ " where noticeNO = ? and guestNo = ?";
+				+ " set n_title =?, n_content=?, n_fileName=?, n_fileSize=?"
+				+ " where noticeNo = ?";
 		ps=con.prepareStatement(sql);
 		
 		ps.setString(1, vo.getN_title());
 		ps.setString(2, vo.getN_content());
-		ps.setInt(3, vo.getNoticeNo());
-		ps.setInt(4, vo.getGuestNo());
+		ps.setString(3, vo.getN_fileName());
+		ps.setLong(4, vo.getN_fileSize());
+		ps.setInt(5, vo.getNoticeNo());
 		
 		int cnt = ps.executeUpdate();
-		
+		System.out.println(cnt);
 		return cnt;
 		
 		}finally {
@@ -171,18 +173,17 @@ public class NoticeBoardDAO {
 	}
 	//해당 게스트의 비밀번호와 일치하는지 확인을 해야함
 	
-	public int deleteNoticeBoard(int noticeNo, int guestNo) throws SQLException {
+	public int deleteNoticeBoard(int noticeNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
 		try {
 			con = pool.getConnection();
 			String sql = "delete from noticeBoard"
-						+" where noticeNo = ? and guestNo = ?";
+						+" where noticeNo =?";
 			ps=con.prepareStatement(sql);
 			
 			ps.setInt(1, noticeNo);
-			ps.setInt(2, guestNo);		
 			int cnt = ps.executeUpdate();
 			
 			return  cnt;

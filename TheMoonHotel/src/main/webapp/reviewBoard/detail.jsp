@@ -1,3 +1,9 @@
+<%@page import="com.moon.guest.model.GuestSerivce"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.SQLClientInfoException"%>
+<%@page import="com.moon.reviewBoard.model.ReviewBoardVO"%>
+<%@page import="com.moon.reviewBoard.model.ReviewBoardDAO"%>
+<%@page import="com.moon.askBoard.model.AskBoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <jsp:include page="../inc/top.jsp"></jsp:include>
@@ -13,6 +19,9 @@
 	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
 	crossorigin="anonymous">
 </head>
+<jsp:useBean id="reviewBoardVo" class="com.moon.reviewBoard.model.ReviewBoardVO"></jsp:useBean>
+<jsp:useBean id="guestService" class="com.moon.guest.model.GuestSerivce" scope="session"></jsp:useBean>
+<jsp:useBean id="guestVo" class="com.moon.guest.model.GuestVO" scope="page"></jsp:useBean>
 <style type="text/css">
 body {
 	padding-top: 70px;
@@ -51,33 +60,58 @@ body {
 	padding-bottom: 10pt;
 }
 </style>
+<%String no = request.getParameter("no");
+if (no == null || no.isEmpty()) {%>
+<script type="text/javascript">
+	alert('잘못된 url입니다');
+	location.href = "list.jsp";
+</script>
+	<%return;
+}
+
+ReviewBoardDAO dao = new ReviewBoardDAO();
+ReviewBoardVO vo = null;
+try{
+	vo = dao.selectByNo(Integer.parseInt(no));
+}catch(SQLException e){
+	e.printStackTrace();
+}
+String userid = (String)session.getAttribute("userid");
+boolean t_login=false;
+int GuestOrAdmin=GuestSerivce.GUEST_ACCOUNT;
+if(userid!=null && !userid.isEmpty()){
+	try{
+         guestVo=guestService.selectByUserid(userid);
+         int sys = guestVo.getSys();
+         if(sys==GuestSerivce.ADMIN_ACCOUNT){
+            GuestOrAdmin = GuestSerivce.ADMIN_ACCOUNT;
+         }
+      }catch(SQLException e){
+         e.printStackTrace();
+      }
+   }
+%>
 <script type="text/javascript"src="../js/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		$('#btnUpdate').click(function(){
-			location.href="noticeEdit.jsp";
-		});
-		$('#btnDelete').click(function(){
-			location.href="BoardDelete.jsp";
-		});
 		$('#btnList').click(function(){
-			location.href="noticeBoardList.jsp";
+			location.href="reviewBoardList.jsp";
 		});
 	});
 </script>
 <body>
 	<article>
-
 		<div class="container" role="main">
 		<br><br><br>
 			<h2>상세보기</h2>
 			<div class="bg-white rounded shadow-sm">
 				<div class="board_title">
-				게시글 제목 들어가야함<!-- 클릭한 게시물 제목 보이기 -->
+				<%=vo.getR_title() %><!-- 클릭한 게시물 제목 보이기 -->
 				</div>
+				<input type="hidden" name="reviewNo" value="<%=vo.getReviewNo() %>">
 				<div class="board_info_box">
-					<span class="board_author">게시글 내용 들어가야함</span><!-- 게시글 내용 -->
-					<span class="board_date">게시글 날짜 </span><!-- 게시글 날짜 -->
+					<span class="board_author"><%=vo.getR_content()%></span><!-- 게시글 내용 -->
+					<span class="board_date"><%=vo.getR_regdate() %> </span><!-- 게시글 날짜 -->
 				</div>
 				<div class="board_content"></div>
 				<div class="board_tag">
@@ -87,9 +121,11 @@ body {
 				<br>
 				<br>
 				<br>
-				<button type="button" class="btn btn-sm btn-primary" id="btnUpdate">수정</button>
-				<button type="button" class="btn btn-sm btn-primary" id="btnDelete">삭제</button>
-				<button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
+				<button type="button" class="btn btn-sm btn-dark" id="btnUpdate"
+					onclick="location.href='reviewEdit.jsp?reviewNo=<%=vo.getReviewNo()%>'">수정</button>
+				<button type="button" class="btn btn-sm btn-dark" id="btnDelete"
+					onclick="location.href='BoardDelete.jsp?reviewNo=<%=vo.getReviewNo()%>'">삭제</button>
+				<button type="button" class="btn btn-sm btn-dark" id="btnList">목록</button>
 				<br><br><br>
 			</div>
 		</div>
