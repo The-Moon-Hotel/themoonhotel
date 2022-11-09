@@ -24,6 +24,9 @@ SalesService salesService =new SalesService();
 List<SalesVO2> list=null;
 List<SalesVO2> list1=null;
 int st=0;
+
+int sum=0, sum1=0;
+
 //branchType는  
 if(branchType!=null&& !branchType.isEmpty()&&salesType!=null&& !salesType.isEmpty()){
 	st=Integer.parseInt(salesType);
@@ -172,8 +175,7 @@ if(branchType!=null&& !branchType.isEmpty()&&salesType!=null&& !salesType.isEmpt
 								<th scope="col">합계</th>								
 							</tr>
 							
-						 	<%int sum=0;
-						 		for(int i=0; i<list.size(); i++){
+						 	<%for(int i=0; i<list.size(); i++){
 						 		SalesVO2 vo = list.get(i);	 
 						 		sum += vo.getRoom_total_Price();%>
 						<tbody>
@@ -194,7 +196,10 @@ if(branchType!=null&& !branchType.isEmpty()&&salesType!=null&& !salesType.isEmpt
 							</th>
 						</tfoot>
 					</table>
-					<%}else if(st==2||st==3){ %>
+					<%}//if %>
+					
+					
+					<%if(st==2){ %>
 						<table class="table">
 						<thead>
 							<tr>							
@@ -204,14 +209,13 @@ if(branchType!=null&& !branchType.isEmpty()&&salesType!=null&& !salesType.isEmpt
 								<th scope="col">성인수</th>
 								<th scope="col">아동수</th>
 								<th scope="col">성인가격</th>								
-								<th scope="col">아동가격</th>								
-								<th scope="col">합계</th>								
+								<th scope="col">아동가격</th>															
 							</tr>
 							
-						 	<%int sum=0;
-						 		for(int i=0; i<list.size(); i++){
+						 	<%for(int i=0; i<list1.size(); i++){
 						 		SalesVO2 vo = list1.get(i);	 
-						 		sum += vo.getFac_total_Price();%>
+						 		sum1 += vo.getFac_Adult_Price(); 
+						 		sum1 += vo.getFac_kids_Price();%>
 						<tbody>
 							<tr>
 								<td><%=vo.getCi_date() %></td>
@@ -220,19 +224,60 @@ if(branchType!=null&& !branchType.isEmpty()&&salesType!=null&& !salesType.isEmpt
 								<td><%=vo.getFac_adultNo() %></td>								
 								<td><%=vo.getFac_kidsNo() %></td>								
 								<td><%=vo.getFac_Adult_Price() %></td>								
-								<td><%=vo.getFac_kids_Price() %></td>								
-								<td><%=vo.getRoom_total_Price() %> 원</td>								
+								<td><%=vo.getFac_kids_Price() %></td>																
 							</tr>
 						</tbody>
 						<%} %>
 						<tfoot>
-							<th colspan="7">총 매출</th>
+							<th colspan="6">총 매출</th>
 							<th>
-								<%=sum%> 원					
+								<%=sum1%> 원					
 							</th>
 						</tfoot>
 					</table>
-					<%} %>				
+					
+					<%}else if(st==3){%>
+						<div style="height:50px"></div>	
+						<table class="table">
+						<thead>
+							<tr>							
+								<th scope="col">날짜</th>
+								<th scope="col">지점</th>
+								<th scope="col">시설명</th>
+								<th scope="col">성인수</th>
+								<th scope="col">아동수</th>
+								<th scope="col">성인가격</th>								
+								<th scope="col">아동가격</th>															
+							</tr>
+							
+						 	<%for(int i=0; i<list1.size(); i++){
+						 		SalesVO2 vo = list1.get(i);	 
+						 		sum1 += vo.getFac_Adult_Price(); 
+						 		sum1 += vo.getFac_kids_Price();%>
+						<tbody>
+							<tr>
+								<td><%=vo.getCi_date() %></td>
+								<td><%=vo.getLocName() %></td>	
+								<td><%=vo.getFacname() %></td>							
+								<td><%=vo.getFac_adultNo() %></td>								
+								<td><%=vo.getFac_kidsNo() %></td>								
+								<td><%=vo.getFac_Adult_Price() %></td>								
+								<td><%=vo.getFac_kids_Price() %></td>																
+							</tr>
+						
+						<%} %>
+							<th colspan="6">총 매출</th>
+							<th>
+								<%=sum1%> 원					
+							</th>
+						</tbody>
+						<tfoot>
+							<th colspan="6">
+								객실&부대시설 매출 합계</th>
+							<th><%=(sum + sum1) %> 원</th>
+						</tfoot>
+					</table>
+					<%}//if %>		
 				</div>
 			</form>
 		</div>

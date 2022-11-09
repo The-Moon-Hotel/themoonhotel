@@ -42,7 +42,7 @@ private ConnectionPoolMgr pool;
 					}
 					
 					sql+= " group by locname, roomtype,  roomprice, ci_date"
-							+ " order by locname";
+							+ " order by locname, ci_date ";
 			ps = con.prepareStatement(sql);
 			
 			ps.setString(1, d1);
@@ -95,8 +95,8 @@ private ConnectionPoolMgr pool;
 						sql+= " and locname =  ? ";
 					}
 					
-					sql+= " group by locname, facname, adultprice, kidsprice, ci_date"
-							+ " order by locname";
+					sql+= " group by locname, facname, ci_date"
+							+ " order by locname, ci_date ";
 			ps = con.prepareStatement(sql);
 			
 			ps.setString(1, d1);
@@ -115,13 +115,13 @@ private ConnectionPoolMgr pool;
 				int fac_kidsNo = rs.getInt("fac_kidsNo");
 				int fac_Adult_Price = rs.getInt("fac_Adult_Price");
 				int fac_kids_Price = rs.getInt("fac_kids_Price");
-				int fac_total_Price = rs.getInt("fac_total_Price");
+
 				
 
 				
 				SalesVO2 vo 
 					= new SalesVO2(locname, ci_date, facname, fac_adultNo, fac_kidsNo, 
-							fac_Adult_Price, fac_kids_Price, fac_total_Price);
+							fac_Adult_Price, fac_kids_Price);
 				list.add(vo);
 			}
 			

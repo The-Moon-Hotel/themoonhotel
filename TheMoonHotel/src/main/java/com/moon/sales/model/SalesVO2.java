@@ -82,7 +82,7 @@ public class SalesVO2 {
 	
 
 	public SalesVO2(String locName, String ci_date, String facname, int fac_adultNo, int fac_kidsNo, int fac_Adult_Price,
-			int fac_kids_Price, int fac_total_Price) {
+			int fac_kids_Price) {
 		super();
 		this.locName = locName;
 		this.ci_date = ci_date;
@@ -91,7 +91,6 @@ public class SalesVO2 {
 		this.fac_kidsNo = fac_kidsNo;
 		this.fac_Adult_Price = fac_Adult_Price;
 		this.fac_kids_Price = fac_kids_Price;
-		this.fac_total_Price = fac_total_Price;
 	}
 
 
