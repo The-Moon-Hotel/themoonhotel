@@ -92,6 +92,14 @@ body {
 	margin: 10pt;
 	padding-bottom: 10pt;
 }
+
+textarea{
+	font-size: 1em; 
+	width:600px; 
+	height: 400px;
+	border: none;
+	overflow: hidden;
+}
 </style>
 <script type="text/javascript"src="../js/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
@@ -114,18 +122,6 @@ body {
 		
 	});
 	
-	/*  function(str) replaceBrTag
-     {
-         if (str == undefined || str == null)
-         {
-             return "";
-         }
-
-         str = str.replace(/\r\n/ig, '<br>');
-         str = str.replace(/\\n/ig, '<br>');
-         str = str.replace(/\n/ig, '<br>');
-         return str;
-     }; */
 </script>
 <body>
 	<article>
@@ -141,7 +137,7 @@ body {
 				</div> 
 				<br><br>
 				<div class="board_info_box">
-					<span class="board_author" style=font-size:1em><%=vo.getA_content() %></span><!-- 게시글 내용 -->
+					<textarea class="board_author" readonly><%=vo.getA_content() %></textarea><!-- 게시글 내용 -->
 				</div>
 				<br>
 				<div class="board_content"></div>

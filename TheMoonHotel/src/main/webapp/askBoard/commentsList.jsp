@@ -42,6 +42,14 @@
 		width: 1000px;
 		margin-left: 210px;
 	}
+	
+	textarea{
+
+	font-size: 1em; 
+	width:600px; 
+	height: 60px;
+	overflow: hidden;
+	}
 </style>
 <div class="co_list">
 	<h4 style="margin-left: 90px">답글</h4>
@@ -67,7 +75,9 @@
 					
 						<tr style="text-align: center">
 							<td><%=vo.getName()%></td>
-							<td style="text-align: left;margin-left: 50px"><%=vo.getContent()%></td>
+							<td style="text-align: left;margin-left: 50px">
+								<textarea readonly><%=vo.getContent()%></textarea>
+							</td>
 							<td><%=sdf.format(vo.getRegdate())%></td>
 							<%if(g_vo.getSys() != 1){ %>
 								<td>
