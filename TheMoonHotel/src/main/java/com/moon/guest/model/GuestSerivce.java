@@ -1,6 +1,7 @@
 package com.moon.guest.model;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class GuestSerivce {
 	//아이디 중복확인 상수
@@ -52,5 +53,10 @@ public class GuestSerivce {
 	//매개변수 회원번호로 회원정보 불러오는 매서드
 	public GuestVO selectByGuestNo(int guestNo) throws SQLException {
 		return guestDAO.selectByGuestNo(guestNo);
+	}
+	
+	//전체 회원 조회
+	public List<GuestVO> selectAllGuest(String condition, String keyword) throws SQLException{
+		return guestDAO.selectAllGuest(condition, keyword);
 	}
 }

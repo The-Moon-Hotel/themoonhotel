@@ -138,7 +138,7 @@
 				if(num<1) break;
 				
 			  	reservVo = rlist.get(curPos++);
-			  	num --;
+			  	num--;
 			  	
 			  	roomVo = roomService.selectRoomByRoomNo(reservVo.getRoomNo());
 		  		String checkout = reservVo.getCo_date();
