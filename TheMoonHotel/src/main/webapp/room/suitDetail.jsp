@@ -77,7 +77,7 @@
 				</div>
 				
 				<div class="right_box"> 
-					<a href ="<%=request.getContextPath() %>/askBoard/askBoardList.jsp">
+					<a href ="<%=request.getContextPath() %>/askBoard/askWrite.jsp">
 						<input type="button" value="문의하기" style="background:#7B725E;color:white; margin-top: 50px;" >
 					</a>
 					<br><br>
