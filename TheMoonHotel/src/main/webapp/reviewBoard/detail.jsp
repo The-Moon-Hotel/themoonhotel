@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
@@ -79,13 +79,12 @@ try{
 String userid = (String)session.getAttribute("userid");
 boolean t_login=false;
 int GuestOrAdmin=GuestSerivce.GUEST_ACCOUNT;
+int gno =0;
 if(userid!=null && !userid.isEmpty()){
 	try{
          guestVo=guestService.selectByUserid(userid);
-         int sys = guestVo.getSys();
-         if(sys==GuestSerivce.ADMIN_ACCOUNT){
-            GuestOrAdmin = GuestSerivce.ADMIN_ACCOUNT;
-         }
+         gno = guestVo.getGuestNo();
+         
       }catch(SQLException e){
          e.printStackTrace();
       }
@@ -121,9 +120,11 @@ if(userid!=null && !userid.isEmpty()){
 				<br>
 				<br>
 				<br>
+				<%if(vo.getGuestNo()==gno){ %>
 				<button type="button" class="btn btn-sm btn-dark" id="btnUpdate"
 					onclick="location.href='reviewEdit.jsp?reviewNo=<%=vo.getReviewNo()%>'">수정</button>				<button type="button" class="btn btn-sm btn-dark" id="btnDelete"
 					onclick="location.href='reviewDelete.jsp?reviewNo=<%=vo.getReviewNo()%>'">삭제</button>
+				<%} %>
 				<button type="button" class="btn btn-sm btn-dark" id="btnList">목록</button>
 				<br><br><br>
 			</div>

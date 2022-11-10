@@ -43,8 +43,6 @@
 		NoticeBoardVO vo = new NoticeBoardVO();
 		vo.setN_title(n_title);
 		vo.setN_content(n_content);
-		vo.setN_fileName(fileName);
-		vo.setN_fileSize(fileSize);
 		vo.setNoticeNo(Integer.parseInt(noticeNo));
 	
 	try{

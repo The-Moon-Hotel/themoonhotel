@@ -21,16 +21,13 @@ public class NoticeBoardDAO {
 		
 		try {
 			con=pool.getConnection();
-			String sql = "insert into noticeBoard(noticeNo, guestNo, n_title, n_content, n_count, n_fileName, n_fileSize)\r\n"
-					+ "values(noticeboard_seq.nextval,?,?,?,?,?,?)";
+			String sql = "insert into noticeBoard(noticeNo, guestNo, n_title, n_content)\r\n"
+					+ "values(noticeboard_seq.nextval,?,?,?)";
 			ps=con.prepareStatement(sql);
 			 
 			ps.setInt(1, vo.getGuestNo());
 			ps.setString(2, vo.getN_title());
 			ps.setString(3, vo.getN_content());
-			ps.setInt(4, vo.getN_count());
-			ps.setString(5, vo.getN_fileName());
-			ps.setLong(6, vo.getN_fileSize());
 			
 			int cnt = ps.executeUpdate();
 			
@@ -49,7 +46,7 @@ public class NoticeBoardDAO {
 		List<NoticeBoardVO> list = new ArrayList<>();
 		try {
 			con = pool.getConnection();
-			String sql = "select n.noticeNo, n.guestNo, n.n_title, n.n_regdate, n.n_content, n.n_count, n.n_fileName, n.n_fileSize, g.userid"
+			String sql = "select n.noticeNo, n.guestNo, n.n_title, n.n_regdate, n.n_content, g.userid"
 							+" from NoticeBoard n, guest g";
 			
 			if(keyword!=null && !keyword.isEmpty()) {
@@ -73,12 +70,9 @@ public class NoticeBoardDAO {
 				String n_title = rs.getString("n_title");
 				Timestamp n_regdate = rs.getTimestamp("n_regdate");
 				String n_content = rs.getString("n_content");
-				int n_count = rs.getInt("n_count");
-				String n_fileName = rs.getString("n_fileName");
-				long n_fileSize = rs.getLong("n_fileSize");
 				String userid = rs.getString("userid");
 				
-				NoticeBoardVO vo = new NoticeBoardVO(noticeNo, guestNo, n_title, n_regdate, n_content, n_count, n_fileName, n_fileSize, userid);
+				NoticeBoardVO vo = new NoticeBoardVO(noticeNo, guestNo, n_title, n_regdate, n_content, userid);
 				list.add(vo);
 			}
 			System.out.println("글 전체 조회 결과 list.size="+list.size()
@@ -132,14 +126,12 @@ public class NoticeBoardDAO {
 				String n_title = rs.getString("n_title");
 				Timestamp n_regdate = rs.getTimestamp("n_regdate");
 				String n_content = rs.getString("n_content");
-				int n_count = rs.getInt("n_count");
 				
 				vo.setNoticeNo(noticeNo);
 				vo.setGuestNo(guestNo);
 				vo.setN_title(n_title);
 				vo.setN_regdate(n_regdate);
 				vo.setN_content(n_content);
-				vo.setN_count(n_count);
 			}
 			return vo;
 		} finally {
@@ -153,15 +145,13 @@ public class NoticeBoardDAO {
 		try {
 		con = pool.getConnection();
 		String sql = "update noticeBoard"
-				+ " set n_title =?, n_content=?, n_fileName=?, n_fileSize=?"
+				+ " set n_title =?, n_content=?"
 				+ " where noticeNo = ?";
 		ps=con.prepareStatement(sql);
 		
 		ps.setString(1, vo.getN_title());
 		ps.setString(2, vo.getN_content());
-		ps.setString(3, vo.getN_fileName());
-		ps.setLong(4, vo.getN_fileSize());
-		ps.setInt(5, vo.getNoticeNo());
+		ps.setInt(3, vo.getNoticeNo());
 		
 		int cnt = ps.executeUpdate();
 		System.out.println(cnt);
