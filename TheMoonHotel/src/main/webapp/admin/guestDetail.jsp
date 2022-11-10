@@ -24,8 +24,8 @@
 	String guestNo = request.getParameter("guestNo");
 	
 	List<ReservationVO> rlist=null;
-	ReservationVO reservVo = new ReservationVO();
-	RoomVO roomVo = new RoomVO();
+	ReservationVO reservVo = null;
+	RoomVO roomVo = null;
 
 	try{
 		rlist = reservService.selectAllReserv(Integer.parseInt(guestNo));

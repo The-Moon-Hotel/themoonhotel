@@ -101,12 +101,15 @@
 			}
 			if(s_adult!=null || !s_adult.isEmpty()){ //사우나 예약
 				facVo.setAdultNo(Integer.parseInt(s_adult));
+				facVo.setKidsNo(0);
+				
 				facVo.setFacInfoNo(3);
 				int facCnt = facService.insertFacility(facVo, reservNo);
 
 			}
 			if(g_adult!=null || !g_adult.isEmpty()){ //헬스장 예약
 				facVo.setAdultNo(Integer.parseInt(g_adult));
+				facVo.setKidsNo(0);
 				facVo.setFacInfoNo(4);
 				int facCnt = facService.insertFacility(facVo, reservNo);
 			}

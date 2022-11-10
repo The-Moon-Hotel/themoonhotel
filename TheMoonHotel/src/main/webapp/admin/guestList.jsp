@@ -93,7 +93,10 @@
     		num--;
     	%>
 		    <tr>
-		      <td><a href="guestDetail.jsp?guestNo=<%=guestVo.getGuestNo() %>"><%=guestVo.getGuestNo() %></a></td>
+		      <td>
+		      	<a href="guestDetail.jsp?guestNo=<%=guestVo.getGuestNo() %>">
+		      		<%=guestVo.getGuestNo() %></a>
+		      </td>
 			  <td><%=guestVo.getName() %></td>
 			  <td><%=guestVo.getUserid() %></a></td>
 			  <td><%=guestVo.getEmail() %></td>
