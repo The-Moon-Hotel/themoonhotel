@@ -39,15 +39,11 @@
 		String n_content = mr.getParameter("content");	
 		String guestNo = mr.getParameter("guestNo");
 		
-		System.out.println(n_title);
-		System.out.println(n_content);
 		NoticeBoardDAO dao = new NoticeBoardDAO();
 		NoticeBoardVO vo = new NoticeBoardVO();
 		vo.setGuestNo(Integer.parseInt(guestNo));
 		vo.setN_title(n_title);
 		vo.setN_content(n_content);
-		vo.setN_fileName(fileName);
-		vo.setN_fileSize(fileSize);
 	
 		int cnt = dao.insertNotice(vo);
 		

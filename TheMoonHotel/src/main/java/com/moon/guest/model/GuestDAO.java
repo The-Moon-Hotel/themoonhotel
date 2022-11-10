@@ -5,8 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.moon.db.ConnectionPoolMgr;
+import com.moon.reservation.model.ReservationVO;
 
 public class GuestDAO {
 	private ConnectionPoolMgr pool;
@@ -259,6 +262,56 @@ public class GuestDAO {
 			// TODO: handle finally clause
 			pool.dbClose(ps, con);
 		}
+	}
+	
+	//전체 회원 조회
+	public List<GuestVO> selectAllGuest(String condition, String keyword) throws SQLException{
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		List<GuestVO> glist = new ArrayList<>();
+		
+		try {
+			con = pool.getConnection();
+			
+			String sql = "select * from guest ";
+			
+			if(keyword != null && !keyword.isEmpty()) {
+				sql+=" where "+condition+" like  '%' || ? || '%' ";
+			}
+							
+			sql += "order by guestNo desc";
+			
+			ps=con.prepareStatement(sql);
+			
+			if(keyword!=null && !keyword.isEmpty()) {
+				ps.setString(1, keyword);
+			}
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				int guestNo = rs.getInt("guestNo");
+				String userid = rs.getString("userid");
+				String name = rs.getString("name");
+				String pwd = rs.getString("pwd");
+				String email = rs.getString("email");
+				String tel = rs.getString("tel");
+				Timestamp joindate = rs.getTimestamp("joindate");
+				Timestamp outdate = rs.getTimestamp("outdate");
+				int sys = rs.getInt("sys");
+	            
+	            GuestVO guestVo = new GuestVO(guestNo, name, userid, 
+	            		pwd, email, tel, joindate, outdate, sys);
+	            
+	            glist.add(guestVo);
+			}
+			return glist;
+		}finally {
+			pool.dbClose(rs, ps, con);
+		}
+		
 	}
 }
 	
