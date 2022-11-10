@@ -24,6 +24,11 @@
 	background-color:white;
 	font-weight:900;
 }
+
+#ci_date, #co_date, select{
+	width: 180px;
+	height: 30px;
+}
 </style>
 <script type="text/javascript">
 	$(function(){

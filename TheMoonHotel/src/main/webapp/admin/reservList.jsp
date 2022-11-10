@@ -38,13 +38,20 @@
 	try{
 		rlist = reservService.selectAllReserv();
 		
-		if(condition != null){
-			rlist = reservService.selectCondition(condition);
-		}
+		if(condition == null) condition = "all";
 		
 		if(startDate != null && endDate != null){
 			rlist = reservService.selectAllReserv(startDate, endDate);
+			
+			if(condition != null){
+				rlist = reservService.selectCondition(condition);
+			}
+		}else{
+			rlist = reservService.selectCondition(condition);
 		}
+		
+		
+		
 	}catch(SQLException e){
 		e.printStackTrace();
 	}
@@ -69,7 +76,7 @@
 		totalRecord = rlist.size();
 	}
 	
-	int pageSize = 5; 	//현재 페이지에 보여줄 레코드 개수
+	int pageSize = 15; 	//현재 페이지에 보여줄 레코드 개수
 	int totalPage = (int)Math.ceil((float)totalRecord/pageSize); //총 페이지수
 	int blockSize = 10;	//한 블럭에 보여줄 페이지 수
 	

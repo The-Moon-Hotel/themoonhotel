@@ -11,11 +11,7 @@
 <jsp:include page="../inc/top.jsp"></jsp:include>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="../css/adminPage.css" />
-<style>
-	tr, td{
-		text-align: center; 	
-	}
-</style>
+
 <jsp:useBean id="reservService" 
 	class="com.moon.reservation.model.ReservationService" scope="session"></jsp:useBean>
 <jsp:useBean id="roomService" 
@@ -49,7 +45,7 @@
 <p style="font-size: 120%; 
 	text-align: center; margin-top:20px;" >회원 예약 정보</p>
 
-<table class="table" style="width: 800px; height:500px; margin:auto; text-align: center;">
+<table class="table" style="width: 800px; margin:auto; text-align: center;">
 	  <thead>
 	    <tr>
 	      <th>예약번호</th>
@@ -95,7 +91,7 @@
 		<% }//if%>
 	  </tbody>
 </table>
-<div align="center" style="margin-bottom: 20px;">
+<div align="center">
 	<a class="btn btn-secondary" role="button" id="reservList"
 		 href="guestList.jsp">회원 목록</a>
 </div>
