@@ -123,7 +123,7 @@
           </a>
           <ul class="dropdown-menu">
           	<li><a class="dropdown-item" href="<%=request.getContextPath() %>/noticeBoard/noticeBoardList.jsp">공지사항</a></li>
-            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/reviewBoard/reviewBoard.jsp">리뷰게시판</a></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/reviewBoard/reviewBoardList.jsp">리뷰게시판</a></li>
             <li><a class="dropdown-item" href="<%=request.getContextPath() %>/askBoard/askBoardList.jsp">문의게시판</a></li>
           </ul>
         </li>
@@ -211,7 +211,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item" href="<%=request.getContextPath() %>/noticeBoard/noticeBoardList.jsp">공지사항</a></li>
-            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/reviewBoard/reviewBoard.jsp">리뷰게시판</a></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath() %>/reviewBoard/reviewBoardList.jsp">리뷰게시판</a></li>
             <li><a class="dropdown-item" href="<%=request.getContextPath() %>/askBoard/askBoardList.jsp">문의게시판</a></li>
           </ul>
         </li>
