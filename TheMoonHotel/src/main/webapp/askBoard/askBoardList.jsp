@@ -199,8 +199,8 @@
     </form>
 <%} %>
 
-	<div class="divbtn" style="margin-left: 1300px">
-    	<a href='<%=request.getContextPath() %>/askBoard/askWrite.jsp' >글쓰기</a>
+	<div class="divbtn" style="margin:0 auto; text-align: center;">
+    	<a href='<%=request.getContextPath() %>/askBoard/askWrite.jsp' class="btn btn-dark" style="margin-left: 750px;">글쓰기</a>
 	</div>
 </div>
 
