@@ -48,6 +48,11 @@ var oEditors=[];
 		      }, 
 		      fCreator: "createSEditor2"
 		      });
+	  	  $("#sub1").click(function(){
+	        //id가 smarteditor인 textarea에 에디터에서 대입
+	          oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+	        $('#frm').submit();
+	    });
 			$('#btn1').click(function() {
 			location.href = "reviewBoardList.jsp";
 		});
@@ -85,7 +90,7 @@ try{
 			</div>
 			<div class="form-group">
 				<label for="exampleTextarea" class="form-label mt-4"></label>
-				<textarea id="txtCon" name="content"class="form-control" rows="6"><%=vo.getR_content() %></textarea>
+				<textarea id="content" name="content"class="form-control" rows="6"><%=vo.getR_content() %></textarea>
 			</div>
 			<div class="form-group">
 				<label for="formFile" class="form-label mt-4">파일 첨부</label>
