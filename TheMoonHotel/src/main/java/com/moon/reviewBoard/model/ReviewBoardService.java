@@ -3,30 +3,32 @@ package com.moon.reviewBoard.model;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ReviewBoardService {
 
-	public int insertReview() throws SQLException {
-			return 
+
+public class ReviewBoardService {
+	private ReviewBoardDAO reviewBoardDAO;
+	
+	public ReviewBoardService() {
+		reviewBoardDAO=new ReviewBoardDAO();
+	}
+
+	public int insertReview(ReviewBoardVO vo) throws SQLException {
+			return reviewBoardDAO.insertReview(vo);
 	}
 
 	public List<ReviewBoardVO> selectAll(String condition, String keyword) throws SQLException {
-		return
+		return reviewBoardDAO.selectAll(condition, keyword);
 	}
 
-	public ReviewBoardVO selectByNo(int ReviewNo) throws SQLException {
-		return
+	public ReviewBoardVO selectByNo(int reviewNo) throws SQLException {
+		return reviewBoardDAO.selectByNo(reviewNo);
 	}
 
-	public int updateReviewBoard(ReviewBoardVO vo) throws SQLException {
-		return
+	public int updatereviewBoard(ReviewBoardVO vo,int reviewNo) throws SQLException {
+		return reviewBoardDAO.updatereviewBoard(vo, reviewNo);
 	}
 
-	public int deleteReviewBoard(int ReviewNo, String pwd) throws SQLException {
-		return
+	public int deletereviewBoard(int reviewNo) throws SQLException {
+		return reviewBoardDAO.deletereviewBoard(reviewNo);
 	}
-
-	public int updateN_count(int ReviewNo) throws SQLException {
-		return
-	}
-
 }
