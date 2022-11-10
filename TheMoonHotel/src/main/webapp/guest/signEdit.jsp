@@ -103,7 +103,7 @@ function vaildate_phone(tel){
 					  <div class="row">
 					    <div class="col" style="padding:0">
 					      	<select class="form-select"
-								aria-label="Default select example" id="tel1" name="te1">
+								aria-label="Default select example" id="tel1" name="te11">
 								<option value="010"
 									<%if(tel1.equals("010")){ %>
 										selected="selected"
