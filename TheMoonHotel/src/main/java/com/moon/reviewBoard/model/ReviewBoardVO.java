@@ -8,7 +8,6 @@ public class ReviewBoardVO {
 	private String r_title;
 	private Timestamp r_regdate;
 	private String r_content;
-	private int r_count;
 	private String userid;
 	
 	public ReviewBoardVO() {
@@ -55,14 +54,6 @@ public class ReviewBoardVO {
 		this.r_content = r_content;
 	}
 
-	public int getR_count() {
-		return r_count;
-	}
-
-	public void setR_count(int r_count) {
-		this.r_count = r_count;
-	}
-
 	public String getUserid() {
 		return userid;
 	}
@@ -71,15 +62,13 @@ public class ReviewBoardVO {
 		this.userid = userid;
 	}
 
-	public ReviewBoardVO(int reviewNo, int guestNo, String r_title, Timestamp r_regdate, String r_content, int r_count,
-			String userid) {
+	public ReviewBoardVO(int reviewNo, int guestNo, String r_title, Timestamp r_regdate, String r_content, String userid) {
 		super();
 		this.reviewNo = reviewNo;
 		this.guestNo = guestNo;
 		this.r_title = r_title;
 		this.r_regdate = r_regdate;
 		this.r_content = r_content;
-		this.r_count = r_count;
 		this.userid = userid;
 	}
 	

@@ -21,14 +21,13 @@ public class ReviewBoardDAO {
 
 		try {
 			con = pool.getConnection();
-			String sql = "insert into reviewBoard(reviewNo, guestNo, r_title, r_content, r_count)\r\n"
-					+ "values(reviewboard_seq.nextval,?,?,?,?)";
+			String sql = "insert into reviewBoard(reviewNo, guestNo, r_title, r_content)\r\n"
+					+ "values(reviewboard_seq.nextval,?,?,?)";
 			ps = con.prepareStatement(sql);
 
 			ps.setInt(1, vo.getGuestNo());
 			ps.setString(2, vo.getR_title());
 			ps.setString(3, vo.getR_content());
-			ps.setInt(4, vo.getR_count());
 
 			int cnt = ps.executeUpdate();
 
@@ -47,7 +46,7 @@ public class ReviewBoardDAO {
 		List<ReviewBoardVO> list = new ArrayList<>();
 		try {
 			con = pool.getConnection();
-			String sql = "select r.reviewNo, r.guestNo, r.r_title, r.r_regdate, r.r_content, r.r_count, g.userid"
+			String sql = "select r.reviewNo, r.guestNo, r.r_title, r.r_regdate, r.r_content, g.userid"
 					+ " from ReviewBoard r, guest g";
 
 			if (keyword != null && !keyword.isEmpty()) {
@@ -69,10 +68,9 @@ public class ReviewBoardDAO {
 				String r_title = rs.getString("r_title");
 				Timestamp r_regdate = rs.getTimestamp("r_regdate");
 				String r_content = rs.getString("r_content");
-				int r_count = rs.getInt("r_count");
 				String userid = rs.getString("userid");
 
-				ReviewBoardVO vo = new ReviewBoardVO(reviewNo, guestNo, r_title, r_regdate, r_content, r_count, userid);
+				ReviewBoardVO vo = new ReviewBoardVO(reviewNo, guestNo, r_title, r_regdate, r_content, userid);
 				list.add(vo);
 			}
 			System.out.println(
@@ -128,14 +126,12 @@ public class ReviewBoardDAO {
 				String r_title = rs.getString("r_title");
 				Timestamp r_regdate = rs.getTimestamp("r_regdate");
 				String r_content = rs.getString("r_content");
-				int r_count = rs.getInt("r_count");
 
 				vo.setReviewNo(reviewNo);
 				vo.setGuestNo(guestNo);
 				vo.setR_title(r_title);
 				vo.setR_regdate(r_regdate);
 				vo.setR_content(r_content);
-				vo.setR_count(r_count);
 			}
 			return vo;
 		} finally {
