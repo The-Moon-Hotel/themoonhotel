@@ -75,7 +75,7 @@
 					
 						<tr style="text-align: center">
 							<td><%=vo.getName()%></td>
-							<td style="text-align: left;margin-left: 50px">
+							<td style="margin-left: 100px">
 								<textarea readonly><%=vo.getContent()%></textarea>
 							</td>
 							<td><%=sdf.format(vo.getRegdate())%></td>
