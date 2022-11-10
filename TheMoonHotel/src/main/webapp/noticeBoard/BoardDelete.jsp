@@ -63,10 +63,7 @@ body {
 		$('#btnUpdate').click(function(){
 			location.href="noticeEdit.jsp";
 		});
-		$('#btnDelete').click(function(){
-			location.href="BoardDelete.jsp";
-		});
-		$('#btnList').click(function(){
+		$('#btn1').click(function(){
 			location.href="noticeBoardList.jsp";
 		});
 	});
@@ -74,30 +71,30 @@ body {
 <%
 String noticeNo = request.getParameter("noticeNo");
 NoticeBoardDAO dao = new NoticeBoardDAO();
+NoticeBoardVO vo = new NoticeBoardVO();
 try{
-	noticeBoardVo = dao.selectByNo(Integer.parseInt(noticeNo));
+	vo = dao.selectByNo(Integer.parseInt(noticeNo));
 }catch(SQLException e){
 	e.printStackTrace();
 }
 %>
 <body>
 	<div class="divForm">
-	<form name="frmDelete" method="post" action="delete_ok.jsp?no=<%=noticeBoardVo.getNoticeNo()%>">
+	<form name="frmDelete" method="post" action="BoardDelete_ok.jsp?noticeNo=<%=vo.getNoticeNo()%>">
 			<!--  삭제시 no가 필요하므로 hidden 필드에 넣어준다. -->
-			<input type="hidden" name="no" value="<%=noticeBoardVo.getNoticeNo() %>">
+			<input type="hidden" name="no" value="<%=vo.getNoticeNo() %>">
+			<input type="hidden" name="gno" value="<%=vo.getGuestNo() %>">
 			<fieldset>
-				<legend>글 삭제</legend>
-				<div>
-					<span class="sp"><%=noticeBoardVo.getNoticeNo() %> 번 글을 삭제하시겠습니까?</span>
+			<br><br><br><br><br>
+				<div style="text-align: center;">
+					<span class="sp"><%=vo.getNoticeNo() %> 번 글을 삭제하시겠습니까?</span>
 				</div>
-				<div>
-					<label for="pwd">비밀번호</label> <input type="password" id="pwd"
-						name="pwd" />
+				<br>
+				<div style="text-align: center;">
+					<input type="submit" class="btn btn-dark" value="삭제" />
+					<input id="btn1" type="Button" class="btn btn-dark" value="글목록"/>
 				</div>
-				<div class="center">
-					<input type="submit" value="삭제" /> <input type="Button"
-						value="글목록" OnClick="location.href='list.jsp'" />
-				</div>
+				<br><br><br><br><br>
 			</fieldset>
 		</form>
 		</div>

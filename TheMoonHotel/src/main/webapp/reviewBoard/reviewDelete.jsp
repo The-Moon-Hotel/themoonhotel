@@ -1,7 +1,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.SQLClientInfoException"%>
-<%@page import="com.moon.noticeBoard.model.NoticeBoardVO"%>
-<%@page import="com.moon.noticeBoard.model.NoticeBoardDAO"%>
+<%@page import="com.moon.reviewBoard.model.ReviewBoardVO"%>
+<%@page import="com.moon.reviewBoard.model.ReviewBoardDAO"%>
 <%@page import="com.moon.askBoard.model.AskBoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
@@ -18,7 +18,7 @@
 	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
 	crossorigin="anonymous">
 </head>
-<jsp:useBean id="noticeBoardVo" class="com.moon.noticeBoard.model.NoticeBoardVO"></jsp:useBean>
+<jsp:useBean id="reviewBoardVo" class="com.moon.reviewBoard.model.ReviewBoardVO"></jsp:useBean>
 <style type="text/css">
 body {
 	padding-top: 70px;
@@ -61,58 +61,43 @@ body {
 <script type="text/javascript">
 	$(function(){
 		$('#btnUpdate').click(function(){
-			location.href="noticeEdit.jsp";
+			location.href="reviewEdit.jsp";
 		});
-		$('#btnDelete').click(function(){
-			location.href="BoardDelete.jsp";
-		});
-		$('#btnList').click(function(){
-			location.href="noticeBoardList.jsp";
+		$('#btn1').click(function(){
+			location.href="reviewBoardList.jsp";
 		});
 	});
 </script>
 <%
-String noticeNo = request.getParameter("noticeNo");
-String guestNo = request.getParameter("guestNo");
-
-
-NoticeBoardDAO dao = new NoticeBoardDAO();
-NoticeBoardVO vo = null;
-
+String reviewNo = request.getParameter("reviewNo");
+ReviewBoardDAO dao = new ReviewBoardDAO();
+ReviewBoardVO vo = new ReviewBoardVO();
 try{
-	vo = dao.selectByNo(Integer.parseInt(noticeNo));
+	vo = dao.selectByNo(Integer.parseInt(reviewNo));
 }catch(SQLException e){
 	e.printStackTrace();
 }
 %>
 <body>
-	<article>
-		<div class="container" role="main">
-		<br><br><br>
-			<h2>상세보기</h2>
-			<div class="bg-white rounded shadow-sm">
-				<div class="board_title">
-				<%=vo.getN_title() %><!-- 클릭한 게시물 제목 보이기 -->
+	<div class="divForm">
+	<form name="frmDelete" method="post" action="BoardDelete_ok.jsp?reviewNo=<%=vo.getReviewNo()%>">
+			<!--  삭제시 no가 필요하므로 hidden 필드에 넣어준다. -->
+			<input type="hidden" name="no" value="<%=vo.getReviewNo() %>">
+			<input type="hidden" name="gno" value="<%=vo.getGuestNo() %>">
+			<fieldset>
+			<br><br><br><br><br>
+				<div style="text-align: center;">
+					<span class="sp"><%=vo.getReviewNo() %> 번 글을 삭제하시겠습니까?</span>
 				</div>
-				<div class="board_info_box">
-					<span class="board_author"><%=vo.getN_title() %></span><!-- 게시글 내용 -->
-					<span class="board_date"><%=vo.getN_regdate() %> </span><!-- 게시글 날짜 -->
+				<br>
+				<div style="text-align: center;">
+					<input type="submit" class="btn btn-dark" value="삭제" />
+					<input id="btn1" type="Button" class="btn btn-dark" value="글목록"/>
 				</div>
-				<div class="board_content"></div>
-				<div class="board_tag">
-				</div>
-			</div>
-			<div style="margin-top: 20px">
-				<br>
-				<br>
-				<br>
-				<button type="button" class="btn btn-sm btn-primary" id="btnUpdate">수정</button>
-				<button type="button" class="btn btn-sm btn-primary" id="btnDelete">삭제</button>
-				<button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
-				<br><br><br>
-			</div>
+				<br><br><br><br><br>
+			</fieldset>
+		</form>
 		</div>
-	</article>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"

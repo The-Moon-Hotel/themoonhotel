@@ -1,3 +1,5 @@
+<%@page import="com.moon.guest.model.GuestSerivce"%>
+<%@page import="com.moon.guest.model.GuestVO"%>
 <%@page import="java.awt.Event"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.SQLException"%>
@@ -13,16 +15,10 @@
 	width: 800px;
 }
 </style>
-<script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
-<script type="text/javascript">
-	$(function(){
-		$('#btn1').click(function(){
-			location.href="noticeWrite.jsp";
-		});
-	});
-</script>
 <jsp:useBean id="noticeBoardDAO" class="com.moon.noticeBoard.model.NoticeBoardDAO"></jsp:useBean>
 <jsp:useBean id="noticeBoardVo" class="com.moon.noticeBoard.model.NoticeBoardVO"></jsp:useBean>
+<jsp:useBean id="guestService" class="com.moon.guest.model.GuestSerivce" scope="session"></jsp:useBean>
+    <jsp:useBean id="guestVo" class="com.moon.guest.model.GuestVO" scope="page"></jsp:useBean>
 <%
 	request.setCharacterEncoding("utf-8");
 	String userid = (String)session.getAttribute("userid");
@@ -66,7 +62,35 @@
 	//0, 5, 10, 15...
 	
 	int num = totalRecord-curPos;
+	boolean t_login=false;
+	   int GuestOrAdmin=GuestSerivce.GUEST_ACCOUNT;
+	if(userid!=null && !userid.isEmpty()){
+		try{
+	         guestVo=guestService.selectByUserid(userid);
+	         int sys = guestVo.getSys();
+	         if(sys==GuestSerivce.ADMIN_ACCOUNT){
+	            GuestOrAdmin = GuestSerivce.ADMIN_ACCOUNT;
+	         }
+	      }catch(SQLException e){
+	         e.printStackTrace();
+	      }
+	   }
+	
 %>
+<script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var sys="<%=GuestOrAdmin%>";
+		$('#btn1').click(function(){
+				if(sys == 2){
+					location.href="noticeWrite.jsp";
+				}else{
+					alert("관리자만 작성가능 ㅋ");
+					event.preventdefault();
+				}
+		});
+	});
+</script>
 <div style="height: 800px;">
 	<div class="container text-center" style="margin-top: 100px;">
 		<h2>공지사항</h2>
@@ -163,7 +187,7 @@
 			</div>
 	</form>
 			<br><br>
-		<button id="btn1" type="button" class="btn btn-dark" style="float: right">글쓰기</button>
+		<button id="btn1" type="button" class="btn btn-dark" style="float: right;<%if(GuestOrAdmin != GuestSerivce.ADMIN_ACCOUNT) {%> display:none;<%}%>">글쓰기</button>
 		<br> <br> <br>
 	</div>
 </div>

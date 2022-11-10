@@ -1,3 +1,6 @@
+<%@page import="java.sql.SQLException"%>
+<%@page import="com.moon.noticeBoard.model.NoticeBoardDAO"%>
+<%@page import="com.moon.noticeBoard.model.NoticeBoardVO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <jsp:include page="../inc/top.jsp"></jsp:include>
@@ -50,10 +53,23 @@ var oEditors=[];
 		});
 	});
 </script>
+<%
+String noticeNo = request.getParameter("noticeNo");
+NoticeBoardVO vo = new NoticeBoardVO();
+NoticeBoardDAO dao = new NoticeBoardDAO();
+
+try{
+	vo = dao.selectByNo(Integer.parseInt(noticeNo));
+}catch(SQLException e){
+	e.printStackTrace();
+}
+%>
 <body>
 <br><br><br>
 <div id="div1" class="container text-left">
-	<form>
+	<form id="frm" method="post" enctype="multipart/form-data" action="noticeEdit_ok.jsp">
+		<input type ="hidden" name="noticeNo" value="<%=vo.getNoticeNo() %>">
+		<input type ="hidden" name="guestNo" value="<%=vo.getGuestNo() %>">
 		<fieldset>
 			<legend>게시글 수정</legend>
 			<div class="form-group">
@@ -64,16 +80,16 @@ var oEditors=[];
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1" class="form-label mt-4"></label>
-				<input type="email" class="form-control" id="title1"
-					placeholder="제목을 입력하세요" > 
+				<input type="text" name="title" class="form-control" id="title1" value="<%=vo.getN_title()%>">
+				
 			</div>
 			<div class="form-group">
 				<label for="exampleTextarea" class="form-label mt-4"></label>
-				<textarea id="txtCon" class="form-control" rows="6" placeholder="내용을 입력하세요"></textarea>
+				<textarea id="txtCon" name="content"class="form-control" rows="6"><%=vo.getN_content() %></textarea>
 			</div>
 			<div class="form-group">
 				<label for="formFile" class="form-label mt-4">파일 첨부</label>
-				<input class="form-control" type="file" id="formFile">
+				<input class="form-control" type="file" id="formFile" name="fileName">
 			</div>
 			<button id="sub1" type="submit" class="btn btn-primary">작성</button>
 			<button id="btn1" type="button" class="btn btn-primary">목록</button>
