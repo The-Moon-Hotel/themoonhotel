@@ -135,7 +135,7 @@ function validate_userid(id){
 						    <div class="col" style="padding:0">
 						    	<select class="form-select"
 									aria-label="Default select example" id="tel1" name="te1" >
-									<option value="010">010</option>
+									<option value="010" selected="selected">010</option>
 									<option value="011">011</option>
 									<option value="016">016</option>
 									<option value="017">017</option>
