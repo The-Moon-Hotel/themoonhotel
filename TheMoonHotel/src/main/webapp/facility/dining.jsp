@@ -15,10 +15,10 @@
 <section class = "faci">
 	<span>
 		<a href="<%=request.getContextPath() %>/facility/facility.jsp">
-			<input type="button" value="부대시설" class="btn btn-dark btn-lg btn-block">
+			<input type="button" value="부대시설" class="btn btn-dark">
 		</a>
 		<a href="<%=request.getContextPath() %>/facility/dining.jsp">
-			<input type="button" value="다이닝" class="btn btn-dark btn-lg btn-block">	
+			<input type="button" value="다이닝" class="btn btn-dark">	
 		</a>
 	</span>
 	<br><br>
@@ -40,9 +40,7 @@
 	</div>
 	
 	<div>
-		<span class="title">
-			<b>비스트로 M</b>
-		</span><br><br>
+		<h3 class="title"><b>비스트로 M</b></h3>
 		<img src = "../images/bar.png">
 		<br>
 		<h2 style="color:#C1B197">시원한 전망이 펼쳐지는 캐주얼 레스토랑</h2>

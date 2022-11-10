@@ -85,12 +85,9 @@
 				<textarea id="txtCon" class="form-control" rows="6" name="a_content"
 					 style="height: 200px;"><%=vo.getA_content() %></textarea>
 			</div>
-			<div class="form-group">
-				<label for="formFile" class="form-label mt-4">파일 첨부</label>
-				<input class="form-control" type="file" id="formFile">
-			</div>
-			<button id="sub1" type="submit" class="btn btn-primary">수정</button>
-			<button id="btn1" type="button" class="btn btn-primary">목록</button>
+			<br><br>
+			<button id="sub1" type="submit" class="btn btn-dark" >수정</button>
+			<button id="btn1" type="button" class="btn btn-dark" >목록</button>
 		</fieldset>
 	</form>
 	</div>

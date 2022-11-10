@@ -74,10 +74,7 @@ textarea{
 				<textarea id="txtCon" class="form-control" rows="6" name="a_content"
 					 ></textarea>
 			</div>
-			<div class="form-group">
-				<label for="formFile" class="form-label mt-4">파일 첨부</label> 
-				<input class="form-control-file" type="file" id="formFile">
-			</div>
+			<br><br>
 			<button id="sub1" type="submit" class="btn btn-dark">작성</button>
 			<button id="btn1" type="button" class="btn btn-dark">목록</button>
 		</fieldset>

@@ -148,9 +148,9 @@ textarea{
 				<br>
 				<br>
 				
-				<button type="button" class="btn btn-sm btn-primary" id="btnUpdate">수정</button>
-				<button type="button" class="btn btn-sm btn-primary" id="btnDelete">삭제</button>
-				<button type="button" class="btn btn-sm btn-primary" id="btnlist">목록</button>
+				<button type="button" class="btn btn-dark" id="btnUpdate">수정</button>
+				<button type="button" class="btn btn-dark" id="btnDelete">삭제</button>
+				<button type="button" class="btn btn-dark" id="btnlist">목록</button>
 				<br><br><br>
 				
 			</div>

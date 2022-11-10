@@ -6,10 +6,10 @@
 <section class = "faci">
 	<span>
 		<a href="<%=request.getContextPath() %>/facility/facility.jsp">
-			<input type="button" value="부대시설" class="btn btn-dark btn-lg btn-block">
+			<input type="button" value="부대시설" class="btn btn-dark">
 		</a>
 		<a href="<%=request.getContextPath() %>/facility/dining.jsp">
-			<input type="button" value="다이닝" class="btn btn-dark btn-lg btn-block">	
+			<input type="button" value="다이닝" class="btn btn-dark">	
 		</a>
 		<!-- style="background:#7B725E;color:white" -->
 	</span>
@@ -35,8 +35,10 @@
 	
 	<div>		
 		<span class="title">
-			<b>테라피 가든</b>
-			<b style="margin-left: 450px">카바나</b><br>
+			<p>
+				<b>테라피 가든</b>
+				<b style="margin-left: 450px">카바나</b>
+			</p>
 		<img src = "../images/tera.png" style=" position: absolute;
 			cursor:pointer" 
 			onclick="window.open('tera.jsp','asdfo8or','scrollbars=yes, width=900,height=300,top=10,left=20');">	
@@ -54,9 +56,10 @@
 	
 	<div>
 		<span class="title">
-			<b>사우나</b>
-			<b style="margin-left: 510px">헬스장</b>
-			<br>
+			<p>
+				<b>사우나</b>
+				<b style="margin-left: 495px">헬스장</b>
+			</p>
 		<img src = "../images/saun.png" style=" position: absolute;
 			cursor:pointer" 
 			onclick="window.open('sauna.jsp','asdfo8or','scrollbars=yes, width=900,height=300,top=10,left=20');">
