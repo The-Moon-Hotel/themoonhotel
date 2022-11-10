@@ -20,13 +20,6 @@
 <%
 	String userid = (String)session.getAttribute("userid"); //로그인 정보
 	
-	String b_adult = request.getParameter("b_adult");
-	String b_kids = request.getParameter("b_kids");
-	String p_adult = request.getParameter("p_adult");
-	String p_kids = request.getParameter("p_kids");
-	String s_adult = request.getParameter("s_adult");
-	String g_adult = request.getParameter("g_adult");
-
 	GuestVO guestVo = guestSerivce.selectByUserid(userid);
 	int guestNo = guestVo.getGuestNo();
 	FacilityVO bVo = new FacilityVO();
@@ -93,22 +86,22 @@
 						</tr>
 						<tr align="center">
 							<td colspan="2">조식 인원 수 (1인당 40,000원 / 17,000원) :</td>
-							<td><%=b_adult%></td>
-							<td><%=b_kids%></td>
+							<td><%=bVo.getAdultNo() %></td>
+							<td><%=bVo.getKidsNo() %></td>
 						</tr>
 						<tr align="center">
 							<td colspan="2">수영장 인원 수 (1인당 45,000원 / 28,000원) : </td>
-							<td><%=p_adult%></td>
-							<td><%=p_kids%></td>
+							<td><%=pVo.getAdultNo() %></td>
+							<td><%=pVo.getKidsNo() %></td>
 						</tr>
 						<tr align="center">
 							<td colspan="2">사우나 인원 수 (1인당 35,000원) : </td>
-							<td><%=s_adult%></td>
+							<td><%=sVo.getAdultNo() %></td>
 							<td>-</td>
 						</tr>
 						<tr align="center">
 							<td colspan="2">헬스장 인원 수 (1인당 20,000원) : </td>
-							<td><%=g_adult%></td>
+							<td><%=gVo.getAdultNo() %></td>
 							<td>-</td>
 						</tr>
 					</table>
