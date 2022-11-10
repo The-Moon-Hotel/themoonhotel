@@ -73,7 +73,8 @@
 </script>
 <div style="height: 800px;">
 	<div class="container text-center" style="margin-top: 100px;">
-		<h2>공지사항</h2>
+	<br><br>
+		<h2>리뷰게시판</h2>
 	</div>
 	<div id="div1" class="container text-center">
 		<table class="table table-hover">
@@ -83,7 +84,6 @@
 					<th scope="col">제목</th>
 					<th scope="col">작성자</th>
 					<th scope="col">날짜</th>
-					<th scope="col">조회수</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -103,7 +103,6 @@
 					<td><a href="detail.jsp?no=<%=reviewBoardVo.getReviewNo()%>"><%=reviewBoardVo.getR_title() %></a></td>
 					<td><%=reviewBoardVo.getUserid()%></td>
 					<td><%=reviewBoardVo.getR_regdate() %></td>
-					<td><%=reviewBoardVo.getR_count()%></td>
 				</tr>
 				<%} %>
 			<%} %>

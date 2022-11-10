@@ -54,7 +54,7 @@ var oEditors=[];
 	});
 </script>
 <%
-String reviewNo = request.getParameter("oticeNo");
+String reviewNo = request.getParameter("reviewNo");
 ReviewBoardVO vo = new ReviewBoardVO();
 ReviewBoardDAO dao = new ReviewBoardDAO();
 
@@ -91,8 +91,8 @@ try{
 				<label for="formFile" class="form-label mt-4">파일 첨부</label>
 				<input class="form-control" type="file" id="formFile" name="fileName">
 			</div>
-			<button id="sub1" type="submit" class="btn btn-primary">작성</button>
-			<button id="btn1" type="button" class="btn btn-primary">목록</button>
+			<button id="sub1" type="submit" class="btn btn-dark">작성</button>
+			<button id="btn1" type="button" class="btn btn-dark">목록</button>
 		</fieldset>
 	</form>
 	</div>

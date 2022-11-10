@@ -80,7 +80,7 @@ try{
 %>
 <body>
 	<div class="divForm">
-	<form name="frmDelete" method="post" action="BoardDelete_ok.jsp?reviewNo=<%=vo.getReviewNo()%>">
+	<form name="frmDelete" method="post" action="reviewDelete_ok.jsp?reviewNo=<%=vo.getReviewNo()%>">
 			<!--  삭제시 no가 필요하므로 hidden 필드에 넣어준다. -->
 			<input type="hidden" name="no" value="<%=vo.getReviewNo() %>">
 			<input type="hidden" name="gno" value="<%=vo.getGuestNo() %>">

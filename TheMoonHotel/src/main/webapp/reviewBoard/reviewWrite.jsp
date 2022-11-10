@@ -68,12 +68,8 @@ int guestNo = guestVo.getGuestNo();
 	<form id="frm" method="post" enctype="multipart/form-data" action="reviewWrite_ok.jsp">
 	<input type="hidden" name = "guestNo" value=<%=guestNo %>>
 		<fieldset>
-			<legend>글 쓰기</legend>
+			<legend>리뷰 작성</legend>
 			<div class="form-group">
-				<label for="exampleSelect1" class="form-label mt-4">게시판 목록</label> <select
-					class="form-select" id="selBoard">
-					<option>공지사항</option>
-				</select>
 			</div>
 			<div class="form-group">
 				<label for="exampleTextarea" class="form-label mt-4"></label> 

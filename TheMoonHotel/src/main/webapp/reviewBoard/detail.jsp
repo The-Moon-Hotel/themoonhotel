@@ -122,9 +122,8 @@ if(userid!=null && !userid.isEmpty()){
 				<br>
 				<br>
 				<button type="button" class="btn btn-sm btn-dark" id="btnUpdate"
-					onclick="location.href='reviewEdit.jsp?reviewNo=<%=vo.getReviewNo()%>'">수정</button>
-				<button type="button" class="btn btn-sm btn-dark" id="btnDelete"
-					onclick="location.href='BoardDelete.jsp?reviewNo=<%=vo.getReviewNo()%>'">삭제</button>
+					onclick="location.href='reviewEdit.jsp?reviewNo=<%=vo.getReviewNo()%>'">수정</button>				<button type="button" class="btn btn-sm btn-dark" id="btnDelete"
+					onclick="location.href='reviewDelete.jsp?reviewNo=<%=vo.getReviewNo()%>'">삭제</button>
 				<button type="button" class="btn btn-sm btn-dark" id="btnList">목록</button>
 				<br><br><br>
 			</div>

@@ -85,7 +85,7 @@
 				if(sys == 2){
 					location.href="noticeWrite.jsp";
 				}else{
-					alert("관리자만 작성가능 ㅋ");
+					alert("관리자만 작성가능합니다.");
 					event.preventdefault();
 				}
 		});
@@ -103,7 +103,6 @@
 					<th scope="col">제목</th>
 					<th scope="col">작성자</th>
 					<th scope="col">날짜</th>
-					<th scope="col">조회수</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -123,7 +122,6 @@
 					<td><a href="detail.jsp?no=<%=noticeBoardVo.getNoticeNo()%>"><%=noticeBoardVo.getN_title() %></a></td>
 					<td><%=noticeBoardVo.getUserid()%></td>
 					<td><%=noticeBoardVo.getN_regdate() %></td>
-					<td><%=noticeBoardVo.getN_count()%></td>
 				</tr>
 				<%} %>
 			<%} %>
