@@ -132,7 +132,7 @@ class="com.moon.room.model.RoomService" scope="session"></jsp:useBean>
 					<td id="line">
 						<!-- <input type="submit" id="submitBtn" value="예약하기" > -->
 						<input type="button" id="submitBtn" value="예약하기" 
-onclick="location.href='reservation3.jsp?ci_date=<%=ci_date%>&co_date=<%=co_date%>&adult=<%=adult%>&kids=<%=kids%>&roomType=<%=roomVo.getRoomType()%>&roomImage=<%=roomVo.getRoomImage()%>&totalPrice=<%=df.format(roomVo.getRoomPrice()*gapDate)%>&locName=<%=locName%>'"
+onclick="location.href='reservation3.jsp?ci_date=<%=ci_date%>&co_date=<%=co_date%>&adult=<%=adult%>&kids=<%=kids%>&roomType=<%=roomVo.getRoomType()%>&roomImage=<%=roomVo.getRoomImage()%>&totalPrice=<%=df.format(roomVo.getRoomPrice()*gapDate)%>&locName=<%=locName%>'">
 					</td>
 				</tr>
 			
