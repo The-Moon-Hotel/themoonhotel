@@ -15,6 +15,14 @@
 #btn1 {
 	clear: none;
 }
+
+textarea{
+	font-size: 1em; 
+	width:600px; 
+	height: 200px;
+	border: none;
+	overflow: hidden;
+}
 </style>
 <script type="text/javascript"
 	src="../js/smartEdit/js/service/HuskyEZCreator.js" charset="utf-8"></script>
@@ -63,8 +71,8 @@
 				<label for="exampleTextarea" class="form-label mt-4"></label>
 				<!-- <textarea id="txtCon" class="form-control" rows="6" name="a_content"
 					placeholder="내용을 입력하세요"></textarea> -->
-				<input id="txtCon" class="form-control" rows="6" name="a_content"
-					 style="height: 200px;"></input>
+				<textarea id="txtCon" class="form-control" rows="6" name="a_content"
+					 ></textarea>
 			</div>
 			<div class="form-group">
 				<label for="formFile" class="form-label mt-4">파일 첨부</label> 
