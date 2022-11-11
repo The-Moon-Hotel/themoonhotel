@@ -186,8 +186,8 @@
             	selected="selected"
             <%} %>
             >내용</option>
-            <option value="askno"
-             <%if("askno".equals(condition)){%>
+            <option value="guestno"
+             <%if("gusetno".equals(condition)){%>
             	selected="selected"
             <%} %>
             >고객번호</option>
