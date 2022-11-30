@@ -192,6 +192,7 @@
             <%} %>
             >고객번호</option>
         </select>
+        
 			<input type="text" name="searchKeyword" title="검색어 입력"
         		value="<%= keyword%>">    
 			<input type="submit" value="검색">
